@@ -482,9 +482,9 @@ function composeTab(){
         </div>
         <div class="net-grid">
           ${NETS.map(n=>`
-          <div class="net-card ${state.selected.has(n.id)?'sel':''}" onclick="toggleNet('${n.id}')">
+          <div class="net-card ${state.selected.has(n.id)?'sel':''}" data-id="${n.id}" onclick="toggleNet('${n.id}')">
             <span class="net-chk">✦</span>
-            ${icon(n.id, state.selected.has(n.id)?n.color:'var(--muted)', 24)}
+            <span class="net-ico" style="display:inline-flex;width:24px;height:24px;flex-shrink:0;color:${state.selected.has(n.id)?n.color:'var(--muted)'}">${SVG[n.id]||''}</span>
             <span class="net-name-s">${n.name}</span>
           </div>`).join('')}
         </div>
@@ -492,7 +492,7 @@ function composeTab(){
       <div class="panel">
         <label class="field-lbl">Legenda / Mensagem</label>
         <textarea class="textarea-f" id="captionInput" placeholder="Escreva sua legenda, hashtags, emojis…" oninput="onCaption(this.value)">${state.caption}</textarea>
-        <div class="char-c">${state.caption.length} / 2200</div>
+        <div class="char-c" id="charCount">${state.caption.length} / 2200</div>
       </div>
       <div class="panel">
         <label class="field-lbl">URLs de Mídia — opcional</label>
@@ -502,26 +502,26 @@ function composeTab(){
       <div class="panel">
         <label class="field-lbl">Agendar Publicação — opcional</label>
         <input class="input-f" type="datetime-local" value="${state.schedDate}" oninput="onSched(this.value)" style="color-scheme:dark"/>
-        ${state.schedDate?`<p style="font-size:11px;color:var(--amber);margin-top:8px">Agendado para: ${new Date(state.schedDate).toLocaleString('pt-BR')}</p>`:''}
+        <div id="schedLabel">${state.schedDate?`<p style="font-size:11px;color:var(--amber);margin-top:8px">Agendado para: ${new Date(state.schedDate).toLocaleString('pt-BR')}</p>`:''}</div>
       </div>
-      <button class="btn-primary" ${can?'':'disabled'} onclick="${can?'openModal()':''}">
+      <button id="publishBtn" class="btn-primary" ${can?'':'disabled'} onclick="${can?'openModal()':''}">
         ◈ ${state.schedDate?`Agendar em ${sel.length} plataforma${sel.length!==1?'s':''}`:`Publicar agora em ${sel.length} plataforma${sel.length!==1?'s':''}`}
       </button>
     </div>
     <div class="cg-side">
       <div class="panel" style="margin-bottom:14px">
         <div class="sec-lbl">Selecionadas</div>
-        <div class="sel-count">${sel.length}</div>
-        <div class="sel-lbl">plataforma${sel.length!==1?'s':''}</div>
+        <div class="sel-count" id="selCount">${sel.length}</div>
+        <div class="sel-lbl" id="selLbl">plataforma${sel.length!==1?'s':''}</div>
         <div class="sel-div"></div>
-        <div class="sel-list">
+        <div class="sel-list" id="selList">
           ${selNets.length===0?'<p style="font-size:11px;color:var(--muted)">Nenhuma</p>':selNets.map(n=>`
           <div class="sel-item">${icon(n.id,n.color,14)}<span>${n.name}</span></div>`).join('')}
         </div>
       </div>
       <div class="panel">
         <div class="sec-lbl">Preview</div>
-        ${state.caption?`<p style="font-size:13px;color:var(--text);line-height:1.6;word-break:break-word">${state.caption.slice(0,160)}${state.caption.length>160?'…':''}</p>`:`<p style="font-size:12px;color:var(--muted);font-style:italic">Sua legenda aparecerá aqui.</p>`}
+        <div id="previewText">${state.caption?`<p style="font-size:13px;color:var(--text);line-height:1.6;word-break:break-word">${state.caption.slice(0,160)}${state.caption.length>160?'…':''}</p>`:`<p style="font-size:12px;color:var(--muted);font-style:italic">Sua legenda aparecerá aqui.</p>`}</div>
         ${ma.length>0?`<div style="margin-top:10px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:8px">${ma.length} arquivo(s) de mídia</div>`:''}
       </div>
     </div>
@@ -604,22 +604,83 @@ function modal(){
   </div>`;
 }
 
+// ── Render parcial — atualiza só o contador e preview sem recriar inputs ──
+function updateCharCount(){
+  const el=document.getElementById('charCount');
+  if(el) el.textContent=state.caption.length+' / 2200';
+}
+function updatePreview(){
+  const el=document.getElementById('previewText');
+  if(el) el.innerHTML=state.caption
+    ?state.caption.slice(0,160)+(state.caption.length>160?'…':'')
+    :'<p style="font-size:12px;color:var(--muted);font-style:italic">Sua legenda aparecerá aqui.</p>';
+}
+function updateSelCount(){
+  const el=document.getElementById('selCount');
+  if(el) el.textContent=state.selected.size;
+  const el2=document.getElementById('selLbl');
+  if(el2) el2.textContent='plataforma'+(state.selected.size!==1?'s':'');
+  const el3=document.getElementById('publishBtn');
+  if(el3){
+    const can=state.apiSaved&&state.caption.trim()&&state.selected.size>0;
+    el3.disabled=!can;
+    el3.textContent='◈ '+(state.schedDate?`Agendar em ${state.selected.size} plataforma${state.selected.size!==1?'s':''}`:`Publicar agora em ${state.selected.size} plataforma${state.selected.size!==1?'s':''}`);
+  }
+  // update sel list
+  const el4=document.getElementById('selList');
+  if(el4){
+    const selNets=NETS.filter(n=>state.selected.has(n.id));
+    el4.innerHTML=selNets.length===0?'<p style="font-size:11px;color:var(--muted)">Nenhuma</p>':selNets.map(n=>`<div class="sel-item">${icon(n.id,n.color,14)}<span>${n.name}</span></div>`).join('');
+  }
+}
+function updateSchedLabel(){
+  const el=document.getElementById('schedLabel');
+  if(el) el.innerHTML=state.schedDate?`<p style="font-size:11px;color:var(--amber);margin-top:8px">Agendado para: ${new Date(state.schedDate).toLocaleString('pt-BR')}</p>`:'';
+}
+
 // ── Event handlers ────────────────────────────────────────────────
 function bindEvents(){}
 window.setState=setState;
 window.setLang=l=>setState({lang:l});
 window.setTab=t=>setState({tab:t});
 window.setScreen=s=>setState({screen:s});
-window.selectAll=()=>setState({selected:new Set(NETS.map(n=>n.id))});
-window.selectNone=()=>setState({selected:new Set()});
-window.toggleNet=id=>{const s=new Set(state.selected);s.has(id)?s.delete(id):s.add(id);setState({selected:s});};
+window.selectAll=()=>{state.selected=new Set(NETS.map(n=>n.id));render();};
+window.selectNone=()=>{state.selected=new Set();render();};
+window.toggleNet=id=>{const s=new Set(state.selected);s.has(id)?s.delete(id):s.add(id);state.selected=s;
+  // atualiza só os net-cards e contadores sem re-render total
+  document.querySelectorAll('.net-card').forEach(el=>{
+    const nid=el.dataset.id;
+    if(!nid)return;
+    const sel=state.selected.has(nid);
+    el.classList.toggle('sel',sel);
+    const n=NETS.find(x=>x.id===nid);
+    if(n){const ico=el.querySelector('.net-ico');if(ico)ico.style.color=sel?n.color:'var(--muted)';}
+  });
+  updateSelCount();
+  updatePublishBtn();
+};
 window.onApiInput=v=>{ state.apiKey=v; state.apiSaved=false; };
 window.saveApi=()=>{ if(state.apiKey.trim()){setState({apiSaved:true});setTimeout(()=>setState({tab:'compose'}),400);} };
-window.onCaption=v=>{ state.caption=v; render(); };
+// Caption — sem re-render, só atualiza estado e elementos dependentes
+window.onCaption=v=>{
+  state.caption=v;
+  updateCharCount();
+  updatePreview();
+  updatePublishBtn();
+};
 window.onMedia=v=>{ state.mediaUrls=v; };
-window.onSched=v=>{ state.schedDate=v; render(); };
+window.onSched=v=>{ state.schedDate=v; updateSchedLabel(); updatePublishBtn(); };
 window.openModal=()=>setState({modal:'confirm'});
 window.publishPost=publishPost;
+
+function updatePublishBtn(){
+  const can=state.apiSaved&&state.caption.trim()&&state.selected.size>0;
+  const btn=document.getElementById('publishBtn');
+  if(btn){
+    btn.disabled=!can;
+    btn.textContent='◈ '+(state.schedDate?`Agendar em ${state.selected.size} plataforma${state.selected.size!==1?'s':''}`:`Publicar agora em ${state.selected.size} plataforma${state.selected.size!==1?'s':''}`);
+  }
+}
 
 // ── Init ──────────────────────────────────────────────────────────
 render();
