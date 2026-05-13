@@ -341,7 +341,7 @@ function landing(){
       <div class="ctas">
         <button class="btn-gold" onclick="setState({screen:'app'})">◈ ${enters[l]}</button>
         <button class="btn-outline" onclick="setState({screen:'plans'})">${plans[l]}</button>
-        <p class="powered">Powered by Ayrshare API</p>
+        <p class="powered">PostAllTon</p>
       </div>
     </div>
     <div class="lfoot">
@@ -358,7 +358,7 @@ function plans(){
     <div class="grid-bg" style="opacity:.4"></div>
     <button class="back-btn" onclick="setState({screen:'landing'})">← Voltar</button>
     <h2 class="plans-title" style="margin-top:20px">Escolha seu <em>Plano</em></h2>
-    <p class="plans-sub">Powered by Ayrshare API</p>
+    <p class="plans-sub">PostAllTon</p>
     <div class="billing">
       <button class="bill-btn ${b==='monthly'?'active':''}" onclick="setState({billing:'monthly'})">Mensal</button>
       <button class="bill-btn ${b==='lifetime'?'active':''}" onclick="setState({billing:'lifetime'})">Vitalício</button>
@@ -397,7 +397,7 @@ function app(){
     <aside class="sidebar">
       <div class="sb-logo">
         <div class="sb-mark"><div class="sb-dot"></div>PostAll<em style="font-style:italic;color:var(--gold)">Ton</em></div>
-        <div class="sb-sub">Powered by Ayrshare</div>
+        <div class="sb-sub">PostAllTon</div>
       </div>
       <ul class="nav-list">
         ${navs.map(n=>`<li class="nav-item">
@@ -573,7 +573,7 @@ function modal(){
     <div class="modal">
       ${m==='confirm'?`
         <div class="modal-title">Confirmar</div>
-        <div class="modal-sub">Publicar em <strong style="color:var(--gold)">${selNets.length}</strong> plataforma${selNets.length!==1?'s':''} via Ayrshare API.</div>
+        <div class="modal-sub">Publicar em <strong style="color:var(--gold)">${selNets.length}</strong> plataforma${selNets.length!==1?'s':''} com PostAllTon.</div>
         <div class="modal-plats">${selNets.map(n=>`<span class="plat-pill" style="border-color:${n.color}44;color:${n.color}">${icon(n.id,n.color,13)}<span style="font-size:8px;letter-spacing:1px;font-weight:700;text-transform:uppercase">${n.name}</span></span>`).join('')}</div>
         <div class="modal-actions">
           <button class="btn-ghost" onclick="setState({modal:null})">Cancelar</button>
@@ -583,7 +583,7 @@ function modal(){
         <div class="pub-state">
           <div class="spinner"></div>
           <div style="font-family:var(--fd);font-size:22px;margin-bottom:6px">Publicando…</div>
-          <div style="font-size:11px;color:var(--muted)">Enviando para ${selNets.length} redes via Ayrshare</div>
+          <div style="font-size:11px;color:var(--muted)">Enviando para ${selNets.length} redes com PostAllTon</div>
         </div>`
       :m==='done'?`
         <div class="modal-title" style="color:var(--gold)">Publicado!</div>
@@ -598,7 +598,7 @@ function modal(){
       :`
         <div class="modal-title" style="color:var(--red)">Erro</div>
         <div class="notice notice-err" style="margin-bottom:14px"><p><strong>${state.modalError}</strong></p></div>
-        <p style="font-size:11px;color:var(--muted);margin-bottom:16px;line-height:1.6">Verifique sua API Key e se as contas estão conectadas no Ayrshare.</p>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:16px;line-height:1.6">Verifique sua API Key e se as contas estão configuradas corretamente.</p>
         <div class="modal-actions">
           <button class="btn-ghost" onclick="setState({modal:null})">Fechar</button>
           <button class="btn-primary" onclick="setState({modal:'confirm'})">Tentar novamente</button>
