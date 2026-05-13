@@ -247,7 +247,7 @@ let state = {
   tab: 'setup',
   lang: 'pt',
   apiKey: 'https://postallton-saas.onrender.com',
-  apiSaved: false,
+  apiSaved: true,
   selected: new Set(NETS.map(n=>n.id)),
   caption: '',
   mediaUrls: '',
@@ -685,7 +685,8 @@ function updatePublishBtn(){
   }
 }
 
-// ── Init ──────────────────────────────────────────────────────────
+// ── Init ──
+window.PAT_API_URL = state.apiKey;────────────────────────────────────────────────────────
 render();
 </script>
 </body>
