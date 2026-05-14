@@ -588,13 +588,13 @@ function setupTab(){
   </div>
   <div class="panel">
     <label class="field-lbl">URL da sua API (Railway)</label>
-    <div style="display:flex;gap:10px;margin-bottom:${state.apiSaved?'10px':'0'}">
+    <div style="display:flex;gap:10px;margin-bottom:${!!state.token?'10px':'0'}">
       <input class="input-f" id="apiInput" type="text" value="${state.apiKey}"
         placeholder="https://postallton-saas.onrender.com"
-        style="flex:1;${state.apiSaved?'border-color:var(--gold-dim)':''}" oninput="onApiInput(this.value)"/>
+        style="flex:1;${!!state.token?'border-color:var(--gold-dim)':''}" oninput="onApiInput(this.value)"/>
       <button class="btn-ghost" style="${state.apiKey?'border-color:var(--gold-dim);color:var(--gold)':''}" onclick="saveApi()">Confirmar</button>
     </div>
-    ${state.apiSaved?'<p style="font-size:11px;color:var(--green);letter-spacing:1px">✓ API configurada!</p>':''}
+    ${!!state.token?'<p style="font-size:11px;color:var(--green);letter-spacing:1px">✓ API configurada!</p>':''}
   </div>
   <div class="notice notice-warn">
     <p><strong>Redes sem burocracia (funcionam hoje):</strong> Telegram, Bluesky e Reddit. As demais (Instagram, TikTok etc.) requerem aprovação das plataformas — veja o README da API para detalhes.</p>
@@ -606,9 +606,9 @@ function composeTab(){
   const sel=[...state.selected];
   const selNets=NETS.filter(n=>state.selected.has(n.id));
   const ma=state.mediaUrls.split(',').map(s=>s.trim()).filter(Boolean);
-  const can=state.apiSaved&&state.caption.trim()&&sel.length>0;
+  const can=!!state.token&&state.caption.trim()&&sel.length>0;
   return `
-  ${!state.apiSaved?`<div class="notice notice-warn"><p><strong>API Key não configurada.</strong> <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="setTab('setup')">Credenciais</span> para conectar sua conta.</p></div>`:''}
+  ${!!!state.token?`<div class="notice notice-warn"><p><strong>API Key não configurada.</strong> <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="setState({screen:'auth'})">Fazer login</span> para continuar.</p></div>`:''}
   <div class="cg">
     <div>
       <div class="panel">
@@ -670,7 +670,7 @@ function composeTab(){
 function historyTab(){
   return `
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-    <p style="font-size:12px;color:var(--muted)">${state.apiSaved?'Posts publicados e agendados.':'Configure sua API Key para carregar o histórico.'}</p>
+    <p style="font-size:12px;color:var(--muted)">${!!state.token?'Posts publicados e agendados.':'Faça login para carregar o histórico.'}</p>
   </div>
   ${state.posts.length===0?`
   <div class="panel" style="text-align:center;padding:50px 20px">
@@ -760,7 +760,7 @@ function updateSelCount(){
   if(el2) el2.textContent='plataforma'+(state.selected.size!==1?'s':'');
   const el3=document.getElementById('publishBtn');
   if(el3){
-    const can=state.apiSaved&&state.caption.trim()&&state.selected.size>0;
+    const can=!!state.token&&state.caption.trim()&&state.selected.size>0;
     el3.disabled=!can;
     el3.textContent='◈ '+(state.schedDate?`Agendar em ${state.selected.size} plataforma${state.selected.size!==1?'s':''}`:`Publicar agora em ${state.selected.size} plataforma${state.selected.size!==1?'s':''}`);
   }
@@ -797,7 +797,7 @@ window.toggleNet=id=>{const s=new Set(state.selected);s.has(id)?s.delete(id):s.a
   updateSelCount();
   updatePublishBtn();
 };
-window.onApiInput=v=>{ state.apiKey=v; state.apiSaved=false; };
+window.onApiInput=v=>{ state.apiKey=v; !!state.token=false; };
 window.saveApi=()=>{ if(state.apiKey.trim()){window.PAT_API_URL=state.apiKey.trim();setState({apiSaved:true});setTimeout(()=>setState({tab:'compose'}),400);} };
 // Caption — sem re-render, só atualiza estado e elementos dependentes
 window.onCaption=v=>{
@@ -810,9 +810,12 @@ window.onMedia=v=>{ state.mediaUrls=v; };
 window.onSched=v=>{ state.schedDate=v; updateSchedLabel(); updatePublishBtn(); };
 window.openModal=()=>setState({modal:'confirm'});
 window.publishPost=publishPost;
+window.doAuth=doAuth;
+window.doLogout=doLogout;
+window.doGoogleLogin=doGoogleLogin;
 
 function updatePublishBtn(){
-  const can=state.apiSaved&&state.caption.trim()&&state.selected.size>0;
+  const can=!!state.token&&state.caption.trim()&&state.selected.size>0;
   const btn=document.getElementById('publishBtn');
   if(btn){
     btn.disabled=!can;
@@ -821,7 +824,25 @@ function updatePublishBtn(){
 }
 
 // ── Init ──
-window.PAT_API_URL = state.apiKey;
+window.PAT_API_URL = API;
+
+// Capturar token do Google OAuth callback
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const t = params.get('token');
+  const u = params.get('user');
+  if(t){
+    localStorage.setItem('pat_token', t);
+    if(u) localStorage.setItem('pat_user', u);
+    state.token = t;
+    state.user  = u ? JSON.parse(decodeURIComponent(u)) : null;
+    state.screen = 'app';
+    state.tab    = 'compose';
+    window.history.replaceState({}, '', '/');
+  }
+  const err = params.get('error');
+  if(err){ state.screen='auth'; state.authError=decodeURIComponent(err); }
+})();
 render();
 </script>
 </body>
