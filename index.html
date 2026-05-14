@@ -242,27 +242,133 @@ const PLANS = [
 ];
 
 // ── State ──────────────────────────────────────────────────────────
+const API = 'https://postallton-saas.onrender.com';
+
 let state = {
-  screen: 'landing', // landing | plans | app
-  tab: 'setup',
-  lang: 'pt',
-  apiKey: 'https://postallton-saas.onrender.com',
-  apiSaved: true,
-  selected: new Set(NETS.map(n=>n.id)),
-  caption: '',
+  screen: 'landing',
+  tab:    'compose',
+  lang:   'pt',
+  billing: 'monthly',
+  // auth
+  token:     localStorage.getItem('pat_token') || null,
+  user:      JSON.parse(localStorage.getItem('pat_user') || 'null'),
+  authMode:  'login', // login | register
+  authEmail: '', authPassword: '', authName: '',
+  authError: '',
+  // publicação
+  selected:  new Set(NETS.map(n=>n.id)),
+  caption:   '',
   mediaUrls: '',
   schedDate: '',
-  billing: 'monthly',
   posts: [],
-  modal: null, // null | 'confirm' | 'publishing' | 'done' | 'error'
+  modal: null,
   modalResults: {},
   modalError: '',
 };
 
+// Se já tem token, pula para o app
+if(state.token) state.screen = 'app';
+
 function setState(patch){ Object.assign(state, patch); render(); }
 
-// ── Helpers ───────────────────────────────────────────────────────
-function icon(id, color, size=22){
+// ── Auth ──────────────────────────────────────────────────────────
+async function doAuth(){
+  const {authMode,authEmail,authPassword,authName} = state;
+  if(!authEmail||!authPassword){ setState({authError:'Preencha email e senha.'}); return; }
+  setState({authError:''});
+  try{
+    const endpoint = authMode==='login' ? '/api/auth/login' : '/api/auth/register';
+    const body = authMode==='login'
+      ? {email:authEmail, password:authPassword}
+      : {name:authName, email:authEmail, password:authPassword};
+    const res = await fetch(API+endpoint,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error||'Erro de autenticação');
+    localStorage.setItem('pat_token', data.token);
+    localStorage.setItem('pat_user', JSON.stringify(data.user));
+    setState({token:data.token, user:data.user, screen:'app', tab:'compose'});
+  }catch(e){
+    setState({authError:e.message});
+  }
+}
+
+async function doGoogleLogin(){
+  window.location.href = API+'/api/auth/google';
+}
+
+function doLogout(){
+  localStorage.removeItem('pat_token');
+  localStorage.removeItem('pat_user');
+  setState({token:null, user:null, screen:'landing'});
+}
+
+// ── Tela de Login/Registro ────────────────────────────────────────
+function authScreen(){
+  const isLogin = state.authMode==='login';
+  const T = {
+    pt:{title:isLogin?'Entrar':'Criar conta', sub:isLogin?'Acesse seu painel PostAllTon':'Crie sua conta gratuita',
+      email:'E-mail', pass:'Senha', name:'Nome', btn:isLogin?'Entrar':'Criar conta',
+      google:'Continuar com Google', toggle:isLogin?'Não tem conta? Registre-se':'Já tem conta? Entre',
+      forgot:'Esqueci a senha'},
+    en:{title:isLogin?'Sign in':'Create account', sub:isLogin?'Access your PostAllTon dashboard':'Create your free account',
+      email:'Email', pass:'Password', name:'Name', btn:isLogin?'Sign in':'Create account',
+      google:'Continue with Google', toggle:isLogin?'No account? Sign up':'Already have one? Sign in',
+      forgot:'Forgot password'},
+    es:{title:isLogin?'Iniciar sesión':'Crear cuenta', sub:isLogin?'Accede a tu panel PostAllTon':'Crea tu cuenta gratuita',
+      email:'Correo', pass:'Contraseña', name:'Nombre', btn:isLogin?'Iniciar sesión':'Crear cuenta',
+      google:'Continuar con Google', toggle:isLogin?'¿Sin cuenta? Regístrate':'¿Ya tienes cuenta? Entra',
+      forgot:'Olvidé mi contraseña'},
+    fr:{title:isLogin?'Se connecter':'Créer un compte', sub:isLogin?'Accédez à votre tableau de bord':'Créez votre compte gratuit',
+      email:'E-mail', pass:'Mot de passe', name:'Nom', btn:isLogin?'Se connecter':'Créer un compte',
+      google:'Continuer avec Google', toggle:isLogin?'Pas de compte? S\'inscrire':'Déjà un compte? Se connecter',
+      forgot:'Mot de passe oublié'},
+  };
+  const t = T[state.lang]||T.pt;
+  return `
+  <div style="min-height:100vh;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px">
+    <div style="width:100%;max-width:400px">
+      <div style="text-align:center;margin-bottom:32px">
+        <div style="font-family:var(--fd);font-size:32px;font-weight:500;color:var(--text);margin-bottom:4px">
+          PostAll<span style="color:var(--gold);font-style:italic">Ton</span>
+        </div>
+        <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)">${t.sub}</p>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);padding:32px">
+        <h2 style="font-family:var(--fd);font-size:24px;font-weight:500;color:var(--text);margin-bottom:24px">${t.title}</h2>
+        ${state.authError?`<div style="background:rgba(248,113,113,.08);border-left:2px solid var(--red);padding:10px 14px;margin-bottom:16px;font-size:12px;color:#fca5a5">${state.authError}</div>`:''}
+        ${!isLogin?`
+        <div style="margin-bottom:14px">
+          <label style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px">${t.name}</label>
+          <input class="input-f" type="text" placeholder="${t.name}" oninput="state.authName=this.value"/>
+        </div>`:''}
+        <div style="margin-bottom:14px">
+          <label style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px">${t.email}</label>
+          <input class="input-f" type="email" placeholder="voce@email.com" oninput="state.authEmail=this.value"/>
+        </div>
+        <div style="margin-bottom:24px">
+          <label style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px">${t.pass}</label>
+          <input class="input-f" type="password" placeholder="••••••••" oninput="state.authPassword=this.value"/>
+        </div>
+        <button class="btn-primary" onclick="doAuth()" style="margin-bottom:10px">${t.btn}</button>
+        <button onclick="doGoogleLogin()" style="width:100%;padding:12px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:11px;letter-spacing:1px;cursor:pointer;font-family:var(--fu);transition:all .2s;margin-bottom:20px"
+          onmouseover="this.style.borderColor='var(--gold-dim)';this.style.color='var(--gold)'"
+          onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted2)'">
+          G &nbsp; ${t.google}
+        </button>
+        <div style="text-align:center">
+          <span style="font-size:11px;color:var(--gold);cursor:pointer;letter-spacing:.5px" onclick="setState({authMode:'${isLogin?'register':'login'}',authError:''})">${t.toggle}</span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:16px">
+        <span style="font-size:10px;color:var(--muted);cursor:pointer" onclick="setState({screen:'landing'})">← Voltar</span>
+      </div>
+    </div>
+  </div>`;
+}
   const svg = SVG[id]||'';
   return `<span style="display:inline-flex;width:${size}px;height:${size}px;flex-shrink:0;color:${color}">${svg}</span>`;
 }
@@ -274,21 +380,24 @@ function netIcon(id, size=22){
 }
 
 async function publishPost(){
-  if(!state.apiKey||!state.caption||!state.selected.size) return;
+  if(!state.token||!state.caption||!state.selected.size) return;
   setState({modal:'publishing'});
   const platforms=[...state.selected];
-  const body={post:state.caption,platforms};
+  const body={caption:state.caption, platforms};
   const ma=state.mediaUrls.split(',').map(s=>s.trim()).filter(Boolean);
   if(ma.length) body.mediaUrls=ma;
   if(state.schedDate) body.scheduleDate=new Date(state.schedDate).toISOString();
   try{
-    const res=await fetch((window.PAT_API_URL||'https://postallton-saas.onrender.com')+'/api/post',{
+    const res=await fetch(API+'/api/post',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':'Bearer '+state.token
+      },
       body:JSON.stringify(body)
     });
     const data=await res.json();
-    if(!res.ok) throw new Error(data.message||`HTTP ${res.status}`);
+    if(!res.ok) throw new Error(data.error||`HTTP ${res.status}`);
     const results={};
     (data.postIds||[]).forEach(p=>{results[p.platform]={ok:true,url:p.postUrl};});
     (data.errors||[]).forEach(e=>{results[e.platform]={ok:false,msg:e.message};});
@@ -308,6 +417,8 @@ function render(){
 function html(){
   if(state.screen==='landing') return landing();
   if(state.screen==='plans')   return plans();
+  if(state.screen==='auth')    return authScreen();
+  if(!state.token)             return authScreen();
   return app();
 }
 
@@ -339,7 +450,7 @@ function landing(){
         </span>`).join('')}
       </div>
       <div class="ctas">
-        <button class="btn-gold" onclick="setState({screen:'app'})">◈ ${enters[l]}</button>
+        <button class="btn-gold" onclick="setState({screen:'auth',authMode:'login'})">◈ ${enters[l]}</button>
         <button class="btn-outline" onclick="setState({screen:'plans'})">${plans[l]}</button>
         <p class="powered">PostAllTon</p>
       </div>
@@ -352,31 +463,39 @@ function landing(){
 
 // ── PLANS ─────────────────────────────────────────────────────────
 function plans(){
-  const b=state.billing;
+  const b = state.billing;
+  const l = state.lang;
+  const labels = {
+    pt:{title:'Escolha seu',em:'Plano',monthly:'Mensal',lifetime:'Vitalício',pop:'Mais popular',best:'Melhor valor',start:'Começar agora',buy:'Comprar acesso',mo:'/mês',once:'único'},
+    en:{title:'Choose your',em:'Plan',monthly:'Monthly',lifetime:'Lifetime',pop:'Most popular',best:'Best value',start:'Get started',buy:'Buy access',mo:'/mo',once:'once'},
+    es:{title:'Elige tu',em:'Plan',monthly:'Mensual',lifetime:'Vitalicio',pop:'Más popular',best:'Mejor valor',start:'Empezar ahora',buy:'Comprar acceso',mo:'/mes',once:'único'},
+    fr:{title:'Choisissez votre',em:'Plan',monthly:'Mensuel',lifetime:'À vie',pop:'Le plus populaire',best:'Meilleur rapport',start:'Commencer',buy:"Acheter l'accès",mo:'/mois',once:'unique'},
+  };
+  const t = labels[l]||labels.pt;
   return `
   <div class="plans-page">
     <div class="grid-bg" style="opacity:.4"></div>
-    <button class="back-btn" onclick="setState({screen:'landing'})">← Voltar</button>
-    <h2 class="plans-title" style="margin-top:20px">Escolha seu <em>Plano</em></h2>
+    <button class="back-btn" onclick="setState({screen:'landing'})">← ${l==='pt'?'Voltar':l==='es'?'Volver':l==='fr'?'Retour':'Back'}</button>
+    <h2 class="plans-title" style="margin-top:20px">${t.title} <em>${t.em}</em></h2>
     <p class="plans-sub">PostAllTon</p>
     <div class="billing">
-      <button class="bill-btn ${b==='monthly'?'active':''}" onclick="setState({billing:'monthly'})">Mensal</button>
-      <button class="bill-btn ${b==='lifetime'?'active':''}" onclick="setState({billing:'lifetime'})">Vitalício</button>
+      <button class="bill-btn ${b==='monthly'?'active':''}" onclick="setState({billing:'monthly'})">${t.monthly}</button>
+      <button class="bill-btn ${b==='lifetime'?'active':''}" onclick="setState({billing:'lifetime'})">${t.lifetime}</button>
     </div>
     <div class="plans-grid">
       ${PLANS.map(p=>`
       <div class="plan-card ${p.hi?'hi':''}">
-        ${p.hi?`<div class="plan-badge">${b==='monthly'?'Mais popular':'Melhor valor'}</div>`:''}
+        ${p.hi?`<div class="plan-badge">${b==='monthly'?t.pop:t.best}</div>`:''}
         <div class="plan-name">${p.name}</div>
         <div class="plan-desc">${p.desc}</div>
         <div class="plan-price">${b==='monthly'?p.m:p.l}</div>
-        <div class="plan-price-sub">${b==='monthly'?'/mês':'único'}</div>
+        <div class="plan-price-sub">${b==='monthly'?t.mo:t.once}</div>
         <div class="plan-div"></div>
         <ul class="plan-feats">
           ${p.feats.map(f=>`<li class="plan-feat"><div class="feat-chk">✦</div>${f}</li>`).join('')}
         </ul>
-        <button class="plan-cta ${p.hi?'cta-hi':'cta-def'}" onclick="setState({screen:'app'})">
-          ${b==='monthly'?'Começar agora':'Comprar acesso'}
+        <button class="plan-cta ${p.hi?'cta-hi':'cta-def'}" onclick="setState({screen:'auth',authMode:'register'})">
+          ${b==='monthly'?t.start:t.buy}
         </button>
       </div>`).join('')}
     </div>
@@ -385,13 +504,22 @@ function plans(){
 
 // ── APP SHELL ─────────────────────────────────────────────────────
 function app(){
-  const {tab,apiSaved,lang} = state;
+  const {tab, lang, user} = state;
+  const NL = {
+    pt:{compose:'Nova Publicação',history:'Histórico',logout:'Sair'},
+    en:{compose:'New Post',history:'History',logout:'Logout'},
+    es:{compose:'Nueva Publicación',history:'Historial',logout:'Salir'},
+    fr:{compose:'Nouvelle Publication',history:'Historique',logout:'Déconnexion'},
+  };
+  const nl = NL[lang]||NL.pt;
   const navs=[
-    {id:'setup',icon:'◈',label:'Credenciais'},
-    {id:'compose',icon:'✦',label:'Nova Publicação'},
-    {id:'history',icon:'◇',label:'Histórico'},
+    {id:'compose',icon:'✦',label:nl.compose},
+    {id:'history',icon:'◇',label:nl.history},
   ];
-  const today = new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const today = new Date().toLocaleDateString(
+    lang==='pt'?'pt-BR':lang==='es'?'es-ES':lang==='fr'?'fr-FR':'en-US',
+    {weekday:'long',day:'numeric',month:'long',year:'numeric'}
+  );
   return `
   <div class="shell">
     <aside class="sidebar">
@@ -408,32 +536,39 @@ function app(){
         </li>`).join('')}
       </ul>
       <div class="sb-foot">
-        <div class="api-status"><div class="st-dot ${apiSaved?'live':''}"></div>${apiSaved?'API conectada':'Sem conexão'}</div>
+        ${user?`<div style="font-size:10px;color:var(--muted2);margin-bottom:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.3px">${user.name||user.email}</div>`:''}
         <div class="lang-foot">
           ${['pt','en','es','fr'].map(k=>`<button class="lf-btn ${lang===k?'active':''}" onclick="setLang('${k}')">${k.toUpperCase()}</button>`).join('')}
         </div>
+        <button onclick="doLogout()" style="margin-top:10px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 10px;cursor:pointer;width:100%;font-family:var(--fu);transition:all .2s"
+          onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+          ${nl.logout}
+        </button>
       </div>
     </aside>
     <main class="main">
       <div class="topbar">
-        <h1 class="page-title">${tabTitle(tab)}</h1>
+        <h1 class="page-title">${tabTitle(tab,lang)}</h1>
         <div class="page-date">
           ${today}
           <button class="home-btn" onclick="setState({screen:'landing'})">← Home</button>
         </div>
       </div>
       <div class="content">
-        ${tab==='setup'?setupTab():tab==='compose'?composeTab():historyTab()}
+        ${tab==='compose'?composeTab():historyTab()}
       </div>
     </main>
   </div>
   ${state.modal ? modal() : ''}`;
 }
 
-function tabTitle(t){
-  if(t==='setup')   return '<em>Credenciais</em> &amp; Setup';
-  if(t==='compose') return 'Nova <em>Publicação</em>';
-  return '<em>Histórico</em> de Posts';
+function tabTitle(t,l){
+  const titles = {
+    compose:{pt:'Nova <em>Publicação</em>',en:'New <em>Post</em>',es:'Nueva <em>Publicación</em>',fr:'Nouvelle <em>Publication</em>'},
+    history:{pt:'<em>Histórico</em> de Posts',en:'Post <em>History</em>',es:'<em>Historial</em> de Posts',fr:'<em>Historique</em> des Posts'},
+  };
+  return (titles[t]&&titles[t][l]) || titles[t]?.pt || '<em>PostAllTon</em>';
 }
 
 // ── SETUP TAB ─────────────────────────────────────────────────────
