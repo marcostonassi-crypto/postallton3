@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>PostAllTon — Ativação Admin</title>
+<style>
+body{background:#07070a;color:#e8e6e0;font-family:'Segoe UI',sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+.box{background:#0f0f12;border:1px solid #2a2a32;padding:40px;max-width:440px;width:90%;text-align:center}
+h1{font-size:22px;color:#c9a84c;margin-bottom:8px}
+p{font-size:13px;color:#8a8680;margin-bottom:28px;line-height:1.6}
+button{padding:16px 32px;background:#c9a84c;color:#07070a;border:none;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:100%;transition:all .2s}
+button:hover{background:#f59e0b}
+button:disabled{background:#2a2a32;color:#5a5854;cursor:not-allowed}
+.result{margin-top:20px;padding:16px;border-radius:4px;font-size:13px;line-height:1.6;display:none}
+.ok{background:rgba(74,222,128,.08);border:1px solid #4ade8033;color:#4ade80}
+.err{background:rgba(248,113,113,.08);border:1px solid #f8717133;color:#f87171}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid #c9a84c44;border-top-color:#c9a84c;border-radius:50%;animation:spin .8s linear infinite;margin-right:8px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>PostAllTon</h1>
+  <p>Clique no botão abaixo para ativar o plano <strong style="color:#c9a84c">Business Vitalício</strong> para sua conta.</p>
+  
+  <button id="btn" onclick="ativar()">◈ Ativar Plano Business</button>
+  
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+async function ativar() {
+  const btn = document.getElementById('btn');
+  const result = document.getElementById('result');
+  
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Ativando...';
+  result.style.display = 'none';
+
+  try {
+    const res = await fetch('https://postallton-saas.onrender.com/api/activate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: 'postallton_admin_2026',
+        email:  'marcostonassi@gmail.com',
+        plan:   'business'
+      })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      result.className = 'result ok';
+      result.innerHTML = '✅ <strong>' + (data.message||'Plano ativado!') + '</strong><br>Usuário: ' + (data.user?.email||'') + '<br>Plano: ' + (data.user?.plan||'') + ' — ' + (data.user?.plan_type||'');
+      btn.innerHTML = '✓ Ativado com sucesso!';
+      btn.style.background = '#4ade80';
+      btn.style.color = '#07070a';
+    } else {
+      throw new Error(data.error || 'Erro desconhecido');
+    }
+  } catch(e) {
+    result.className = 'result err';
+    result.innerHTML = '❌ <strong>Erro:</strong> ' + e.message + '<br><small>Verifique se o servidor está online e tente novamente.</small>';
+    btn.disabled = false;
+    btn.innerHTML = '↻ Tentar novamente';
+  }
+
+  result.style.display = 'block';
+}
+</script>
+</body>
+</html>
