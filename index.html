@@ -644,7 +644,7 @@ function tabCompose(){
         <input class="input-f" type="datetime-local" value="${state.schedDate}" oninput="onSched(this.value)" style="color-scheme:dark"/>
         <div id="schedLabel">${state.schedDate?`<p style="font-size:11px;color:var(--amber);margin-top:8px">${tr('scheduledFor')}: ${new Date(state.schedDate).toLocaleString()}</p>`:''}</div>
       </div>
-      <button id="publishBtn" class="btn-primary" ${can?'':'disabled'} onclick="${can?'openModal()':''}">
+      <button id="publishBtn" class="btn-primary" ${can?'':'disabled'} onclick="if(window._canPublish)openModal()">
         ◈ ${state.schedDate?tr('scheduleIn'):tr('publishNow')} ${sel.length} ${sel.length===1?tr('platform'):tr('platforms2')}
       </button>
     </div>
@@ -777,6 +777,7 @@ window.toggleEdit=id=>{
 
 function updatePublishBtn(){
   const can=!!state.token&&state.caption.trim()&&state.selected.size>0;
+  window._canPublish = can;
   const btn=document.getElementById('publishBtn');
   if(btn){btn.disabled=!can;btn.textContent='◈ '+(state.schedDate?tr('scheduleIn'):tr('publishNow'))+' '+state.selected.size+' '+(state.selected.size===1?tr('platform'):tr('platforms2'));}
 }
@@ -805,6 +806,7 @@ function updatePublishBtn(){
 })();
 
 // ══ INIT ═══════════════════════════════════════════════════════════
+window._canPublish = false;
 render();
 if(state.token) loadConnections();
 </script>
