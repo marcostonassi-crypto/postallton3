@@ -273,19 +273,179 @@ const NET_FIELDS = {
 };
 
 const NET_HINTS = {
-  telegram:  'Crie um bot em t.me/BotFather → /newbot. Depois adicione o bot como administrador do canal.',
-  bluesky:   'Acesse bsky.app → Configurações → Senhas de aplicativo → Adicionar senha do app.',
-  instagram: 'Necessita aprovação Meta. developers.facebook.com → App com permissão instagram_content_publish.',
-  facebook:  'Necessita aprovação Meta. Crie um App e gere um Page Access Token com permissão pages_manage_posts.',
-  whatsapp:  'Acesse business.facebook.com → WhatsApp → Configuração de API.',
-  twitter:   'Necessita plano pago. developer.twitter.com → App com permissão Read+Write.',
-  linkedin:  'linkedin.com/developers → App com permissão w_member_social. Requer aprovação.',
-  tiktok:    'developers.tiktok.com → App aprovado com Content Posting API.',
-  youtube:   'console.cloud.google.com → YouTube Data API → OAuth → gerar Refresh Token.',
-  pinterest: 'developers.pinterest.com → App aprovado → Access Token.',
-  reddit:    'reddit.com/prefs/apps → Create app (script) → Client ID e Secret.',
-  threads:   'Usa mesma aprovação do Instagram (Meta). Threads API em beta.',
-  snapchat:  'kit.snapchat.com → Criar app → Access Token.',
+  telegram: {
+    quick: 'Grátis e imediato — sem aprovação necessária.',
+    audience: 'Geral · Comunidades · Notícias · Grupos de interesse',
+    age: '18-45',
+    tone: 'Informativo, direto, pode usar formatação HTML básica.',
+    steps: [
+      { n:'1', title:'Criar o Bot', desc:'Abra o Telegram e procure por <strong>@BotFather</strong>. Clique em "Iniciar" e envie o comando <code>/newbot</code>.' },
+      { n:'2', title:'Definir nome e username', desc:'O BotFather vai pedir o nome do bot (ex: PostAllTon) e depois o username (deve terminar em "bot", ex: postallton_bot).' },
+      { n:'3', title:'Copiar o Token', desc:'O BotFather enviará um token no formato <code>1234567890:AAF_xxx...</code>. Copie e cole no campo "Bot Token" abaixo.' },
+      { n:'4', title:'Criar o Canal', desc:'No Telegram, crie um novo canal público. Vá em Configurações do canal → Administradores → Adicione o bot como administrador com permissão de publicar mensagens.' },
+      { n:'5', title:'Copiar o ID do Canal', desc:'O ID pode ser o @nomedocanal (ex: @meucanal) ou o ID numérico (ex: -1001234567890). Cole no campo "ID do Canal".' },
+    ]
+  },
+  bluesky: {
+    quick: 'Grátis e imediato — API aberta, sem aprovação.',
+    audience: 'Tech · Jornalistas · Criadores de conteúdo · Alternativa ao Twitter',
+    age: '20-40',
+    tone: 'Conversacional, informal, máximo 300 caracteres por post.',
+    steps: [
+      { n:'1', title:'Criar conta', desc:'Acesse <strong>bsky.app</strong> e crie uma conta gratuita. Escolha um handle como <code>@seusite.bsky.social</code>.' },
+      { n:'2', title:'Acessar Configurações', desc:'Clique no seu avatar → Configurações → <strong>Privacidade e Segurança</strong>.' },
+      { n:'3', title:'Criar Senha de App', desc:'Clique em <strong>"Senhas de aplicativo"</strong> → "Adicionar senha do app" → dê o nome "PostAllTon" → clique em "Próximo".' },
+      { n:'4', title:'Copiar a senha', desc:'Uma senha no formato <code>xxxx-xxxx-xxxx-xxxx</code> será gerada. <strong>Copie agora</strong> — ela não será mostrada novamente!' },
+      { n:'5', title:'Preencher abaixo', desc:'Cole seu <code>@usuario.bsky.social</code> no campo "Usuário" e a senha gerada no campo "Senha do App".' },
+    ]
+  },
+  instagram: {
+    quick: 'Requer aprovação da Meta (2-8 semanas). Necessita conta Business ou Creator.',
+    audience: 'Jovens adultos · Moda · Lifestyle · Gastronomia · Viagens',
+    age: '13-34',
+    tone: 'Visual, criativo, use hashtags relevantes, emojis com moderação.',
+    steps: [
+      { n:'1', title:'Converter para conta Business', desc:'No Instagram → Configurações → Conta → Mudar para conta profissional → Business.' },
+      { n:'2', title:'Criar App na Meta', desc:'Acesse <strong>developers.facebook.com</strong> → Meus Apps → Criar App → Escolha "Business".' },
+      { n:'3', title:'Adicionar produtos', desc:'No painel do app, adicione <strong>Instagram Graph API</strong> e <strong>Facebook Login</strong>.' },
+      { n:'4', title:'Configurar permissões', desc:'Em Permissões, adicione: <code>instagram_basic</code>, <code>instagram_content_publish</code>, <code>pages_read_engagement</code>.' },
+      { n:'5', title:'Submeter para revisão', desc:'Vá em Revisão do App → Solicitar permissões avançadas. A Meta pode levar 2-8 semanas para aprovar.' },
+      { n:'6', title:'Gerar tokens', desc:'Após aprovação, use o Graph API Explorer para gerar um Long-Lived User Access Token e encontrar seu Business Account ID.' },
+    ]
+  },
+  facebook: {
+    quick: 'Requer aprovação da Meta. Necessita Página do Facebook (não perfil pessoal).',
+    audience: 'Adultos · Famílias · Negócios locais · Grupos de interesse',
+    age: '25-55',
+    tone: 'Engajador, pode ser mais longo, use perguntas para gerar comentários.',
+    steps: [
+      { n:'1', title:'Criar Página no Facebook', desc:'Acesse <strong>facebook.com/pages/create</strong> e crie uma página para seu negócio ou marca.' },
+      { n:'2', title:'Criar App na Meta', desc:'Acesse <strong>developers.facebook.com</strong> → Criar App → Business.' },
+      { n:'3', title:'Adicionar Pages API', desc:'No app, adicione o produto <strong>Pages API</strong> e configure as permissões <code>pages_manage_posts</code> e <code>pages_read_engagement</code>.' },
+      { n:'4', title:'Submeter para revisão', desc:'Solicite as permissões avançadas. Aguarde a aprovação da Meta (1-4 semanas).' },
+      { n:'5', title:'Gerar Page Access Token', desc:'No Graph API Explorer, selecione sua Página e gere um Page Access Token (diferente do User Token).' },
+      { n:'6', title:'Copiar Page ID', desc:'Na sua Página do Facebook → Sobre → Role até o final para encontrar o Page ID numérico.' },
+    ]
+  },
+  whatsapp: {
+    quick: 'Requer conta WhatsApp Business API. Ideal para notificações e atendimento.',
+    audience: 'Clientes diretos · Atendimento · Notificações · Brasil e mercados emergentes',
+    age: '18-60',
+    tone: 'Pessoal, direto, respeite a privacidade — evite spam.',
+    steps: [
+      { n:'1', title:'Criar conta Business', desc:'Acesse <strong>business.facebook.com</strong> e crie uma conta Meta Business.' },
+      { n:'2', title:'Configurar WhatsApp', desc:'No painel → WhatsApp → Começar. Você precisará de um número de telefone dedicado (não pode estar no WhatsApp pessoal).' },
+      { n:'3', title:'Copiar Phone Number ID', desc:'No painel do WhatsApp Business → API Setup → Copie o <strong>Phone Number ID</strong> (número longo).' },
+      { n:'4', title:'Gerar Access Token', desc:'Em Configurações do Sistema → Usuários do Sistema → Gerar token com permissão <code>whatsapp_business_messaging</code>.' },
+      { n:'5', title:'Número de destino', desc:'Configure o número para onde as mensagens serão enviadas (formato internacional: +5511999999999).' },
+    ]
+  },
+  twitter: {
+    quick: 'Requer plano pago ($100/mês). Acesso de escrita exige conta verificada.',
+    audience: 'Jornalistas · Política · Tecnologia · Celebridades · Humor',
+    age: '18-49',
+    tone: 'Curto, direto, use hashtags com moderação, máximo 280 caracteres.',
+    steps: [
+      { n:'1', title:'Criar conta de desenvolvedor', desc:'Acesse <strong>developer.twitter.com</strong> → Apply for access → preencha o formulário explicando seu uso.' },
+      { n:'2', title:'Assinar plano Basic', desc:'Para acesso de escrita (publicar tweets), é necessário assinar o plano <strong>Basic por $100/mês</strong>.' },
+      { n:'3', title:'Criar App', desc:'No portal → Projects & Apps → New App → preencha nome e descrição. Defina permissões como <strong>Read + Write</strong>.' },
+      { n:'4', title:'Gerar chaves', desc:'Em Keys & Tokens → <strong>API Key</strong> e <strong>API Secret</strong> são gerados automaticamente. Copie ambos.' },
+      { n:'5', title:'Gerar Access Tokens', desc:'Clique em "Generate Access Token" → copie o <strong>Access Token</strong> e o <strong>Access Token Secret</strong>.' },
+    ]
+  },
+  linkedin: {
+    quick: 'Requer aprovação (4-8 semanas). Para perfis pessoais e páginas empresariais.',
+    audience: 'Profissionais · B2B · Recrutamento · Conteúdo corporativo',
+    age: '25-55',
+    tone: 'Profissional, insights do setor, conquistas, histórias de carreira.',
+    steps: [
+      { n:'1', title:'Criar App no LinkedIn', desc:'Acesse <strong>linkedin.com/developers</strong> → Create App → preencha nome, URL da empresa e logo.' },
+      { n:'2', title:'Solicitar produtos', desc:'Na aba "Products" → solicite <strong>Share on LinkedIn</strong> e <strong>Sign In with LinkedIn</strong>.' },
+      { n:'3', title:'Aguardar aprovação', desc:'O LinkedIn pode levar 4-8 semanas para aprovar o acesso à API de publicação.' },
+      { n:'4', title:'Configurar OAuth', desc:'Em Auth → adicione a Redirect URL: <code>https://postallton-saas.onrender.com/api/auth/linkedin/callback</code>.' },
+      { n:'5', title:'Gerar Access Token', desc:'Após aprovação, use o flow OAuth do LinkedIn para obter um Access Token com permissão <code>w_member_social</code>.' },
+      { n:'6', title:'Encontrar Person URN', desc:'Faça uma chamada GET para <code>api.linkedin.com/v2/me</code> com seu token para obter o ID no formato <code>urn:li:person:XXXXXXXX</code>.' },
+    ]
+  },
+  tiktok: {
+    quick: 'Requer aprovação formal da equipe TikTok (4-12 semanas).',
+    audience: 'Geração Z · Entretenimento · Dança · Humor · Trends virais',
+    age: '13-30',
+    tone: 'Autêntico, divertido, tendências atuais, vídeos curtos 15-60s.',
+    steps: [
+      { n:'1', title:'Criar conta de desenvolvedor', desc:'Acesse <strong>developers.tiktok.com</strong> → Login with TikTok → Create app.' },
+      { n:'2', title:'Preencher formulário', desc:'Descreva detalhadamente seu app e como usará a Content Posting API. O processo de aprovação é rigoroso.' },
+      { n:'3', title:'Aguardar aprovação', desc:'O TikTok pode levar 4-12 semanas. Durante esse período podem pedir mais informações ou demonstrações.' },
+      { n:'4', title:'Configurar scopes', desc:'Após aprovação, configure os scopes: <code>video.publish</code> e <code>user.info.basic</code>.' },
+      { n:'5', title:'Gerar Access Token', desc:'Use o flow OAuth do TikTok para gerar um Access Token de longa duração para sua conta.' },
+    ]
+  },
+  youtube: {
+    quick: 'Requer Google Cloud Project e revisão de quota para produção.',
+    audience: 'Educação · Entretenimento · Tutoriais · Vlogs · Negócios',
+    age: '15-50',
+    tone: 'Detalhado, títulos chamativos, descrições com palavras-chave para SEO.',
+    steps: [
+      { n:'1', title:'Criar projeto no Google Cloud', desc:'Acesse <strong>console.cloud.google.com</strong> → New Project → dê um nome ao projeto.' },
+      { n:'2', title:'Ativar YouTube Data API', desc:'No painel → APIs & Services → Enable APIs → procure "YouTube Data API v3" → Enable.' },
+      { n:'3', title:'Criar credenciais OAuth', desc:'APIs & Services → Credentials → Create Credentials → OAuth 2.0 Client ID → Web Application.' },
+      { n:'4', title:'Configurar redirect URI', desc:'Adicione: <code>https://postallton-saas.onrender.com/api/auth/youtube/callback</code>' },
+      { n:'5', title:'Gerar Refresh Token', desc:'Acesse a URL de autorização do Google → autorize → copie o código → troque pelo Refresh Token via API.' },
+      { n:'6', title:'Solicitar quota extra', desc:'Para produção, solicite aumento de quota em APIs & Services → Quotas (processo pode levar semanas).' },
+    ]
+  },
+  pinterest: {
+    quick: 'Requer aprovação (1-2 semanas). Para conteúdo visual e inspiracional.',
+    audience: 'Decoração · Moda · Receitas · DIY · Casamentos · Viagens',
+    age: '18-49',
+    tone: 'Visual, inspiracional, títulos descritivos, link para o site.',
+    steps: [
+      { n:'1', title:'Criar conta Business', desc:'Acesse <strong>pinterest.com/business</strong> → Convert to Business ou criar nova conta Business.' },
+      { n:'2', title:'Criar App', desc:'Acesse <strong>developers.pinterest.com</strong> → My Apps → Create App → preencha informações.' },
+      { n:'3', title:'Solicitar acesso de escrita', desc:'Por padrão o acesso é só leitura. Solicite acesso de escrita — pode levar 1-2 semanas.' },
+      { n:'4', title:'Gerar Access Token', desc:'No painel do app → Generate Access Token → selecione o scope <code>boards:read</code> e <code>pins:write</code>.' },
+      { n:'5', title:'Encontrar Board ID', desc:'Abra um board no Pinterest → a URL tem o formato pinterest.com/usuario/nome-do-board → use a API para obter o Board ID numérico.' },
+    ]
+  },
+  reddit: {
+    quick: 'Grátis e relativamente rápido. Ideal para comunidades de nicho.',
+    audience: 'Nichos específicos · Tech · Humor · Notícias · Comunidades temáticas',
+    age: '18-35',
+    tone: 'Autêntico, informativo, evite spam — participe genuinamente da comunidade.',
+    steps: [
+      { n:'1', title:'Criar conta Reddit', desc:'Acesse <strong>reddit.com</strong> e crie uma conta. Recomenda-se usar uma conta dedicada para o bot/app.' },
+      { n:'2', title:'Criar App', desc:'Acesse <strong>reddit.com/prefs/apps</strong> → Create Another App → escolha tipo <strong>"script"</strong>.' },
+      { n:'3', title:'Preencher formulário', desc:'Name: PostAllTon · About URL: seu site · Redirect URI: <code>http://localhost:8080</code> → Create App.' },
+      { n:'4', title:'Copiar credenciais', desc:'O <strong>Client ID</strong> fica abaixo do nome do app (string curta). O <strong>Client Secret</strong> fica no campo "secret".' },
+      { n:'5', title:'Definir subreddit', desc:'Informe o subreddit onde publicar (ex: <code>meusubreddit</code> sem o r/). Se vazio, publica no perfil do usuário.' },
+    ]
+  },
+  threads: {
+    quick: 'Usa as mesmas credenciais do Instagram (Meta). API em acesso limitado.',
+    audience: 'Usuários do Instagram · Conversas públicas · Alternativa ao Twitter',
+    age: '18-35',
+    tone: 'Conversacional, opinativo, similar ao Twitter mas mais casual.',
+    steps: [
+      { n:'1', title:'Pré-requisito: Instagram conectado', desc:'A API do Threads usa as mesmas credenciais da Meta. Você precisa ter o Instagram configurado primeiro.' },
+      { n:'2', title:'Solicitar acesso Threads API', desc:'Acesse <strong>developers.facebook.com</strong> → seu app → Products → adicione <strong>Threads API</strong>.' },
+      { n:'3', title:'Permissões necessárias', desc:'Adicione os scopes: <code>threads_basic</code> e <code>threads_content_publish</code>.' },
+      { n:'4', title:'Gerar token', desc:'Use o mesmo Access Token da Meta (já configurado no Instagram) — ele funciona para Threads também.' },
+      { n:'5', title:'Encontrar User ID', desc:'Use a Graph API: <code>GET /me?fields=id&access_token=SEU_TOKEN</code> — o ID retornado é o Threads User ID.' },
+    ]
+  },
+  snapchat: {
+    quick: 'Requer aprovação do Snap Kit. Para conteúdo efêmero e Stories.',
+    audience: 'Jovens · Stories efêmeros · AR Filters · Comunicação pessoal',
+    age: '13-29',
+    tone: 'Divertido, efêmero, visual, use filtros e stickers quando possível.',
+    steps: [
+      { n:'1', title:'Criar conta de desenvolvedor', desc:'Acesse <strong>kit.snapchat.com</strong> → Sign In with Snapchat → Create App.' },
+      { n:'2', title:'Configurar app', desc:'Preencha nome, descrição e categoria. Adicione o produto <strong>Creative Kit</strong> para publicação de Stories.' },
+      { n:'3', title:'Submeter para revisão', desc:'O Snap Kit passa por um processo de revisão. Pode levar 1-4 semanas.' },
+      { n:'4', title:'Configurar OAuth', desc:'Adicione a Redirect URI e configure os scopes necessários para publicação.' },
+      { n:'5', title:'Gerar Access Token', desc:'Após aprovação, use o flow OAuth do Snapchat para gerar um Access Token de longa duração.' },
+    ]
+  },
 };
 
 const PLANS = [
@@ -294,7 +454,17 @@ const PLANS = [
   {id:'business',name:'Business',desc:'Para agências',        m:'R$99', l:'R$599',  feats:['Todas as redes','Posts ilimitados','Multi-clientes','API personalizada','Relatórios de alcance','Suporte dedicado']},
 ];
 
-// ══ TRADUÇÕES ══════════════════════════════════════════════════════
+// Perfis de público-alvo
+const AUDIENCE_PROFILES = [
+  { id:'teen',    label:'Jovem (13-24)',     icon:'🎮', desc:'TikTok, Instagram, Snapchat, YouTube', nets:['tiktok','instagram','snapchat','youtube','threads'] },
+  { id:'adult',   label:'Adulto (25-40)',    icon:'💼', desc:'LinkedIn, Twitter, Facebook, Instagram', nets:['linkedin','twitter','facebook','instagram','youtube'] },
+  { id:'senior',  label:'Maduro (40+)',      icon:'🏠', desc:'Facebook, WhatsApp, YouTube', nets:['facebook','whatsapp','youtube','pinterest'] },
+  { id:'biz',     label:'B2B / Corporativo', icon:'🏢', desc:'LinkedIn, Twitter, YouTube, Reddit', nets:['linkedin','twitter','youtube','reddit','facebook'] },
+  { id:'creator', label:'Criador de Conteúdo',icon:'🎨',desc:'Instagram, TikTok, YouTube, Bluesky', nets:['instagram','tiktok','youtube','bluesky','pinterest','threads'] },
+  { id:'news',    label:'Notícias / Mídia',  icon:'📰', desc:'Twitter, Telegram, Reddit, Bluesky', nets:['twitter','telegram','reddit','bluesky','linkedin'] },
+  { id:'local',   label:'Negócio Local',     icon:'📍', desc:'Facebook, Instagram, WhatsApp, Google', nets:['facebook','instagram','whatsapp','youtube'] },
+  { id:'all',     label:'Todos os públicos', icon:'🌐', desc:'Todas as redes ativas', nets:[] },
+];
 const I18N={pt:{slogan:'Um clique. Todas as redes.',enter:'Acessar o painel',plans:'Ver planos',monthly:'Mensal',lifetime:'Vitalício',mo:'/mês',once:'único',popular:'Mais popular',bestval:'Melhor valor',start:'Começar agora',buy:'Comprar acesso',payStripe:'Pagar com Cartão',payMP:'Pagar com PIX / Boleto',login:'Entrar',register:'Criar conta',email:'E-mail',password:'Senha',name:'Nome',loginSub:'Acesse seu painel PostAllTon',registerSub:'Crie sua conta gratuita',google:'Continuar com Google',noAccount:'Não tem conta? Registre-se',hasAccount:'Já tem conta? Entre',compose:'Nova Publicação',history:'Histórico',settings:'Configurações',logout:'Sair',platforms:'Plataformas',all:'Todas',none:'Nenhuma',selected:'Selecionadas',platform:'plataforma',platforms2:'plataformas',caption:'Legenda / Mensagem',captionPh:'Escreva sua legenda, hashtags, emojis…',media:'URLs de Mídia — opcional',mediaPh:'https://dominio.com/foto.jpg',mediaHint:'URLs públicas separadas por vírgula.',schedule:'Agendar — opcional',scheduledFor:'Agendado para',publishNow:'Publicar agora em',scheduleIn:'Agendar em',preview:'Preview',previewEmpty:'Sua legenda aparecerá aqui.',histTitle:'Histórico de Posts',histDesc:'Posts publicados via PostAllTon.',noPostsYet:'Nenhum post ainda.',createFirst:'Criar primeira publicação',confirmTitle:'Confirmar',confirmSub:'Publicar em',confirmSub2:'plataforma(s) simultaneamente.',publishBtn:'Publicar agora',cancelBtn:'Cancelar',publishing:'Publicando…',publishingSub:'Enviando para',publishedTitle:'Publicado!',publishedSub:'Conteúdo distribuído.',seePost:'Ver post →',published:'publicado',sent:'enviado',closeBtn:'Fechar',errorTitle:'Erro',errorHint:'Verifique suas credenciais.',retryBtn:'Tentar novamente',back:'Voltar',chars:'caracteres',settingsTitle:'Configurações de Redes',connected:'Conectada',disconnected:'Desconectada',connect:'Conectar',disconnect:'Desconectar',save:'Salvar',cancel:'Cancelar',testOk:'Credenciais válidas! Conectado com sucesso.',},en:{slogan:'One click. Every network.',enter:'Open dashboard',plans:'See plans',monthly:'Monthly',lifetime:'Lifetime',mo:'/mo',once:'once',popular:'Most popular',bestval:'Best value',start:'Get started',buy:'Buy access',payStripe:'Pay with Card',payMP:'Pay with PIX / Boleto',login:'Sign in',register:'Create account',email:'Email',password:'Password',name:'Name',loginSub:'Access your PostAllTon dashboard',registerSub:'Create your free account',google:'Continue with Google',noAccount:"No account? Sign up",hasAccount:'Have one? Sign in',compose:'New Post',history:'History',settings:'Settings',logout:'Logout',platforms:'Platforms',all:'All',none:'None',selected:'Selected',platform:'platform',platforms2:'platforms',caption:'Caption',captionPh:'Write your caption, hashtags…',media:'Media URLs — optional',mediaPh:'https://domain.com/photo.jpg',mediaHint:'Comma-separated public URLs.',schedule:'Schedule — optional',scheduledFor:'Scheduled for',publishNow:'Publish now to',scheduleIn:'Schedule to',preview:'Preview',previewEmpty:'Your caption will appear here.',histTitle:'Post History',histDesc:'Posts published via PostAllTon.',noPostsYet:'No posts yet.',createFirst:'Create first post',confirmTitle:'Confirm',confirmSub:'Publish to',confirmSub2:'platform(s) simultaneously.',publishBtn:'Publish now',cancelBtn:'Cancel',publishing:'Publishing…',publishingSub:'Sending to',publishedTitle:'Published!',publishedSub:'Content distributed.',seePost:'See post →',published:'published',sent:'sent',closeBtn:'Close',errorTitle:'Error',errorHint:'Check your credentials.',retryBtn:'Try again',back:'Back',chars:'characters',settingsTitle:'Network Settings',connected:'Connected',disconnected:'Disconnected',connect:'Connect',disconnect:'Disconnect',save:'Save',cancel:'Cancel',testOk:'Valid credentials! Connected successfully.',},es:{slogan:'Un clic. Todas las redes.',enter:'Abrir panel',plans:'Ver planes',monthly:'Mensual',lifetime:'Vitalicio',mo:'/mes',once:'único',popular:'Más popular',bestval:'Mejor valor',start:'Empezar',buy:'Comprar',payStripe:'Pagar con Tarjeta',payMP:'Pagar con PIX / Boleto',login:'Iniciar sesión',register:'Crear cuenta',email:'Correo',password:'Contraseña',name:'Nombre',loginSub:'Accede a tu panel',registerSub:'Crea tu cuenta gratuita',google:'Continuar con Google',noAccount:'¿Sin cuenta? Regístrate',hasAccount:'¿Ya tienes? Entra',compose:'Nueva Publicación',history:'Historial',settings:'Configuración',logout:'Salir',platforms:'Plataformas',all:'Todas',none:'Ninguna',selected:'Seleccionadas',platform:'plataforma',platforms2:'plataformas',caption:'Leyenda',captionPh:'Escribe tu leyenda…',media:'URLs de Medios',mediaPh:'https://dominio.com/foto.jpg',mediaHint:'URLs separadas por comas.',schedule:'Programar',scheduledFor:'Programado para',publishNow:'Publicar en',scheduleIn:'Programar en',preview:'Vista previa',previewEmpty:'Tu leyenda aquí.',histTitle:'Historial',histDesc:'Posts publicados.',noPostsYet:'Sin posts aún.',createFirst:'Crear primer post',confirmTitle:'Confirmar',confirmSub:'Publicar en',confirmSub2:'plataforma(s).',publishBtn:'Publicar',cancelBtn:'Cancelar',publishing:'Publicando…',publishingSub:'Enviando a',publishedTitle:'¡Publicado!',publishedSub:'Contenido distribuido.',seePost:'Ver post →',published:'publicado',sent:'enviado',closeBtn:'Cerrar',errorTitle:'Error',errorHint:'Verifica tus credenciales.',retryBtn:'Reintentar',back:'Volver',chars:'caracteres',settingsTitle:'Configuración de Redes',connected:'Conectada',disconnected:'Desconectada',connect:'Conectar',disconnect:'Desconectar',save:'Guardar',cancel:'Cancelar',testOk:'¡Credenciales válidas!',},fr:{slogan:'Un clic. Tous les réseaux.',enter:'Ouvrir tableau',plans:'Voir plans',monthly:'Mensuel',lifetime:'À vie',mo:'/mois',once:'unique',popular:'Le plus populaire',bestval:'Meilleur rapport',start:'Commencer',buy:"Acheter",payStripe:'Payer par Carte',payMP:'Payer par PIX / Boleto',login:'Connexion',register:'Créer compte',email:'E-mail',password:'Mot de passe',name:'Nom',loginSub:'Accédez à votre tableau',registerSub:'Créez votre compte',google:'Continuer avec Google',noAccount:"S'inscrire",hasAccount:'Se connecter',compose:'Nouvelle Publication',history:'Historique',settings:'Paramètres',logout:'Déconnexion',platforms:'Plateformes',all:'Toutes',none:'Aucune',selected:'Sélectionnées',platform:'plateforme',platforms2:'plateformes',caption:'Légende',captionPh:'Écrivez votre légende…',media:'URLs de Médias',mediaPh:'https://domaine.com/photo.jpg',mediaHint:'URLs séparées par des virgules.',schedule:'Planifier',scheduledFor:'Planifié pour',publishNow:'Publier sur',scheduleIn:'Planifier sur',preview:'Aperçu',previewEmpty:'Votre légende ici.',histTitle:'Historique',histDesc:'Posts publiés.',noPostsYet:'Aucun post.',createFirst:'Créer premier post',confirmTitle:'Confirmer',confirmSub:'Publier sur',confirmSub2:'plateforme(s).',publishBtn:'Publier',cancelBtn:'Annuler',publishing:'Publication…',publishingSub:'Envoi vers',publishedTitle:'Publié!',publishedSub:'Contenu distribué.',seePost:'Voir →',published:'publié',sent:'envoyé',closeBtn:'Fermer',errorTitle:'Erreur',errorHint:'Vérifiez vos identifiants.',retryBtn:'Réessayer',back:'Retour',chars:'caractères',settingsTitle:'Paramètres Réseaux',connected:'Connecté',disconnected:'Déconnecté',connect:'Connecter',disconnect:'Déconnecter',save:'Sauvegarder',cancel:'Annuler',testOk:'Identifiants valides!',}};
 
 // ══ STATE ══════════════════════════════════════════════════════════
@@ -307,8 +477,10 @@ let state={
   selected:new Set(NETS.map(n=>n.id)),
   caption:'',mediaUrls:'',schedDate:'',posts:[],
   connections:{},
+  audienceProfile: null, // perfil de público selecionado
   editingNet:null,netForm:{},netSaving:false,netError:'',netSuccess:'',
   modal:null,modalResults:{},modalError:'',
+  mediaUploadMode: 'url', // url | drive | dropbox | upload
 };
 if(state.token&&state.user) state.screen='app';
 function tr(k){return(I18N[state.lang]||I18N.pt)[k]||k;}
@@ -340,7 +512,49 @@ function doLogout(){
 }
 function doGoogleLogin(){window.location.href=API+'/api/auth/google';}
 
-// ══ CONEXÕES ═══════════════════════════════════════════════════════
+// ══ CONVERSÃO DE LINKS DE MÍDIA ════════════════════════════════════
+function convertMediaUrl(url) {
+  url = url.trim();
+  // Google Drive: converter para link direto
+  const driveMatch = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (driveMatch) {
+    return `https://drive.google.com/uc?export=download&id=${driveMatch[1]}`;
+  }
+  // Google Drive formato alternativo
+  const driveMatch2 = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+  if (driveMatch2) {
+    return `https://drive.google.com/uc?export=download&id=${driveMatch2[1]}`;
+  }
+  // Dropbox: converter para link direto
+  if (url.includes('dropbox.com') && url.includes('dl=0')) {
+    return url.replace('dl=0', 'dl=1');
+  }
+  if (url.includes('dropbox.com') && !url.includes('dl=')) {
+    return url + (url.includes('?') ? '&dl=1' : '?dl=1');
+  }
+  return url;
+}
+
+function processMediaUrls(raw) {
+  return raw.split(',').map(u => convertMediaUrl(u)).filter(Boolean).join(', ');
+}
+
+// ══ PERFIL DE PÚBLICO ══════════════════════════════════════════════
+function applyAudienceProfile(profileId) {
+  const profile = AUDIENCE_PROFILES.find(p => p.id === profileId);
+  if (!profile) return;
+  if (profile.id === 'all') {
+    state.selected = new Set(NETS.map(n => n.id));
+  } else {
+    // Intersecção entre redes do perfil e redes conectadas
+    const connected = Object.keys(state.connections);
+    const suggested = profile.nets.filter(n => connected.includes(n));
+    state.selected = suggested.length > 0
+      ? new Set(suggested)
+      : new Set(profile.nets);
+  }
+  setState({ audienceProfile: profileId });
+}
 async function loadConnections(){
   if(!state.token)return;
   try{
@@ -578,33 +792,198 @@ function tabSettings(){
 
 function credForm(platform){
   const fields=NET_FIELDS[platform]||[];
-  const hint=NET_HINTS[platform]||'';
+  const hint=NET_HINTS[platform]||{};
   const n=NETS.find(x=>x.id===platform);
   return`<div class="cred-form">
-    <div class="cred-form-title">${icon(platform,n?.color||'var(--gold)',22)} Configurar ${n?.name||platform}</div>
-    ${hint?`<div class="cred-hint">ℹ️ ${hint}</div>`:''}
+    <div class="cred-form-title">${icon(platform,n?.color||'var(--gold)',24)} Configurar ${n?.name||platform}</div>
+
+    <!-- INFO RÁPIDA -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+      <div style="padding:10px;background:var(--bg);border:1px solid var(--border);text-align:center">
+        <div style="font-size:18px;margin-bottom:4px">${hint.age?'👥':''}</div>
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Faixa etária</div>
+        <div style="font-size:11px;color:var(--text);margin-top:2px">${hint.age||'Geral'}</div>
+      </div>
+      <div style="padding:10px;background:var(--bg);border:1px solid var(--border);text-align:center">
+        <div style="font-size:18px;margin-bottom:4px">🎯</div>
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Público</div>
+        <div style="font-size:10px;color:var(--muted2);margin-top:2px;line-height:1.3">${(hint.audience||'').split('·')[0]}</div>
+      </div>
+      <div style="padding:10px;background:var(--bg);border:1px solid var(--border);text-align:center">
+        <div style="font-size:18px;margin-bottom:4px">✍️</div>
+        <div style="font-size:9px;color:var(--muted);letter-spacing:1px;text-transform:uppercase">Tom de voz</div>
+        <div style="font-size:10px;color:var(--muted2);margin-top:2px;line-height:1.3">${(hint.tone||'').slice(0,40)}${(hint.tone||'').length>40?'…':''}</div>
+      </div>
+    </div>
+
+    <!-- STATUS DE APROVAÇÃO -->
+    ${hint.quick?`<div style="padding:10px 14px;margin-bottom:16px;border-left:2px solid ${hint.quick.includes('Grátis')?'var(--green)':hint.quick.includes('Requer')?'var(--amber)':'var(--gold-dim)'};background:${hint.quick.includes('Grátis')?'rgba(74,222,128,.05)':hint.quick.includes('Requer')?'rgba(245,158,11,.05)':'rgba(201,168,76,.05)'}">
+      <p style="font-size:11px;color:${hint.quick.includes('Grátis')?'var(--green)':hint.quick.includes('Requer')?'var(--amber)':'var(--muted2)'}">${hint.quick.includes('Grátis')?'✅':hint.quick.includes('Requer')?'⏳':'ℹ️'} ${hint.quick}</p>
+    </div>`:''}
+
+    <!-- PASSO A PASSO -->
+    ${hint.steps&&hint.steps.length>0?`
+    <div style="margin-bottom:20px">
+      <div class="sec-lbl" style="margin-bottom:12px">Passo a passo para configurar</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        ${hint.steps.map((s,i)=>`
+        <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);${i===0?'':''}">
+          <div style="width:24px;height:24px;background:var(--gold);color:#07070a;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--fu)">${s.n}</div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px">${s.title}</div>
+            <div style="font-size:11px;color:var(--muted2);line-height:1.6">${s.desc}</div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`:''}
+
+    <!-- CAMPOS DE CREDENCIAIS -->
+    <div class="sec-lbl" style="margin-bottom:12px">Credenciais</div>
     <div class="cred-fields">
       ${fields.map(f=>`<div>
         <label class="field-lbl">${f.l}</label>
         <input class="input-f" type="${f.t||'text'}" placeholder="${f.ph||''}" oninput="state.netForm['${f.k}']=this.value" value="${state.netForm[f.k]||''}"/>
       </div>`).join('')}
     </div>
+
     ${state.netError?`<div class="cred-error">❌ ${state.netError}</div>`:''}
+
     <div style="display:flex;gap:10px;margin-top:16px">
       <button class="btn-ghost" onclick="setState({editingNet:null,netForm:{},netError:''})">${tr('cancel')}</button>
       <button class="btn-primary" onclick="saveCreds('${platform}')" ${state.netSaving?'disabled':''}>
-        ${state.netSaving?'<span style="animation:spin .8s linear infinite;display:inline-block">◌</span> Verificando...':'◈ '+tr('save')+' e Conectar'}
+        ${state.netSaving?'<span style="display:inline-block;animation:spin .8s linear infinite">◌</span> Verificando...':'◈ Salvar e Conectar'}
       </button>
     </div>
   </div>`;}
 
-// ══ COMPOSE TAB ════════════════════════════════════════════════════
 function tabCompose(){
   const sel=[...state.selected];
   const selNets=NETS.filter(n=>state.selected.has(n.id));
   const ma=state.mediaUrls.split(',').map(s=>s.trim()).filter(Boolean);
   const can=!!state.token&&state.caption.trim()&&sel.length>0;
   const connectedIds=Object.keys(state.connections);
+  return`<div class="cg">
+    <div>
+      ${connectedIds.length===0?`<div class="notice notice-warn"><p>⚠️ Nenhuma rede configurada. Acesse <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="setTab('settings')">⚙ Configurações</span> para conectar suas redes.</p></div>`:''}
+
+      <!-- PERFIL DE PÚBLICO -->
+      <div class="panel" style="margin-bottom:14px">
+        <div class="sec-lbl" style="margin-bottom:12px">Perfil de Público-Alvo
+          <span style="font-size:9px;color:var(--muted);margin-left:8px;font-weight:400;text-transform:none;letter-spacing:0">Selecione para filtrar as redes automaticamente</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          ${AUDIENCE_PROFILES.map(p=>`
+          <button onclick="applyAudienceProfile('${p.id}')"
+            style="padding:6px 12px;background:${state.audienceProfile===p.id?'rgba(201,168,76,.15)':'transparent'};border:1px solid ${state.audienceProfile===p.id?'var(--gold-dim)':'var(--border)'};color:${state.audienceProfile===p.id?'var(--gold)':'var(--muted2)'};font-size:10px;cursor:pointer;font-family:var(--fu);transition:all .2s;display:flex;align-items:center;gap:5px"
+            title="${p.desc}">
+            ${p.icon} ${p.label}
+          </button>`).join('')}
+        </div>
+        ${state.audienceProfile&&state.audienceProfile!=='all'?`
+        <div style="margin-top:10px;padding:8px 12px;background:rgba(201,168,76,.05);border-left:2px solid var(--gold-dim);font-size:11px;color:var(--muted2)">
+          ${AUDIENCE_PROFILES.find(p=>p.id===state.audienceProfile)?.icon} <strong style="color:var(--gold)">${AUDIENCE_PROFILES.find(p=>p.id===state.audienceProfile)?.label}</strong> — ${AUDIENCE_PROFILES.find(p=>p.id===state.audienceProfile)?.desc}
+        </div>`:''}
+      </div>
+
+      <!-- SELEÇÃO DE REDES -->
+      <div class="panel">
+        <div class="sec-lbl" style="margin-bottom:14px">${tr('platforms')}
+          <div style="display:flex;gap:6px;margin-left:auto">
+            <button class="btn-sm ${sel.length===NETS.length?'active':''}" onclick="selectAll()">${tr('all')}</button>
+            <button class="btn-sm" onclick="selectNone()">${tr('none')}</button>
+          </div>
+        </div>
+        <div class="net-grid">
+          ${NETS.map(n=>{
+            const conn=state.connections[n.id];
+            const sel2=state.selected.has(n.id);
+            return`<div class="net-card ${sel2?'sel':''}" data-id="${n.id}" onclick="toggleNet('${n.id}')" title="${conn?'✓ Conectada':'⚠ Não configurada — vá em Configurações'}">
+              <span class="net-chk">✦</span>
+              <span style="display:inline-flex;width:24px;height:24px;color:${sel2?n.color:conn?n.color+'88':'var(--muted)'};">${SVG[n.id]||''}</span>
+              <span class="net-name-s" style="color:${conn?'var(--muted2)':'var(--muted)'}">${n.name}</span>
+              ${conn?`<span style="position:absolute;bottom:3px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--green)"></span>`:''}
+            </div>`;
+          }).join('')}
+        </div>
+        <p style="font-size:10px;color:var(--muted);margin-top:8px">● Verde = configurada e pronta para publicar</p>
+      </div>
+
+      <!-- LEGENDA -->
+      <div class="panel">
+        <label class="field-lbl">${tr('caption')}</label>
+        <textarea class="textarea-f" id="captionInput" placeholder="${tr('captionPh')}" oninput="onCaption(this.value)">${state.caption}</textarea>
+        <div class="char-c" id="charCount">${state.caption.length} / 2200 ${tr('chars')}</div>
+      </div>
+
+      <!-- MÍDIA -->
+      <div class="panel">
+        <label class="field-lbl">${tr('media')}</label>
+        <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">
+          ${[
+            {id:'url',     icon:'🔗', label:'Link direto'},
+            {id:'drive',   icon:'📁', label:'Google Drive'},
+            {id:'dropbox', icon:'📦', label:'Dropbox'},
+            {id:'upload',  icon:'⬆️', label:'Upload'},
+          ].map(m=>`<button onclick="setState({mediaUploadMode:'${m.id}'})"
+            style="padding:6px 12px;background:${state.mediaUploadMode===m.id?'rgba(201,168,76,.1)':'transparent'};border:1px solid ${state.mediaUploadMode===m.id?'var(--gold-dim)':'var(--border)'};color:${state.mediaUploadMode===m.id?'var(--gold)':'var(--muted)'};font-size:10px;cursor:pointer;font-family:var(--fu);transition:all .2s">
+            ${m.icon} ${m.label}
+          </button>`).join('')}
+        </div>
+
+        ${state.mediaUploadMode==='url'?`
+          <p style="font-size:11px;color:var(--muted);margin-bottom:9px">URLs públicas separadas por vírgula (JPG, PNG, MP4, GIF).</p>
+          <input class="input-f" value="${state.mediaUrls}" placeholder="https://dominio.com/foto.jpg" oninput="onMedia(this.value)"/>
+        `:state.mediaUploadMode==='drive'?`
+          <div class="notice" style="margin-bottom:10px"><p>📁 <strong>Google Drive:</strong> Abra o arquivo → clique em "Compartilhar" → mude para <strong>"Qualquer pessoa com o link"</strong> → copie o link e cole abaixo. O PostAllTon converte automaticamente para link direto.</p></div>
+          <input class="input-f" value="${state.mediaUrls}" placeholder="https://drive.google.com/file/d/XXXX/view?usp=sharing" oninput="onMediaConvert(this.value)"/>
+          ${state.mediaUrls&&state.mediaUrls.includes('drive.google.com')?`<p style="font-size:10px;color:var(--green);margin-top:6px">✓ Link do Drive detectado — será convertido automaticamente!</p>`:''}
+        `:state.mediaUploadMode==='dropbox'?`
+          <div class="notice" style="margin-bottom:10px"><p>📦 <strong>Dropbox:</strong> Abra o arquivo → clique em "Compartilhar" → "Copiar link" → cole abaixo. O PostAllTon converte para link direto de download.</p></div>
+          <input class="input-f" value="${state.mediaUrls}" placeholder="https://www.dropbox.com/s/XXXX/arquivo.jpg?dl=0" oninput="onMediaConvert(this.value)"/>
+          ${state.mediaUrls&&state.mediaUrls.includes('dropbox.com')?`<p style="font-size:10px;color:var(--green);margin-top:6px">✓ Link do Dropbox detectado — será convertido automaticamente!</p>`:''}
+        `:`
+          <div class="notice notice-warn" style="margin-bottom:10px"><p>⬆️ <strong>Upload direto:</strong> Selecione um arquivo do seu computador. Ele será hospedado temporariamente para publicação.</p></div>
+          <input type="file" id="fileUpload" accept="image/*,video/*" onchange="onFileUpload(this)" style="display:none"/>
+          <div onclick="document.getElementById('fileUpload').click()" style="border:2px dashed var(--border2);padding:24px;text-align:center;cursor:pointer;transition:all .2s;color:var(--muted)" onmouseover="this.style.borderColor='var(--gold-dim)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted)'">
+            <div style="font-size:24px;margin-bottom:8px">📎</div>
+            <div style="font-size:12px">Clique para selecionar imagem ou vídeo</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:4px">JPG, PNG, GIF, MP4 — máx 50MB</div>
+          </div>
+          ${state.mediaUrls?`<p style="font-size:11px;color:var(--green);margin-top:8px">✓ Arquivo selecionado: ${state.mediaUrls}</p>`:''}
+        `}
+      </div>
+
+      <!-- AGENDAR -->
+      <div class="panel">
+        <label class="field-lbl">${tr('schedule')}</label>
+        <input class="input-f" type="datetime-local" value="${state.schedDate}" oninput="onSched(this.value)" style="color-scheme:dark"/>
+        <div id="schedLabel">${state.schedDate?`<p style="font-size:11px;color:var(--amber);margin-top:8px">${tr('scheduledFor')}: ${new Date(state.schedDate).toLocaleString()}</p>`:''}</div>
+      </div>
+
+      <button id="publishBtn" class="btn-primary" ${can?'':'disabled'} onclick="if(window._canPublish)openModal()">
+        ◈ ${state.schedDate?tr('scheduleIn'):tr('publishNow')} ${sel.length} ${sel.length===1?tr('platform'):tr('platforms2')}
+      </button>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="cg-side">
+      <div class="panel" style="margin-bottom:14px">
+        <div class="sec-lbl">${tr('selected')}</div>
+        <div class="sel-count" id="selCount">${sel.length}</div>
+        <div class="sel-lbl">${sel.length===1?tr('platform'):tr('platforms2')}</div>
+        <div style="height:1px;background:var(--border);margin:13px 0"></div>
+        <div class="sel-list" id="selList">
+          ${selNets.length===0?`<p style="font-size:11px;color:var(--muted)">${tr('none')}</p>`:selNets.map(n=>`<div class="sel-item">${icon(n.id,n.color,14)}<span>${n.name}</span>${state.connections[n.id]?'<span style="color:var(--green);font-size:8px;margin-left:auto">●</span>':'<span style="color:var(--muted);font-size:8px;margin-left:auto">○</span>'}</div>`).join('')}
+        </div>
+      </div>
+      <div class="panel">
+        <div class="sec-lbl">${tr('preview')}</div>
+        <div id="previewText">${state.caption?`<p style="font-size:13px;color:var(--text);line-height:1.6;word-break:break-word">${state.caption.slice(0,160)}${state.caption.length>160?'…':''}</p>`:`<p style="font-size:12px;color:var(--muted);font-style:italic">${tr('previewEmpty')}</p>`}</div>
+        ${ma.length>0?`<div style="margin-top:10px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:8px">📎 ${ma.length} arquivo(s) de mídia</div>`:''}
+      </div>
+    </div>
+  </div>`;}
+
   return`<div class="cg">
     <div>
       ${connectedIds.length===0?`<div class="notice notice-warn"><p>⚠️ Nenhuma rede configurada. Acesse <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="setTab('settings')">⚙ Configurações</span> para conectar suas redes.</p></div>`:''}
@@ -753,7 +1132,17 @@ window.onCaption=v=>{
   const pt=document.getElementById('previewText');if(pt)pt.innerHTML=v?`<p style="font-size:13px;color:var(--text);line-height:1.6;word-break:break-word">${v.slice(0,160)}${v.length>160?'…':''}</p>`:`<p style="font-size:12px;color:var(--muted);font-style:italic">${tr('previewEmpty')}</p>`;
   updatePublishBtn();
 };
-window.onMedia=v=>{state.mediaUrls=v;};
+window.onMedia=v=>{state.mediaUrls=v;updatePublishBtn();};
+window.onMediaConvert=v=>{state.mediaUrls=processMediaUrls(v);updatePublishBtn();render();};
+window.onFileUpload=async(input)=>{
+  const file=input.files[0];
+  if(!file)return;
+  // Usar URL.createObjectURL para preview local
+  const url=URL.createObjectURL(file);
+  setState({mediaUrls:url});
+  alert('⚠️ Para publicar, hospede a imagem em um servidor público (ex: imgur.com, cloudinary.com) e use o link direto.');
+};
+window.applyAudienceProfile=applyAudienceProfile;
 window.onSched=v=>{
   state.schedDate=v;
   const sl=document.getElementById('schedLabel');if(sl)sl.innerHTML=v?`<p style="font-size:11px;color:var(--amber);margin-top:8px">${tr('scheduledFor')}: ${new Date(v).toLocaleString()}</p>`:'';
