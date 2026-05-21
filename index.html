@@ -399,6 +399,46 @@ function deleteCreds(platform){
     .then(function(){ loadConnections(); })
     .catch(function(e){ console.error(e); });
 }
+// ══ PREFERÊNCIAS ═══════════════════════════════════════════════════
+function savePreferences(){
+  if(!state.token) return;
+  fetch(API+'/api/user/preferences', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.token},
+    body:JSON.stringify({
+      preferredNetworks: [...state.selected],
+      audienceProfile:   state.audienceProfile,
+      language:          state.lang,
+    })
+  }).then(function(r){ return r.json(); })
+    .then(function(d){ console.log('Preferências salvas:', d.message); })
+    .catch(function(e){ console.error(e); });
+}
+
+function loadPreferences(){
+  if(!state.token) return;
+  fetch(API+'/api/user/preferences', {
+    headers:{'Authorization':'Bearer '+state.token}
+  }).then(function(r){ return r.json(); })
+    .then(function(d){
+      var prefs = d.preferences || {};
+      var changed = false;
+      if(prefs.audience_profile && !state.audienceProfile){
+        state.audienceProfile = prefs.audience_profile;
+        changed = true;
+      }
+      if(prefs.preferred_networks && prefs.preferred_networks.length > 0){
+        state.selected = new Set(prefs.preferred_networks);
+        changed = true;
+      }
+      if(prefs.language && prefs.language !== state.lang){
+        state.lang = prefs.language;
+        changed = true;
+      }
+      if(changed) render();
+    }).catch(function(e){ console.error(e); });
+}
+
 function applyAudience(id){
   var p = AUDIENCE.find(function(a){ return a.id === id; });
   if(!p) return;
@@ -409,7 +449,10 @@ function applyAudience(id){
     var suggested = p.nets.filter(function(n){ return connected.indexOf(n) > -1; });
     state.selected = new Set(suggested.length > 0 ? suggested : p.nets);
   }
-  setState({audienceProfile:id});
+  state.audienceProfile = id;
+  render();
+  // Salvar preferência automaticamente
+  savePreferences();
 }
 
 // ══ PUBLISH ════════════════════════════════════════════════════════
@@ -482,8 +525,8 @@ function pagePlans(){
     '<h2 class="plans-title" style="margin-top:20px">'+(planTitle[state.lang]||planTitle.pt)+'</h2>'+
     '<p class="plans-sub">PostAllTon</p>'+
     '<div class="billing">'+
-    '<button class="bill-btn'+(b==='monthly'?' active':'')+'" onclick="setState({billing:\'monthly\'})">'+tr('monthly')+'</button>'+
-    '<button class="bill-btn'+(b==='lifetime'?' active':'')+'" onclick="setState({billing:\'lifetime\'})">'+tr('lifetime')+'</button>'+
+    '<button class="bill-btn'+(b==='monthly'?' active':'')+'" onclick="state.billing=\'monthly\';render()">'+tr('monthly')+'</button>'+
+    '<button class="bill-btn'+(b==='lifetime'?' active':'')+'" onclick="state.billing=\'lifetime\';render()">'+tr('lifetime')+'</button>'+
     '</div><div class="plans-grid">'+
     PLANS.map(function(p){
       return '<div class="plan-card'+(p.hi?' hi':'')+'">'+
