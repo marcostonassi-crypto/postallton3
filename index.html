@@ -116,7 +116,26 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:va
 .lf-btn{padding:4px 8px;background:transparent;border:1px solid transparent;color:var(--muted);font-size:9px;letter-spacing:1.5px;font-weight:700;cursor:pointer;transition:all .15s;font-family:var(--fu)}
 .lf-btn:hover,.lf-btn.active{border-color:var(--gold-dim);color:var(--gold)}
 .main{margin-left:220px;flex:1;min-height:100vh;display:flex;flex-direction:column}
-@media(max-width:800px){.sidebar{display:none}.main{margin-left:0}}
+@media(max-width:800px){
+  .sidebar{display:none}
+  .main{margin-left:0}
+  .content{padding:16px}
+  .topbar{padding:16px 16px 12px}
+  .cg{grid-template-columns:1fr}
+  .cg-side{display:none}
+  .plans-grid{grid-template-columns:1fr}
+  .cred-fields{grid-template-columns:1fr}
+}
+/* BOTTOM NAV MOBILE */
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);border-top:1px solid var(--border);padding:8px 0 calc(8px + env(safe-area-inset-bottom));justify-content:space-around;align-items:center}
+@media(max-width:800px){.bottom-nav{display:flex}}
+.bottom-nav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 16px;background:transparent;border:none;cursor:pointer;font-family:var(--fu);transition:all .2s;min-width:60px}
+.bottom-nav-btn span:first-child{font-size:18px;line-height:1}
+.bottom-nav-btn span:last-child{font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);font-weight:600}
+.bottom-nav-btn.active span:last-child{color:var(--gold)}
+.bottom-nav-btn.active span:first-child{filter:drop-shadow(0 0 4px var(--gold))}
+/* Espaço para bottom nav no mobile */
+@media(max-width:800px){.content{padding-bottom:80px}}
 .topbar{padding:24px 40px 16px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border)}
 .page-title{font-family:var(--fd);font-size:28px;font-weight:500;letter-spacing:-.5px;line-height:1}
 .page-title em{font-style:italic;color:var(--gold)}
@@ -598,7 +617,18 @@ function pageApp(){
     '<div class="topbar"><h1 class="page-title">'+pageTitle+'</h1><div class="page-date">'+today+'<button class="home-btn" onclick="setState({screen:\'landing\'})">← Home</button></div></div>'+
     '<div class="content">'+(tab==='compose'?tabCompose():tab==='history'?tabHistory():tabSettings())+'</div>'+
     '</main></div>'+
-    (state.modal ? modalView() : '');
+    (state.modal ? modalView() : '')+
+    // BOTTOM NAV MOBILE
+    '<nav class="bottom-nav">'+
+    '<button class="bottom-nav-btn'+(tab==='compose'?' active':'')+'" onclick="setTab(\'compose\')">'+
+    '<span>✦</span><span>'+(navLabels.compose[lang]||'Publicar')+'</span></button>'+
+    '<button class="bottom-nav-btn'+(tab==='history'?' active':'')+'" onclick="setTab(\'history\')">'+
+    '<span>◇</span><span>'+(navLabels.history[lang]||'Histórico')+'</span></button>'+
+    '<button class="bottom-nav-btn'+(tab==='settings'?' active':'')+'" onclick="setTab(\'settings\')">'+
+    '<span>⚙</span><span>'+(navLabels.settings[lang]||'Config')+'</span></button>'+
+    '<button class="bottom-nav-btn" onclick="doLogout()">'+
+    '<span>↩</span><span>'+tr('logout')+'</span></button>'+
+    '</nav>';
 }
 
 // ══ SETTINGS ═══════════════════════════════════════════════════════
@@ -673,7 +703,9 @@ function tabCompose(){
     // PERFIL DE PÚBLICO
     '<div class="panel" style="margin-bottom:14px">'+
     '<div class="sec-lbl" style="margin-bottom:10px">'+tr('audienceTitle')+
-    '<span style="font-size:9px;color:var(--muted);margin-left:8px;font-weight:400;text-transform:none;letter-spacing:0">'+tr('audienceSub')+'</span></div>'+
+    '<span style="font-size:10px;color:var(--muted);margin-left:8px;font-weight:400;text-transform:none;letter-spacing:0">'+tr('audienceSub')+'</span>'+
+    (state.audienceProfile ? '<span style="font-size:10px;color:var(--green);margin-left:auto;font-weight:600;text-transform:none;letter-spacing:0">✓ Salvo</span>' : '')+
+    '</div>'+
     '<div style="display:flex;flex-wrap:wrap;gap:5px">'+
     AUDIENCE.map(function(a){
       return '<button class="audience-btn'+(state.audienceProfile===a.id?' active':'')+'" onclick="applyAudience(\''+a.id+'\')" title="'+(a.desc[state.lang]||a.desc.pt)+'">'+a.icon+' '+(a.label[state.lang]||a.label.pt)+'</button>';
@@ -828,6 +860,7 @@ function modalView(){
 
 // ══ HANDLERS ═══════════════════════════════════════════════════════
 function setTab(t){ state.tab = t; if(t==='settings') loadConnections(); render(); }
+function setLang(l){ state.lang = l; render(); savePreferences(); }
 function selectAll(){ state.selected = new Set(NETS.map(function(n){ return n.id; })); render(); }
 function selectNone(){ state.selected = new Set(); render(); }
 function toggleNet(id){
@@ -908,7 +941,10 @@ function openModal(){ setState({modal:'confirm'}); }
 // ══ INIT ═══════════════════════════════════════════════════════════
 window._canPublish = false;
 render();
-if(state.token) loadConnections();
+if(state.token){
+  loadConnections();
+  loadPreferences();
+}
 </script>
 </body>
 </html>
