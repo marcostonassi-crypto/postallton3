@@ -4,6 +4,9 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>PostAllTon — Um clique. Todas as redes.</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmMGQwNjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNjOWE4NGMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOGI2OTE0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cGF0aCBkPSJNNTAgNSBMOTAgMjAgTDkwIDU1IFE5MCA4MCA1MCA5NSBRMTAgODAgMTAgNTUgTDEwIDIwIFoiIGZpbGw9InVybCgjZ29sZCkiLz4KICA8cGF0aCBkPSJNNTAgMTIgTDgzIDI1IEw4MyA1NSBRODMgNzYgNTAgODggUTE3IDc2IDE3IDU1IEwxNyAyNSBaIiBmaWxsPSIjMWExYTFhIi8+CiAgPHBhdGggZD0iTTUwIDE4IEw3NyAyOSBMNzcgNTUgUTc3IDczIDUwIDgzIFEyMyA3MyAyMyA1NSBMMjMgMjkgWiIgZmlsbD0iIzBmMGYxMiIvPgogIDxjaXJjbGUgY3g9IjQyIiBjeT0iNTIiIHI9IjE0IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iNSIvPgogIDxjaXJjbGUgY3g9IjU4IiBjeT0iNTIiIHI9IjE0IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iNSIvPgo8L3N2Zz4K"/>
+<meta name="description" content="PostAllTon — Publique em todas as redes sociais com um clique."/>
+<meta name="theme-color" content="#c9a84c"/>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,600&family=Inter:wght@400;500;600;700;800&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -257,9 +260,24 @@ const NETS = [
 ];
 
 const PLANS = [
-  {id:'basic',   name:'Básico',  desc:'Para criadores solo',m:'R$19',l:'R$149',  feats:['3 redes sociais','30 posts/mês','Agendamento básico','Suporte por e-mail']},
-  {id:'pro',     name:'Pro',     desc:'Para profissionais', m:'R$49',l:'R$349',  feats:['12 redes sociais','Posts ilimitados','Agendamento avançado','Mídias e links','Histórico completo','Suporte prioritário'],hi:true},
-  {id:'business',name:'Business',desc:'Para agências',      m:'R$99',l:'R$599',  feats:['Todas as redes','Posts ilimitados','Multi-clientes','API personalizada','Relatórios de alcance','Suporte dedicado']},
+  {id:'basic',   name:'Básico',  desc:{pt:'Para criadores solo',en:'For solo creators',es:'Para creadores solo',fr:'Pour créateurs solo'},
+   m:{pt:'R$19',en:'$9',es:'$9',fr:'9€'},  l:{pt:'R$149',en:'$69',es:'$69',fr:'69€'},
+   feats:{pt:['3 redes sociais','30 posts/mês','Agendamento básico','Suporte por e-mail'],
+          en:['3 social networks','30 posts/month','Basic scheduling','Email support'],
+          es:['3 redes sociales','30 posts/mes','Programación básica','Soporte por correo'],
+          fr:['3 réseaux sociaux','30 posts/mois','Planification basique','Support par e-mail']}},
+  {id:'pro',     name:'Pro',     desc:{pt:'Para profissionais',en:'For professionals',es:'Para profesionales',fr:'Pour professionnels'},
+   m:{pt:'R$49',en:'$19',es:'$19',fr:'19€'}, l:{pt:'R$349',en:'$149',es:'$149',fr:'149€'},
+   feats:{pt:['12 redes sociais','Posts ilimitados','Agendamento avançado','Mídias e links','Histórico completo','Suporte prioritário'],
+          en:['12 social networks','Unlimited posts','Advanced scheduling','Media & links','Full history','Priority support'],
+          es:['12 redes sociales','Posts ilimitados','Programación avanzada','Medios y enlaces','Historial completo','Soporte prioritario'],
+          fr:['12 réseaux sociaux','Posts illimités','Planification avancée','Médias et liens','Historique complet','Support prioritaire']},hi:true},
+  {id:'business',name:'Business',desc:{pt:'Para agências',en:'For agencies',es:'Para agencias',fr:'Pour agences'},
+   m:{pt:'R$99',en:'$39',es:'$39',fr:'39€'},  l:{pt:'R$599',en:'$249',es:'$249',fr:'249€'},
+   feats:{pt:['Todas as redes','Posts ilimitados','Multi-clientes','API personalizada','Relatórios de alcance','Suporte dedicado'],
+          en:['All networks','Unlimited posts','Multi-clients','Custom API','Reach reports','Dedicated support'],
+          es:['Todas las redes','Posts ilimitados','Multi-clientes','API personalizada','Informes de alcance','Soporte dedicado'],
+          fr:['Tous les réseaux','Posts illimités','Multi-clients','API personnalisée','Rapports de portée','Support dédié']}},
 ];
 
 const AUDIENCE = [
@@ -329,9 +347,13 @@ es:{slogan:'Un clic. Todas las redes.',enter:'Abrir panel',plans:'Ver planes',mo
 fr:{slogan:'Un clic. Tous les réseaux.',enter:'Ouvrir tableau',plans:'Voir plans',monthly:'Mensuel',lifetime:'À vie',mo:'/mois',once:'unique',popular:'Le plus populaire',bestval:'Meilleur rapport',start:'Commencer',buy:"Acheter l'accès",payStripe:'Payer par Carte',payMP:'Payer par PIX / Boleto',login:'Connexion',register:'Créer compte',email:'E-mail',password:'Mot de passe',name:'Nom',loginSub:'Accédez à votre tableau de bord',registerSub:'Créez votre compte gratuit',google:'Continuer avec Google',noAccount:"S'inscrire",hasAccount:'Se connecter',compose:'Nouvelle Publication',history:'Historique',settings:'Paramètres',logout:'Déconnexion',platforms:'Plateformes',all:'Toutes',none:'Aucune',selected:'Sélectionnées',platform:'plateforme',platforms2:'plateformes',caption:'Légende',captionPh:'Écrivez votre légende, hashtags, emojis…',media:'Médias',mediaPh:'https://domaine.com/photo.jpg',schedule:'Planifier — optionnel',scheduledFor:'Planifié pour',publishNow:'Publier sur',scheduleIn:'Planifier sur',preview:'Aperçu',previewEmpty:'Votre légende ici.',noPostsYet:'Aucun post.',createFirst:'Créer premier post',confirmTitle:'Confirmer',confirmSub:'Publier sur',confirmSub2:'plateforme(s).',publishBtn:'Publier',cancelBtn:'Annuler',publishing:'Publication…',publishingSub:'Envoi vers',publishedTitle:'Publié!',publishedSub:'Contenu distribué.',seePost:'Voir →',published:'publié',sent:'envoyé',closeBtn:'Fermer',errorTitle:'Erreur',errorHint:'Vérifiez vos identifiants et réessayez.',retryBtn:'Réessayer',back:'Retour',chars:'caractères',settingsTitle:'Paramètres Réseaux',connected:'Connecté',disconnected:'Déconnecté',connect:'Connecter',disconnect:'Déconnecter',save:'Sauvegarder',cancel:'Annuler',testOk:'Identifiants valides ! Connecté avec succès.',audienceTitle:'Profil de Public Cible',audienceSub:'Sélectionnez pour filtrer les réseaux automatiquement',ageRange:"Tranche d'âge",tone:'Ton de voix',stepByStep:'Étape par étape',credentials:'Identifiants',saveConnect:'Sauvegarder et Connecter',verifying:'Vérification...',mediaDirect:'Lien direct',mediaDrive:'Google Drive',mediaDropbox:'Dropbox',mediaUpload:'Télécharger',driveHint:'Ouvrez le fichier → Partager → "Toute personne avec le lien" → copiez le lien. PostAllTon le convertit automatiquement !',dropboxHint:'Ouvrez le fichier → Partager → Copier le lien → collez ci-dessous. PostAllTon convertit en lien direct !',driveOk:'✓ Lien Drive détecté — sera converti !',dropboxOk:'✓ Lien Dropbox détecté — sera converti !',uploadHint:'Sélectionnez une image ou vidéo de votre ordinateur.',uploadSelect:'Cliquez pour sélectionner image ou vidéo',uploadMax:'JPG, PNG, GIF, MP4 — max 50 Mo',fileSelected:'✓ Fichier sélectionné',noCredsWarn:'⚠️ Aucun réseau configuré. Allez dans',noCredsLink:'⚙ Paramètres',noCredsEnd:'pour connecter vos réseaux.',greenDot:'● Vert = configuré et prêt à publier',freeLabel:'✅ Gratuit et immédiat',paidLabel:'⏳ Nécessite approbation',histDesc:'Posts publiés via PostAllTon.',edit:'Modifier'},
 };
 
+
+var termsLabel = {pt:'Termos de Uso',en:'Terms of Use',es:'Términos de Uso',fr:"Conditions d'utilisation"};
+var privacyLabel = {pt:'Política de Privacidade',en:'Privacy Policy',es:'Política de Privacidad',fr:'Politique de Confidentialité'};
+
 // ══ STATE ══════════════════════════════════════════════════════════
 var state = {
-  screen:'landing', lang:'pt', billing:'monthly',
+  screen:'landing', lang:'pt', billing:'monthly', prevScreen:'landing',
   token: localStorage.getItem('pat_token') || null,
   user: (function(){ try{ return JSON.parse(localStorage.getItem('pat_user')); }catch(e){ return null; } })(),
   authMode:'login', authEmail:'', authPassword:'', authName:'', authError:'',
@@ -419,20 +441,7 @@ function deleteCreds(platform){
     .catch(function(e){ console.error(e); });
 }
 // ══ PREFERÊNCIAS ═══════════════════════════════════════════════════
-function savePreferences(){
-  if(!state.token) return;
-  fetch(API+'/api/user/preferences', {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.token},
-    body:JSON.stringify({
-      preferredNetworks: [...state.selected],
-      audienceProfile:   state.audienceProfile,
-      language:          state.lang,
-    })
-  }).then(function(r){ return r.json(); })
-    .then(function(d){ console.log('Preferências salvas:', d.message); })
-    .catch(function(e){ console.error(e); });
-}
+// savePreferences definida acima
 
 function loadPreferences(){
   if(!state.token) return;
@@ -442,7 +451,7 @@ function loadPreferences(){
     .then(function(d){
       var prefs = d.preferences || {};
       var changed = false;
-      if(prefs.audience_profile && !state.audienceProfile){
+      if(prefs.audience_profile){
         state.audienceProfile = prefs.audience_profile;
         changed = true;
       }
@@ -450,12 +459,29 @@ function loadPreferences(){
         state.selected = new Set(prefs.preferred_networks);
         changed = true;
       }
-      if(prefs.language && prefs.language !== state.lang){
+      if(prefs.language){
         state.lang = prefs.language;
         changed = true;
       }
       if(changed) render();
-    }).catch(function(e){ console.error(e); });
+      console.log('[PostAllTon] Preferências carregadas:', prefs);
+    }).catch(function(e){ console.warn('[PostAllTon] Preferências não carregadas:', e.message); });
+}
+
+function savePreferences(){
+  if(!state.token) return;
+  var nets = [...state.selected];
+  fetch(API+'/api/user/preferences', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.token},
+    body:JSON.stringify({
+      preferredNetworks: nets,
+      audienceProfile:   state.audienceProfile || null,
+      language:          state.lang,
+    })
+  }).then(function(r){ return r.json(); })
+    .then(function(d){ console.log('[PostAllTon] Preferências salvas!'); })
+    .catch(function(e){ console.warn('[PostAllTon] Erro ao salvar preferências:', e.message); });
 }
 
 function applyAudience(id){
@@ -513,16 +539,63 @@ function render(){ document.getElementById('app').innerHTML = page(); }
 function page(){
   if(state.screen === 'landing') return pageLanding();
   if(state.screen === 'plans')   return pagePlans();
+  if(state.screen === 'terms')   return pageTerms();
+  if(state.screen === 'privacy') return pagePrivacy();
   if(state.screen === 'auth' || !state.token) return pageAuth();
   return pageApp();
+}
+
+function pageTerms(){
+  var l = state.lang;
+  var title = termsLabel[l];
+  var prev = state.prevScreen || 'landing';
+  return pageDoc(title, prev, termsContent(l));
+}
+function pagePrivacy(){
+  var l = state.lang;
+  var title = privacyLabel[l];
+  var prev = state.prevScreen || 'landing';
+  return pageDoc(title, prev, privacyContent(l));
+}
+function pageDoc(title, prev, body){
+  return '<div style="min-height:100vh;background:var(--bg);padding:40px 20px;max-width:800px;margin:0 auto">'+
+    '<button class="back-btn" style="position:relative;top:0;left:0;margin-bottom:24px" onclick="setState({screen:''+prev+''})">← '+
+    (state.lang==='pt'?'Voltar':state.lang==='es'?'Volver':state.lang==='fr'?'Retour':'Back')+'</button>'+
+    '<h1 style="font-family:var(--fd);font-size:32px;color:var(--gold);margin-bottom:8px">'+title+'</h1>'+
+    '<p style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:32px">PostAllTon © 2026</p>'+
+    '<div style="font-size:14px;line-height:1.8;color:var(--muted2)">'+body+'</div>'+
+    '<div style="margin-top:40px;padding:16px;border:1px solid var(--border);font-size:12px;color:var(--muted)">'+
+    '<a href="mailto:suporte@postallton.com" style="color:var(--gold)">suporte@postallton.com</a></div>'+
+    '</div>';
+}
+
+function termsContent(l){
+  if(l==='en') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Acceptance of Terms</h2><p>By using PostAllTon, you agree to these Terms of Use. If you disagree with any part, do not use the service.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Service Description</h2><p>PostAllTon is a social media management platform that allows simultaneous publication on multiple networks.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Network Integrations</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Important:</strong> For the app to work fully (100%) on all networks, it will depend on the social networks of each user and the policy of each one regarding the approval deadline for integration. Some networks require formal approval processes that may take weeks.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. User Responsibilities</h2><p>You are responsible for the content published and for complying with the terms of service of each social network.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">5. Subscriptions and Payments</h2><p>Monthly plans are renewed automatically. Lifetime plans are a one-time payment. Cancellation can be done at any time through the customer portal.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">6. Support</h2><p>Support is provided via email at suporte@postallton.com within 48 business hours.</p>';
+  if(l==='es') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Aceptación</h2><p>Al usar PostAllTon, aceptas estos Términos de Uso.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Integraciones de Redes</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Importante:</strong> Para que la aplicación funcione plenamente al 100% en todas las redes, dependerá de las redes sociales de cada usuario y de la política de cada una en relación al plazo de aprobación para la integración.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Pagos</h2><p>Los planes mensuales se renuevan automáticamente. Los planes vitalicios son un pago único.</p>';
+  if(l==='fr') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Acceptation</h2><p>En utilisant PostAllTon, vous acceptez ces Conditions d'utilisation.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Intégrations Réseaux</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Important :</strong> Pour que l'application fonctionne pleinement à 100% sur tous les réseaux, cela dépendra des réseaux sociaux de chaque utilisateur et de la politique de chacun concernant le délai d'approbation pour l'intégration.</p>';
+  // PT (default)
+  return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Aceitação dos Termos</h2><p>Ao utilizar o PostAllTon, você concorda com estes Termos de Uso. Caso discorde de qualquer parte, não utilize o serviço.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Descrição do Serviço</h2><p>O PostAllTon é uma plataforma de gerenciamento de redes sociais que permite a publicação simultânea em múltiplas redes com um único clique.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Integrações com Redes Sociais</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Importante:</strong> Para que o app funcione plenamente 100% em todas as redes, dependerá das redes sociais de cada usuário e da política de cada uma em relação ao prazo de liberação para integração. Algumas redes exigem processos formais de aprovação que podem levar semanas.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. Responsabilidades do Usuário</h2><p>O usuário é responsável pelo conteúdo publicado e pelo cumprimento dos termos de serviço de cada rede social.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">5. Assinaturas e Pagamentos</h2><p>Os planos mensais são renovados automaticamente. Os planos vitalícios são pagamento único. O cancelamento pode ser feito a qualquer momento pelo portal do cliente.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">6. Suporte</h2><p>O suporte é fornecido via e-mail em suporte@postallton.com com prazo de até 48 horas úteis.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">7. Modificações</h2><p>O PostAllTon reserva-se o direito de modificar estes termos a qualquer momento, com aviso prévio por e-mail.</p>';
+}
+
+function privacyContent(l){
+  if(l==='en') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Data Collected</h2><p>We collect: name, email, social network credentials (stored encrypted), posts and usage history.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Use of Data</h2><p>Data is used exclusively to provide the service. We do not sell or share your data with third parties.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Credentials Security</h2><p>Social network credentials are stored encrypted in our database and are never shared.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. Your Rights</h2><p>You can request deletion of all your data at any time by emailing suporte@postallton.com.</p>';
+  if(l==='es') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Datos Recopilados</h2><p>Recopilamos: nombre, correo, credenciales de redes sociales (almacenadas cifradas), historial de posts.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Uso de Datos</h2><p>Los datos se usan exclusivamente para proporcionar el servicio. No vendemos ni compartimos tus datos.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Tus Derechos</h2><p>Puedes solicitar la eliminación de todos tus datos en cualquier momento escribiendo a suporte@postallton.com.</p>';
+  if(l==='fr') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Données Collectées</h2><p>Nous collectons : nom, e-mail, identifiants de réseaux sociaux (stockés chiffrés), historique des posts.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Vos Droits</h2><p>Vous pouvez demander la suppression de toutes vos données à tout moment en écrivant à suporte@postallton.com.</p>';
+  // PT
+  return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Dados Coletados</h2><p>Coletamos: nome, e-mail, credenciais de redes sociais (armazenadas de forma criptografada), histórico de posts e dados de uso da plataforma.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Uso dos Dados</h2><p>Os dados são utilizados exclusivamente para fornecer o serviço. Não vendemos nem compartilhamos seus dados com terceiros.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Segurança das Credenciais</h2><p>As credenciais das redes sociais são armazenadas de forma criptografada em nosso banco de dados e nunca são compartilhadas.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. Seus Direitos</h2><p>Você pode solicitar a exclusão de todos os seus dados a qualquer momento através do e-mail suporte@postallton.com.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">5. Cookies</h2><p>Utilizamos apenas cookies essenciais para manter sua sessão ativa. Não utilizamos cookies de rastreamento ou publicidade.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">6. Retenção de Dados</h2><p>Os dados são mantidos enquanto sua conta estiver ativa. Após a exclusão da conta, os dados são removidos em até 30 dias.</p>';
 }
 
 // ══ LANDING ════════════════════════════════════════════════════════
 function pageLanding(){
   var s = tr('slogan').split('.');
   return '<div class="landing"><div class="grid-bg"></div><div class="glow"></div><div class="inner">'+
-    '<div class="lang-bar">'+['pt','en','es','fr'].map(function(l){ return '<button class="lang-btn'+(state.lang===l?' active':'')+'" onclick="setState({lang:\''+l+'\'})">'+l.toUpperCase()+'</button>'; }).join('')+'</div>'+
-    '<div class="emblem"><div class="emblem-in"><span class="sigla">PAT</span></div></div>'+
+    '<div class="lang-bar">'+[{c:'pt',f:'🇧🇷'},{c:'en',f:'🇺🇸'},{c:'es',f:'🇪🇸'},{c:'fr',f:'🇫🇷'}].map(function(l){ return '<button class="lang-btn'+(state.lang===l.c?' active':'')+'" onclick="setState({lang:\''+l.c+'\'})">'+l.f+' '+l.c.toUpperCase()+'</button>'; }).join('')+'</div>'+
+    '<div style="width:96px;height:96px;margin-bottom:28px;position:relative">'+
+    '<div style="width:96px;height:96px;border-radius:50%;overflow:hidden;border:2px solid rgba(201,168,76,.3);box-shadow:0 0 30px rgba(201,168,76,.15)">'+
+    '<img src="/logo_escudo_aliance.jpg" alt="PostAllTon" style="width:100%;height:100%;object-fit:cover"/>'+
+    '</div>'+
+    '<div style="position:absolute;inset:-2px;border-radius:50%;border:1px solid transparent;border-top-color:var(--gold);animation:spin 3s linear infinite;pointer-events:none"></div>'+
+    '</div>'+
     '<h1 class="wordmark">PostAll<span>Ton</span></h1>'+
     '<p class="slogan"><strong>'+s[0]+'.</strong>'+s.slice(1).join('.')+'</p>'+
     '<div class="orn"><div class="orn-l"></div><div class="orn-d"></div><div class="orn-r"></div></div>'+
@@ -532,7 +605,11 @@ function pageLanding(){
     '<button class="btn-outline" onclick="setState({screen:\'plans\'})">'+tr('plans')+'</button>'+
     '<p style="font-size:10px;color:var(--muted);letter-spacing:1px;opacity:.5;margin-top:4px">PostAllTon © 2026</p>'+
     '</div></div>'+
-    '<div class="lfoot"><span>PostAllTon</span><span>'+tr('slogan')+'</span><span>© 2026</span></div></div>';
+    '<div class="lfoot">'+
+    '<span style="cursor:pointer" onclick="setState({screen:'terms'})">'+termsLabel[state.lang]+'</span>'+
+    '<span style="cursor:pointer" onclick="setState({screen:'privacy'})">'+privacyLabel[state.lang]+'</span>'+
+    '<span><a href="mailto:suporte@postallton.com" style="color:inherit;text-decoration:none">suporte@postallton.com</a></span>'+
+    '</div></div>';
 }
 
 // ══ PLANS ══════════════════════════════════════════════════════════
@@ -544,17 +621,22 @@ function pagePlans(){
     '<h2 class="plans-title" style="margin-top:20px">'+(planTitle[state.lang]||planTitle.pt)+'</h2>'+
     '<p class="plans-sub">PostAllTon</p>'+
     '<div class="billing">'+
-    '<button class="bill-btn'+(b==='monthly'?' active':'')+'" onclick="state.billing=\'monthly\';render()">'+tr('monthly')+'</button>'+
-    '<button class="bill-btn'+(b==='lifetime'?' active':'')+'" onclick="state.billing=\'lifetime\';render()">'+tr('lifetime')+'</button>'+
+    '<button class="bill-btn'+(b==='monthly'?' active':'')+'" onclick="setBilling(\'monthly\')">'+tr('monthly')+'</button>'+
+    '<button class="bill-btn'+(b==='lifetime'?' active':'')+'" onclick="setBilling(\'lifetime\')">'+tr('lifetime')+'</button>'+
     '</div><div class="plans-grid">'+
     PLANS.map(function(p){
+      var lang = state.lang;
+      var desc = typeof p.desc === 'object' ? (p.desc[lang]||p.desc.pt) : p.desc;
+      var price_m = typeof p.m === 'object' ? (p.m[lang]||p.m.pt) : p.m;
+      var price_l = typeof p.l === 'object' ? (p.l[lang]||p.l.pt) : p.l;
+      var feats = typeof p.feats === 'object' && !Array.isArray(p.feats) ? (p.feats[lang]||p.feats.pt) : p.feats;
       return '<div class="plan-card'+(p.hi?' hi':'')+'">'+
         (p.hi ? '<div class="plan-badge">'+(b==='monthly'?tr('popular'):tr('bestval'))+'</div>' : '')+
-        '<div class="plan-name">'+p.name+'</div><div class="plan-desc">'+p.desc+'</div>'+
-        '<div class="plan-price">'+(b==='monthly'?p.m:p.l)+'</div>'+
+        '<div class="plan-name">'+p.name+'</div><div class="plan-desc">'+desc+'</div>'+
+        '<div class="plan-price">'+(b==='monthly'?price_m:price_l)+'</div>'+
         '<div class="plan-price-sub">'+(b==='monthly'?tr('mo'):tr('once'))+'</div>'+
         '<div class="plan-div"></div>'+
-        '<ul class="plan-feats">'+p.feats.map(function(f){ return '<li class="plan-feat"><div class="feat-chk">✦</div>'+f+'</li>'; }).join('')+'</ul>'+
+        '<ul class="plan-feats">'+feats.map(function(f){ return '<li class="plan-feat"><div class="feat-chk">✦</div>'+f+'</li>'; }).join('')+'</ul>'+
         '<div class="pay-btns">'+
         '<button class="plan-cta cta-stripe" onclick="checkout(\'stripe\',\''+p.id+'\',\''+b+'\')">💳 '+tr('payStripe')+'</button>'+
         '<button class="plan-cta cta-mp" onclick="checkout(\'mp\',\''+p.id+'\',\''+b+'\')">🟢 '+tr('payMP')+'</button>'+
@@ -610,7 +692,7 @@ function pageApp(){
     }).join('')+'</ul>'+
     '<div class="sb-foot">'+
     (user ? '<div style="font-size:10px;color:var(--muted2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.3px;margin-bottom:6px">'+(user.name||user.email)+'</div>' : '')+
-    '<div class="lang-foot">'+['pt','en','es','fr'].map(function(l){ return '<button class="lf-btn'+(lang===l?' active':'')+'" onclick="setState({lang:\''+l+'\'})">'+l.toUpperCase()+'</button>'; }).join('')+'</div>'+
+    '<div class="lang-foot">'+[{c:'pt',f:'🇧🇷'},{c:'en',f:'🇺🇸'},{c:'es',f:'🇪🇸'},{c:'fr',f:'🇫🇷'}].map(function(l){ return '<button class="lf-btn'+(lang===l.c?' active':'')+'" onclick="setLang(\''+l.c+'\')" title="'+l.c.toUpperCase()+'">'+l.f+'</button>'; }).join('')+'</div>'+
     '<button onclick="doLogout()" style="margin-top:8px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:6px;cursor:pointer;width:100%;font-family:var(--fu);transition:all .2s" onmouseover="this.style.borderColor=\'var(--red)\';this.style.color=\'var(--red)\'" onmouseout="this.style.borderColor=\'var(--border)\';this.style.color=\'var(--muted)\'">'+tr('logout')+'</button>'+
     '</div></aside>'+
     '<main class="main">'+
@@ -619,6 +701,14 @@ function pageApp(){
     '</main></div>'+
     (state.modal ? modalView() : '')+
     // BOTTOM NAV MOBILE
+    // Footer com termos no app (desktop)
+    '<div style="display:none" class="app-footer-desktop">'+
+    '<a onclick="setState({prevScreen:'app',screen:'terms'})" style="cursor:pointer;color:var(--muted);font-size:10px;text-decoration:none;letter-spacing:.5px">'+termsLabel[lang]+'</a>'+
+    '<span style="color:var(--border2);margin:0 8px">·</span>'+
+    '<a onclick="setState({prevScreen:'app',screen:'privacy'})" style="cursor:pointer;color:var(--muted);font-size:10px;text-decoration:none;letter-spacing:.5px">'+privacyLabel[lang]+'</a>'+
+    '<span style="color:var(--border2);margin:0 8px">·</span>'+
+    '<a href="mailto:suporte@postallton.com" style="color:var(--muted);font-size:10px;text-decoration:none;letter-spacing:.5px">suporte@postallton.com</a>'+
+    '</div>'+
     '<nav class="bottom-nav">'+
     '<button class="bottom-nav-btn'+(tab==='compose'?' active':'')+'" onclick="setTab(\'compose\')">'+
     '<span>✦</span><span>'+(navLabels.compose[lang]||'Publicar')+'</span></button>'+
@@ -835,9 +925,22 @@ function modalView(){
     '<div class="modal">'+
     (m==='confirm' ?
       '<div class="modal-title">'+tr('confirmTitle')+'</div>'+
-      '<div class="modal-sub">'+tr('confirmSub')+' <strong style="color:var(--gold)">'+selNets.length+'</strong> '+tr('confirmSub2')+'</div>'+
+      // Preview da legenda
+      (state.caption ? '<div style="background:var(--bg);border:1px solid var(--border);padding:12px;margin-bottom:12px;font-size:13px;color:var(--text);line-height:1.6;max-height:80px;overflow:hidden">'+state.caption.slice(0,120)+(state.caption.length>120?'…':'')+'</div>' : '')+
+      // Preview de mídia
+      (state.mediaUrls ? (function(){
+        var urls = state.mediaUrls.split(',').map(function(u){return u.trim();}).filter(Boolean);
+        var firstUrl = urls[0]||'';
+        var isImg = /\.(jpg|jpeg|png|gif|webp)/i.test(firstUrl) || firstUrl.indexOf('picsum')>-1 || firstUrl.indexOf('drive.google')>-1;
+        return isImg ?
+          '<div style="margin-bottom:12px;border:1px solid var(--border);overflow:hidden;max-height:140px"><img src="'+firstUrl+'" style="width:100%;object-fit:cover;max-height:140px" onerror="this.style.display='none'"/></div>' :
+          '<div style="background:var(--bg);border:1px solid var(--border);padding:8px 12px;margin-bottom:12px;font-size:11px;color:var(--muted2)">📎 '+urls.length+' arquivo(s) de mídia</div>';
+      })() : '')+
+      // Data de agendamento
+      (state.schedDate ? '<div style="background:rgba(245,158,11,.08);border:1px solid #f59e0b33;padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--amber);display:flex;align-items:center;gap:8px"><span style="font-size:16px">📅</span><div><div style="font-weight:600">'+tr('scheduledFor')+'</div><div>'+new Date(state.schedDate).toLocaleString(state.lang==='pt'?'pt-BR':state.lang==='es'?'es-ES':state.lang==='fr'?'fr-FR':'en-US',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+'</div></div></div>' : '')+
+      '<div class="modal-sub" style="margin-bottom:10px">'+tr('confirmSub')+' <strong style="color:var(--gold)">'+selNets.length+'</strong> '+tr('confirmSub2')+'</div>'+
       '<div class="modal-plats">'+selNets.map(function(n){ return '<span class="plat-pill" style="border-color:'+n.color+'44;color:'+n.color+'">'+icon(n.id,n.color,12)+'<span>'+n.name+'</span></span>'; }).join('')+'</div>'+
-      '<div class="modal-actions"><button class="btn-ghost" onclick="setState({modal:null})">'+tr('cancelBtn')+'</button><button class="btn-primary" onclick="publishPost()">'+tr('publishBtn')+'</button></div>' :
+      '<div class="modal-actions"><button class="btn-ghost" onclick="setState({modal:null})">'+tr('cancelBtn')+'</button><button class="btn-primary" onclick="publishPost()">'+(state.schedDate?tr('scheduleIn'):tr('publishBtn'))+'</button></div>' :
     m==='publishing' ?
       '<div class="pub-state"><div class="spinner"></div><div style="font-family:var(--fd);font-size:22px;margin-bottom:5px">'+tr('publishing')+'</div><div style="font-size:11px;color:var(--muted)">'+tr('publishingSub')+' '+selNets.length+' redes</div></div>' :
     m==='done' ?
@@ -884,6 +987,9 @@ function toggleNet(id){
     sl.innerHTML = selNets.length===0 ? '<p style="font-size:11px;color:var(--muted)">'+tr('none')+'</p>' :
       selNets.map(function(n){ return '<div class="sel-item">'+icon(n.id,n.color,14)+'<span>'+n.name+'</span>'+(state.connections[n.id]?'<span style="color:var(--green);font-size:8px;margin-left:auto">●</span>':'<span style="color:var(--muted);font-size:8px;margin-left:auto">○</span>')+'</div>'; }).join('');
   }
+  // Salvar preferências automaticamente após mudança
+  clearTimeout(window._savePrefTimeout);
+  window._savePrefTimeout = setTimeout(function(){ savePreferences(); }, 800);
 }
 function onCaption(v){
   state.caption = v;
@@ -937,6 +1043,12 @@ function openModal(){ setState({modal:'confirm'}); }
     window.history.replaceState({},'','/');
   }
 })();
+
+// ══ BILLING TOGGLE ════════════════════════════════════════════════
+window.setBilling = function(b){
+  state.billing = b;
+  render();
+};
 
 // ══ INIT ═══════════════════════════════════════════════════════════
 window._canPublish = false;
