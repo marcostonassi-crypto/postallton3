@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>PostAllTon — Um clique. Todas as redes.</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImdvbGQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmMGQwNjAiLz48c3RvcCBvZmZzZXQ9IjUwJSIgc3R5bGU9InN0b3AtY29sb3I6I2M5YTg0YyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzhjNjkxNCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9Ik01MCA1IEw5MCAyMCBMOTAgNTUgUTkwIDgwIDUwIDk1IFEyMCA4MCAxMCA1NSBMMTAgMjAgWiIgZmlsbD0idXJsKCNnb2xkKSIvPjxjaXJjbGUgY3g9IjQyIiBjeT0iNTIiIHI9IjE0IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iNSIvPjxjaXJjbGUgY3g9IjU4IiBjeT0iNTIiIHI9IjE0IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmMGQwNjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNjOWE4NGMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOGI2OTE0Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cGF0aCBkPSJNNTAgNSBMOTAgMjAgTDkwIDU1IFE5MCA4MCA1MCA5NSBRMTAgODAgMTAgNTUgTDEwIDIwIFoiIGZpbGw9InVybCgjZ29sZCkiLz4KICA8cGF0aCBkPSJNNTAgMTIgTDgzIDI1IEw4MyA1NSBRODMgNzYgNTAgODggUTE3IDc2IDE3IDU1IEwxNyAyNSBaIiBmaWxsPSIjMWExYTFhIi8+CiAgPHBhdGggZD0iTTUwIDE4IEw3NyAyOSBMNzcgNTUgUTc3IDczIDUwIDgzIFEyMyA3MyAyMyA1NSBMMjMgMjkgWiIgZmlsbD0iIzBmMGYxMiIvPgogIDxjaXJjbGUgY3g9IjQyIiBjeT0iNTIiIHI9IjE0IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iNSIvPgogIDxjaXJjbGUgY3g9IjU4IiBjeT0iNTIiIHI9IjE0IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZ29sZCkiIHN0cm9rZS13aWR0aD0iNSIvPgo8L3N2Zz4K"/>
 <meta name="description" content="PostAllTon — Publique em todas as redes sociais com um clique."/>
 <meta name="theme-color" content="#c9a84c"/>
 <style>
@@ -23,19 +23,899 @@ html,body{min-height:100vh;background:var(--bg);color:var(--text);font-family:va
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes pillIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+
+/* LANDING */
+.landing{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:40px 20px}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%)}
+.glow{position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(ellipse,rgba(201,168,76,.07) 0%,transparent 68%);pointer-events:none}
+.inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;animation:fadeUp .8s ease both}
+.emblem{width:84px;height:84px;border:1px solid rgba(201,168,76,.25);display:flex;align-items:center;justify-content:center;margin-bottom:28px;position:relative}
+.emblem::before{content:'';position:absolute;inset:-1px;border:1px solid transparent;border-top-color:var(--gold);animation:spin 3s linear infinite}
+.emblem-in{width:66px;height:66px;border:1px solid rgba(201,168,76,.12);display:flex;align-items:center;justify-content:center}
+.sigla{font-family:var(--fd);font-size:20px;font-weight:600;color:var(--gold);letter-spacing:3px}
+.wordmark{font-family:var(--fd);font-size:clamp(52px,9vw,88px);font-weight:500;letter-spacing:-2px;line-height:.95;color:var(--text)}
+.wordmark span{color:var(--gold);font-style:italic}
+.slogan{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--muted2);margin-top:16px}
+.slogan strong{color:var(--gold);font-weight:700}
+.orn{display:flex;align-items:center;gap:16px;width:300px;margin:36px 0}
+.orn-l,.orn-r{flex:1;height:1px}
+.orn-l{background:linear-gradient(90deg,transparent,var(--gold-dim))}
+.orn-r{background:linear-gradient(90deg,var(--gold-dim),transparent)}
+.orn-d{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 10px var(--gold)}
+.nets{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:540px;margin-bottom:16px}
+.net-pill{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:6px 12px;border:1px solid var(--border2);color:var(--muted);font-weight:700;transition:all .2s;animation:pillIn .5s ease both}
+.lang-bar{display:flex;gap:8px;margin-bottom:36px}
+.lang-btn{padding:6px 14px;background:transparent;border:1px solid var(--border2);color:var(--muted);font-size:10px;letter-spacing:2px;font-weight:700;cursor:pointer;transition:all .2s;font-family:var(--fu)}
+.lang-btn:hover,.lang-btn.active{border-color:var(--gold-dim);color:var(--gold);background:rgba(201,168,76,.05)}
+.ctas{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:32px}
+.btn-cta{display:inline-flex;align-items:center;gap:10px;padding:18px 52px;background:var(--gold);color:#07070a;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;border:none;cursor:pointer;transition:all .25s;font-family:var(--fu)}
+.btn-cta:hover{background:var(--amber);transform:translateY(-2px);box-shadow:0 14px 40px rgba(201,168,76,.3)}
+.btn-outline{padding:10px 28px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:var(--fu)}
+.btn-outline:hover{border-color:var(--gold-dim);color:var(--gold)}
+.lfoot{position:absolute;bottom:24px;left:0;right:0;display:flex;justify-content:center;gap:32px;z-index:2}
+.lfoot span{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);opacity:.4}
+
+/* PLANS */
+.plans-page{min-height:100vh;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:70px 20px 60px;position:relative;overflow:hidden;animation:fadeUp .5s ease both}
+.back-btn{position:absolute;top:24px;left:28px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 16px;cursor:pointer;font-family:var(--fu);transition:all .2s}
+.back-btn:hover{border-color:var(--gold-dim);color:var(--gold)}
+.plans-title{font-family:var(--fd);font-size:clamp(36px,5vw,52px);font-weight:500;color:var(--text);letter-spacing:-1px;margin-bottom:6px;text-align:center}
+.plans-title em{color:var(--gold);font-style:italic}
+.plans-sub{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:32px}
+.billing{display:flex;border:1px solid var(--border2);margin-bottom:40px}
+.bill-btn{padding:10px 28px;background:transparent;border:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);cursor:pointer;font-family:var(--fu);transition:all .2s}
+.bill-btn.active{background:var(--gold);color:#07070a}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);max-width:860px;width:100%;border:1px solid var(--border)}
+@media(max-width:700px){.plans-grid{grid-template-columns:1fr}}
+.plan-card{background:var(--surface);padding:28px 22px;display:flex;flex-direction:column;position:relative}
+.plan-card.hi{background:#0c0c0e}
+.plan-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold);color:#07070a;font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 14px;white-space:nowrap}
+.plan-name{font-family:var(--fd);font-size:24px;font-weight:500;color:var(--text);margin-bottom:2px}
+.plan-card.hi .plan-name{color:var(--gold)}
+.plan-desc{font-size:11px;color:var(--muted);margin-bottom:20px}
+.plan-price{font-family:var(--fd);font-size:40px;font-weight:400;color:var(--text);line-height:1;margin-bottom:4px}
+.plan-price-sub{font-size:11px;color:var(--muted);margin-bottom:18px}
+.plan-div{height:1px;background:var(--border);margin-bottom:14px}
+.plan-feats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:20px;flex:1}
+.plan-feat{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted2)}
+.feat-chk{width:13px;height:13px;flex-shrink:0;border:1px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:7px;color:var(--gold)}
+.pay-btns{display:flex;flex-direction:column;gap:6px}
+.plan-cta{padding:11px;border:none;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;width:100%;font-family:var(--fu);transition:all .2s}
+.cta-stripe{background:var(--gold);color:#07070a}
+.cta-stripe:hover{background:var(--amber)}
+.cta-mp{background:transparent;border:1px solid #00b1ea;color:#00b1ea}
+.cta-mp:hover{background:rgba(0,177,234,.1)}
+
+/* AUTH */
+.auth-page{min-height:100vh;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:20px;animation:fadeUp .4s ease both}
+.auth-box{width:100%;max-width:400px}
+.auth-card{background:var(--surface);border:1px solid var(--border);padding:32px}
+.auth-logo{text-align:center;margin-bottom:28px}
+.auth-wordmark{font-family:var(--fd);font-size:30px;font-weight:500;color:var(--text)}
+.auth-wordmark span{color:var(--gold);font-style:italic}
+.auth-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.auth-title{font-family:var(--fd);font-size:22px;font-weight:500;color:var(--text);margin-bottom:20px}
+.auth-error{background:rgba(248,113,113,.08);border-left:2px solid var(--red);padding:10px 14px;margin-bottom:16px;font-size:12px;color:#fca5a5}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:16px 0;font-size:10px;letter-spacing:1px;color:var(--muted)}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.auth-toggle{text-align:center;margin-top:20px;font-size:11px;color:var(--gold);cursor:pointer}
+.auth-back{text-align:center;margin-top:14px;font-size:10px;color:var(--muted);cursor:pointer}
+
+/* APP SHELL */
+.shell{display:flex;min-height:100vh}
+.sidebar{width:220px;min-height:100vh;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;z-index:50;padding:28px 0}
+.sb-logo{padding:0 24px 24px;border-bottom:1px solid var(--border)}
+.sb-mark{font-family:var(--fd);font-size:22px;font-weight:500;color:var(--text);display:flex;align-items:center;gap:9px;line-height:1}
+.sb-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;box-shadow:0 0 10px var(--gold);flex-shrink:0}
+.sb-sub{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:5px;padding-left:16px}
+.nav-list{padding:18px 0;list-style:none;flex:1}
+.nav-item{position:relative}
+.nav-btn{width:100%;display:flex;align-items:center;gap:11px;padding:10px 24px;background:none;border:none;color:var(--muted);font-size:11px;font-weight:500;letter-spacing:.5px;cursor:pointer;transition:color .2s;text-align:left;font-family:var(--fu)}
+.nav-btn:hover{color:var(--text)}
+.nav-btn.active{color:var(--gold)}
+.nav-bar{position:absolute;right:0;top:50%;transform:translateY(-50%);width:2px;height:16px;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.sb-foot{padding:16px 24px 0;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px}
+.lang-foot{display:flex;gap:4px}
+.lf-btn{padding:4px 8px;background:transparent;border:1px solid transparent;color:var(--muted);font-size:9px;letter-spacing:1.5px;font-weight:700;cursor:pointer;transition:all .15s;font-family:var(--fu)}
+.lf-btn:hover,.lf-btn.active{border-color:var(--gold-dim);color:var(--gold)}
+.main{margin-left:220px;flex:1;min-height:100vh;display:flex;flex-direction:column}
+@media(max-width:800px){
+  .sidebar{display:none}
+  .main{margin-left:0}
+  .content{padding:16px}
+  .topbar{padding:16px 16px 12px}
+  .cg{grid-template-columns:1fr}
+  .cg-side{display:none}
+  .plans-grid{grid-template-columns:1fr}
+  .cred-fields{grid-template-columns:1fr}
+}
+/* BOTTOM NAV MOBILE */
+.bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--surface);border-top:1px solid var(--border);padding:8px 0 calc(8px + env(safe-area-inset-bottom));justify-content:space-around;align-items:center}
+@media(max-width:800px){.bottom-nav{display:flex}}
+.bottom-nav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 16px;background:transparent;border:none;cursor:pointer;font-family:var(--fu);transition:all .2s;min-width:60px}
+.bottom-nav-btn span:first-child{font-size:18px;line-height:1}
+.bottom-nav-btn span:last-child{font-size:9px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);font-weight:600}
+.bottom-nav-btn.active span:last-child{color:var(--gold)}
+.bottom-nav-btn.active span:first-child{filter:drop-shadow(0 0 4px var(--gold))}
+/* Espaço para bottom nav no mobile */
+@media(max-width:800px){.content{padding-bottom:80px}}
+.topbar{padding:24px 40px 16px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid var(--border)}
+.page-title{font-family:var(--fd);font-size:28px;font-weight:500;letter-spacing:-.5px;line-height:1}
+.page-title em{font-style:italic;color:var(--gold)}
+.page-date{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.home-btn{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;cursor:pointer;font-family:var(--fu)}
+.content{padding:32px 40px;flex:1;animation:fadeUp .3s ease both}
+
+/* COMPONENTES */
+.sec-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px;font-weight:600}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+.panel{background:var(--surface);border:1px solid var(--border);padding:22px 26px;margin-bottom:16px}
+.field-lbl{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted2);display:block;margin-bottom:8px;font-weight:600}
+.input-f{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:14px;padding:11px 14px;outline:none;transition:border-color .2s;font-family:var(--fu);color-scheme:dark;line-height:1.5}
+.input-f:focus{border-color:var(--gold-dim)}
+.input-f::placeholder{color:var(--muted)}
+.textarea-f{width:100%;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:14px;line-height:1.7;padding:12px 14px;resize:vertical;min-height:120px;outline:none;transition:border-color .2s;font-family:var(--fu)}
+.textarea-f:focus{border-color:var(--gold-dim)}
+.textarea-f::placeholder{color:var(--muted)}
+.char-c{font-size:11px;color:var(--muted);text-align:right;margin-top:6px}
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px;background:var(--gold);color:#07070a;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;font-family:var(--fu)}
+.btn-primary:hover{background:var(--amber)}
+.btn-primary:disabled{background:var(--border2);color:var(--muted);cursor:not-allowed}
+.btn-ghost{padding:10px 18px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:var(--fu);font-weight:600}
+.btn-ghost:hover{border-color:var(--gold-dim);color:var(--gold)}
+.btn-sm{padding:5px 12px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:11px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:var(--fu);font-weight:600}
+.btn-sm:hover,.btn-sm.active{border-color:var(--gold-dim);color:var(--gold);background:rgba(201,168,76,.05)}
+.btn-danger{padding:6px 12px;background:transparent;border:1px solid var(--red);color:var(--red);font-size:10px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:var(--fu);font-weight:600}
+.notice{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border-left:2px solid var(--gold-dim);background:rgba(201,168,76,.04);margin-bottom:16px}
+.notice p{font-size:13px;line-height:1.6}
+.notice-warn{border-color:#7a4a00;background:rgba(245,158,11,.04)}
+.notice-ok{border-color:var(--green);background:rgba(74,222,128,.05)}
+.notice-err{border-color:var(--red);background:rgba(248,113,113,.05)}
+.net-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:6px}
+.net-card{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 4px;background:var(--bg);border:1px solid var(--border);cursor:pointer;transition:all .18s;position:relative}
+.net-card.sel{border-color:var(--gold-dim);background:rgba(201,168,76,.04)}
+.net-name-s{font-size:8px;color:var(--muted);text-align:center;line-height:1.2;font-weight:500}
+.net-chk{position:absolute;top:3px;right:4px;font-size:7px;color:var(--gold);opacity:0;transition:opacity .15s}
+.net-card.sel .net-chk{opacity:1}
+.cg{display:grid;grid-template-columns:1fr 280px;gap:16px;align-items:start}
+@media(max-width:900px){.cg{grid-template-columns:1fr}}
+.cg-side{position:sticky;top:20px}
+.sel-count{font-family:var(--fd);font-size:40px;font-weight:400;color:var(--gold);line-height:1}
+.sel-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.sel-list{display:flex;flex-direction:column;gap:5px;max-height:170px;overflow-y:auto}
+.sel-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted2)}
+.nets-settings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
+.net-setting-card{background:var(--bg);border:1px solid var(--border);padding:14px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s}
+.net-setting-card.connected{border-color:var(--gold-dim);background:rgba(201,168,76,.03)}
+.net-setting-header{display:flex;align-items:center;gap:10px}
+.net-setting-name{font-size:12px;font-weight:600;color:var(--text)}
+.net-setting-status{font-size:9px;letter-spacing:.5px;text-transform:uppercase}
+.status-connected{color:var(--green)}
+.status-disconnected{color:var(--muted)}
+.net-setting-actions{display:flex;gap:5px}
+.cred-form{background:var(--surface);border:1px solid var(--gold-dim);padding:24px;margin-bottom:16px;animation:fadeUp .2s ease both}
+.cred-form-title{font-family:var(--fd);font-size:20px;font-weight:500;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.cred-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+@media(max-width:600px){.cred-fields{grid-template-columns:1fr}}
+.hist-item{padding:14px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
+.hist-item:last-child{border-bottom:none}
+.hist-cap{font-size:13px;color:var(--text);line-height:1.5;margin-bottom:6px}
+.hist-tags{display:flex;flex-wrap:wrap;gap:4px}
+.hist-tag{display:inline-flex;align-items:center;gap:4px;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:3px 7px;border:1px solid var(--border2);color:var(--muted2)}
+.hist-meta{text-align:right}
+.hist-date{font-size:10px;color:var(--muted)}
+.badge{display:inline-block;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;margin-bottom:4px}
+.badge-pub{background:rgba(74,222,128,.08);color:#4ade80;border:1px solid #4ade8030}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.88);display:flex;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(6px)}
+.modal{background:var(--surface);border:1px solid var(--border2);width:90%;max-width:420px;padding:28px;box-shadow:0 40px 100px rgba(0,0,0,.8);animation:fadeUp .2s ease}
+.modal-title{font-family:var(--fd);font-size:24px;font-weight:500;margin-bottom:6px}
+.modal-sub{font-size:12px;color:var(--muted2);margin-bottom:18px;line-height:1.5}
+.modal-plats{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px;padding:12px;background:var(--bg);border:1px solid var(--border)}
+.plat-pill{display:inline-flex;align-items:center;gap:5px;font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:4px 9px;border:1px solid;font-weight:700}
+.modal-actions{display:flex;gap:10px;margin-top:18px}
+.modal-actions .btn-ghost{flex:1}
+.modal-actions .btn-primary{flex:2}
+.result-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12px}
+.result-row:last-child{border-bottom:none}
+.result-name{flex:1;color:var(--muted2)}
+.result-ok{color:var(--green);font-size:10px}
+.result-err{color:var(--red);font-size:10px}
+.pub-state{text-align:center;padding:24px 0}
+.spinner{width:32px;height:32px;border:2px solid var(--border2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px}
+.audience-btn{padding:7px 13px;background:transparent;border:1px solid var(--border);color:var(--muted2);font-size:10px;cursor:pointer;font-family:var(--fu);transition:all .2s;display:inline-flex;align-items:center;gap:5px}
+.audience-btn:hover{border-color:var(--border2);color:var(--text)}
+.audience-btn.active{background:rgba(201,168,76,.12);border-color:var(--gold-dim);color:var(--gold)}
+.media-tab{padding:7px 13px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:10px;cursor:pointer;font-family:var(--fu);transition:all .2s}
+.media-tab:hover{color:var(--text)}
+.media-tab.active{border-color:var(--gold-dim);color:var(--gold);background:rgba(201,168,76,.08)}
+.drop-zone{border:2px dashed var(--border2);padding:24px;text-align:center;cursor:pointer;transition:all .2s;color:var(--muted)}
+.drop-zone:hover{border-color:var(--gold-dim);color:var(--gold)}
 </style>
 </head>
 <body>
 <div id="app"></div>
-
 <script>
 'use strict';
 
-// [Todo o código original mantido até o modalView]
-const SVG = { /* ... todos os SVGs ... */ }; // (mantido completo)
+// ══ SVG ICONS ══════════════════════════════════════════════════════
+const SVG={instagram:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>',facebook:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>',whatsapp:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',tiktok:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>',youtube:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>',twitter:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',linkedin:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>',telegram:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.820 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>',pinterest:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>',reddit:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>',bluesky:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.022-.276.04-.415.056-3.912.58-7.387 2.005-2.83 7.078 5.013 5.19 6.87-1.113 7.823-4.308.953 3.195 2.05 9.271 7.733 4.308 4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364.246-.828.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.204-.659-.299-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>',threads:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.952c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.005.213.017.316.026 1.553.143 2.996.732 4.054 1.668 1.209 1.074 1.85 2.542 1.79 4.134-.08 2.021-.87 3.942-2.261 5.404C19.717 23.738 16.48 24 12.186 24zm-2.75-8.696c.883-.048 1.55-.36 1.99-.932.516-.663.762-1.641.728-2.91a11.086 11.086 0 0 0-2.3-.073c-1.739.1-2.708.771-2.652 1.82.037.68.448 1.81 2.234 2.095z"/></svg>',snapchat:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.03.51.075.045.203.09.401.09.3-.016.659-.12 1.033-.301.165-.088.344-.104.512-.104.45 0 .916.195 1.094.465.14.209.14.43.02.67-.173.36-.426.612-1.025.695-.14.03-.282.074-.427.12-.65.244-1.234.731-1.462 1.25-.045.115-.015.195.015.24l.03.045c.9 1.345 2.924 4.47 6.198 5.16.065.014.104.044.09.104-.375 1.061-2.624 1.844-4.783 2.258-.075.017-.104.06-.12.09-.21.24-.315.721-.48 1.365-.03.12-.12.194-.254.194h-.014c-.09 0-.27-.03-.54-.092-.33-.09-.747-.192-1.23-.192-.51 0-.899.12-1.26.239-.869.308-1.664.645-3.07.645-1.391 0-2.326-.33-3.227-.645-.352-.12-.749-.239-1.26-.239-.483 0-.887.092-1.23.193-.27.061-.449.091-.54.091h-.014c-.133 0-.223-.074-.254-.194-.164-.644-.269-1.125-.479-1.365-.016-.03-.045-.073-.12-.09-2.159-.414-4.408-1.197-4.783-2.258-.014-.06.025-.09.09-.104 3.273-.69 5.298-3.815 6.197-5.16l.03-.045c.03-.045.06-.125.015-.24-.228-.519-.812-1.006-1.462-1.25-.144-.046-.286-.09-.427-.12-.6-.083-.852-.334-1.025-.695-.12-.24-.12-.461.02-.67.18-.27.645-.465 1.094-.465.168 0 .347.016.512.104.374.181.732.285 1.033.301.197 0 .326-.045.401-.09l-.031-.57c-.103-1.628-.229-3.654.3-4.847C7.86 1.07 11.216.793 12.206.793z"/></svg>'};
+
+// ══ CONFIG ═════════════════════════════════════════════════════════
 const API = 'https://postallton-saas.onrender.com';
 
-// ... (NETS, PLANS, AUDIENCE, NET_FIELDS, NET_GUIDE, T, etc. mantidos exatamente como estavam) ...
+const NETS = [
+  {id:'instagram',name:'Instagram',color:'#E1306C'},
+  {id:'facebook', name:'Facebook', color:'#1877F2'},
+  {id:'whatsapp', name:'WhatsApp', color:'#25D366'},
+  {id:'tiktok',   name:'TikTok',   color:'#ff2d55'},
+  {id:'youtube',  name:'YouTube',  color:'#FF0000'},
+  {id:'twitter',  name:'X/Twitter',color:'#e7e9ea'},
+  {id:'linkedin', name:'LinkedIn', color:'#0A66C2'},
+  {id:'telegram', name:'Telegram', color:'#229ED9'},
+  {id:'pinterest',name:'Pinterest',color:'#E60023'},
+  {id:'reddit',   name:'Reddit',   color:'#FF4500'},
+  {id:'bluesky',  name:'Bluesky',  color:'#0085ff'},
+  {id:'threads',  name:'Threads',  color:'#cccccc'},
+  {id:'snapchat', name:'Snapchat', color:'#FFFC00'},
+];
+
+const PLANS = [
+  {id:'basic',   name:'Básico',  desc:{pt:'Para criadores solo',en:'For solo creators',es:'Para creadores solo',fr:'Pour créateurs solo'},
+   m:{pt:'R$19',en:'$9',es:'$9',fr:'9€'},  l:{pt:'R$149',en:'$69',es:'$69',fr:'69€'},
+   feats:{pt:['3 redes sociais','30 posts/mês','Agendamento básico','Suporte por e-mail'],
+          en:['3 social networks','30 posts/month','Basic scheduling','Email support'],
+          es:['3 redes sociales','30 posts/mes','Programación básica','Soporte por correo'],
+          fr:['3 réseaux sociaux','30 posts/mois','Planification basique','Support par e-mail']}},
+  {id:'pro',     name:'Pro',     desc:{pt:'Para profissionais',en:'For professionals',es:'Para profesionales',fr:'Pour professionnels'},
+   m:{pt:'R$49',en:'$19',es:'$19',fr:'19€'}, l:{pt:'R$349',en:'$149',es:'$149',fr:'149€'},
+   feats:{pt:['12 redes sociais','Posts ilimitados','Agendamento avançado','Mídias e links','Histórico completo','Suporte prioritário'],
+          en:['12 social networks','Unlimited posts','Advanced scheduling','Media & links','Full history','Priority support'],
+          es:['12 redes sociales','Posts ilimitados','Programación avanzada','Medios y enlaces','Historial completo','Soporte prioritario'],
+          fr:['12 réseaux sociaux','Posts illimités','Planification avancée','Médias et liens','Historique complet','Support prioritaire']},hi:true},
+  {id:'business',name:'Business',desc:{pt:'Para agências',en:'For agencies',es:'Para agencias',fr:'Pour agences'},
+   m:{pt:'R$99',en:'$39',es:'$39',fr:'39€'},  l:{pt:'R$599',en:'$249',es:'$249',fr:'249€'},
+   feats:{pt:['Todas as redes','Posts ilimitados','Multi-clientes','API personalizada','Relatórios de alcance','Suporte dedicado'],
+          en:['All networks','Unlimited posts','Multi-clients','Custom API','Reach reports','Dedicated support'],
+          es:['Todas las redes','Posts ilimitados','Multi-clientes','API personalizada','Informes de alcance','Soporte dedicado'],
+          fr:['Tous les réseaux','Posts illimités','Multi-clients','API personnalisée','Rapports de portée','Support dédié']}},
+];
+
+const AUDIENCE = [
+  {id:'teen',    icon:'🎮',nets:['tiktok','instagram','snapchat','youtube','threads'],
+   label:{pt:'Jovem (13-24)',   en:'Youth (13-24)',       es:'Joven (13-24)',     fr:'Jeune (13-24)'},
+   desc: {pt:'TikTok, Instagram, Snapchat', en:'TikTok, Instagram, Snapchat', es:'TikTok, Instagram, Snapchat', fr:'TikTok, Instagram, Snapchat'}},
+  {id:'adult',   icon:'💼',nets:['linkedin','twitter','facebook','instagram','youtube'],
+   label:{pt:'Adulto (25-40)',  en:'Adult (25-40)',        es:'Adulto (25-40)',    fr:'Adulte (25-40)'},
+   desc: {pt:'LinkedIn, Twitter, Facebook', en:'LinkedIn, Twitter, Facebook', es:'LinkedIn, Twitter, Facebook', fr:'LinkedIn, Twitter, Facebook'}},
+  {id:'senior',  icon:'🏠',nets:['facebook','whatsapp','youtube','pinterest'],
+   label:{pt:'Maduro (40+)',    en:'Mature (40+)',          es:'Maduro (40+)',      fr:'Mûr (40+)'},
+   desc: {pt:'Facebook, WhatsApp, YouTube', en:'Facebook, WhatsApp, YouTube', es:'Facebook, WhatsApp, YouTube', fr:'Facebook, WhatsApp, YouTube'}},
+  {id:'biz',     icon:'🏢',nets:['linkedin','twitter','youtube','reddit','facebook'],
+   label:{pt:'B2B / Corporativo',en:'B2B / Corporate',   es:'B2B / Corporativo', fr:'B2B / Corporatif'},
+   desc: {pt:'LinkedIn, Twitter, YouTube', en:'LinkedIn, Twitter, YouTube', es:'LinkedIn, Twitter, YouTube', fr:'LinkedIn, Twitter, YouTube'}},
+  {id:'creator', icon:'🎨',nets:['instagram','tiktok','youtube','bluesky','pinterest','threads'],
+   label:{pt:'Criador de Conteúdo',en:'Content Creator',  es:'Creador de Contenido',fr:'Créateur de Contenu'},
+   desc: {pt:'Instagram, TikTok, YouTube', en:'Instagram, TikTok, YouTube', es:'Instagram, TikTok, YouTube', fr:'Instagram, TikTok, YouTube'}},
+  {id:'news',    icon:'📰',nets:['twitter','telegram','reddit','bluesky','linkedin'],
+   label:{pt:'Notícias / Mídia', en:'News / Media',       es:'Noticias / Medios', fr:'Actualités / Médias'},
+   desc: {pt:'Twitter, Telegram, Reddit', en:'Twitter, Telegram, Reddit', es:'Twitter, Telegram, Reddit', fr:'Twitter, Telegram, Reddit'}},
+  {id:'local',   icon:'📍',nets:['facebook','instagram','whatsapp','youtube'],
+   label:{pt:'Negócio Local',   en:'Local Business',      es:'Negocio Local',     fr:'Commerce Local'},
+   desc: {pt:'Facebook, Instagram, WhatsApp', en:'Facebook, Instagram, WhatsApp', es:'Facebook, Instagram, WhatsApp', fr:'Facebook, Instagram, WhatsApp'}},
+  {id:'all',     icon:'🌐',nets:[],
+   label:{pt:'Todos os públicos',en:'All audiences',      es:'Todos los públicos', fr:'Tous les publics'},
+   desc: {pt:'Todas as redes ativas', en:'All active networks', es:'Todas las redes activas', fr:'Tous les réseaux actifs'}},
+];
+
+const NET_FIELDS = {
+  telegram: [{k:'bot_token',l:'Bot Token',ph:'7123456789:AAF_xxx...',t:'password'},{k:'channel_id',l:'ID do Canal',ph:'@seucanal'}],
+  bluesky:  [{k:'identifier',l:'Usuário',ph:'usuario.bsky.social'},{k:'password',l:'Senha do App',ph:'xxxx-xxxx-xxxx-xxxx',t:'password'}],
+  instagram:[{k:'access_token',l:'Access Token',ph:'EAAxxxxxxx...',t:'password'},{k:'business_account_id',l:'Business Account ID',ph:'17841400000000000'}],
+  facebook: [{k:'access_token',l:'Page Access Token',ph:'EAAxxxxxxx...',t:'password'},{k:'page_id',l:'Page ID',ph:'123456789'}],
+  whatsapp: [{k:'phone_number_id',l:'Phone Number ID',ph:'123456789012345'},{k:'access_token',l:'Access Token',ph:'EAAxxxxxxx...',t:'password'},{k:'phone_number',l:'Número',ph:'+5511999999999'}],
+  twitter:  [{k:'api_key',l:'API Key',ph:'xxxxxxxxxx'},{k:'api_secret',l:'API Secret',ph:'xxxxxxxxxx',t:'password'},{k:'access_token',l:'Access Token',ph:'xxxxxxxxxx-xxxxx'},{k:'access_token_secret',l:'Access Token Secret',ph:'xxxxxxxxxx',t:'password'}],
+  linkedin: [{k:'access_token',l:'Access Token',ph:'AQxxxxxxx...',t:'password'},{k:'person_urn',l:'Person URN',ph:'urn:li:person:XXXXXXXX'}],
+  tiktok:   [{k:'access_token',l:'Access Token',ph:'act.xxxxxxx...',t:'password'}],
+  youtube:  [{k:'refresh_token',l:'Refresh Token',ph:'1//xxxxxxxxxx',t:'password'}],
+  pinterest:[{k:'access_token',l:'Access Token',ph:'xxxxxxxxxx',t:'password'},{k:'board_id',l:'Board ID',ph:'123456789012345678'}],
+  reddit:   [{k:'client_id',l:'Client ID',ph:'xxxxxxxxxx'},{k:'client_secret',l:'Client Secret',ph:'xxxxxxxxxx',t:'password'},{k:'username',l:'Usuário',ph:'seuusuario'},{k:'password',l:'Senha',ph:'••••••••',t:'password'},{k:'subreddit',l:'Subreddit',ph:'seusubreddit'}],
+  threads:  [{k:'access_token',l:'Access Token',ph:'EAAxxxxxxx...',t:'password'},{k:'user_id',l:'User ID',ph:'17841400000000000'}],
+  snapchat: [{k:'access_token',l:'Access Token',ph:'xxxxxxxxxx',t:'password'}],
+};
+
+const NET_GUIDE = {
+  telegram: {free:true, age:'18-45', steps:[{n:1,t:'Criar Bot',d:'Abra o Telegram → procure <strong>@BotFather</strong> → envie <code>/newbot</code>'},{n:2,t:'Nome e username',d:'Escolha um nome (ex: PostAllTon) e um username terminando em "bot"'},{n:3,t:'Copiar Token',d:'O BotFather enviará o token no formato <code>1234567890:AAF_xxx</code>. Copie!'},{n:4,t:'Criar Canal',d:'Crie um canal público no Telegram → Configurações → Administradores → adicione o bot com permissão de publicar'},{n:5,t:'ID do Canal',d:'Use <code>@nomedocanal</code> ou o ID numérico <code>-1001234567890</code>'}]},
+  bluesky:  {free:true, age:'20-40', steps:[{n:1,t:'Criar conta',d:'Acesse <a href="https://bsky.app" target="_blank">bsky.app</a> e crie sua conta'},{n:2,t:'Configurações',d:'Clique no avatar → Configurações → Privacidade e Segurança'},{n:3,t:'Senha de App',d:'Clique em <strong>"Senhas de aplicativo"</strong> → Adicionar → nome: PostAllTon → Próximo'},{n:4,t:'Copiar senha',d:'Senha no formato <code>xxxx-xxxx-xxxx-xxxx</code>. <strong>Copie agora</strong> — não será mostrada novamente!'}]},
+  instagram:{free:false,age:'13-34', steps:[{n:1,t:'Conta Business',d:'Instagram → Configurações → Conta → Mudar para conta profissional → Business'},{n:2,t:'Criar App Meta',d:'Acesse <a href="https://developers.facebook.com" target="_blank">developers.facebook.com</a> → Criar App → Business'},{n:3,t:'Permissões',d:'Adicione: <code>instagram_basic</code>, <code>instagram_content_publish</code>'},{n:4,t:'Revisão Meta',d:'Submeta para App Review. Aprovação pode levar 2-8 semanas.'},{n:5,t:'Gerar tokens',d:'Use Graph API Explorer para gerar Long-Lived Token e encontrar o Business Account ID'}]},
+  facebook: {free:false,age:'25-55', steps:[{n:1,t:'Criar Página',d:'Acesse <a href="https://facebook.com/pages/create" target="_blank">facebook.com/pages/create</a>'},{n:2,t:'Criar App Meta',d:'developers.facebook.com → Criar App → adicione Pages API'},{n:3,t:'Permissões',d:'Adicione: <code>pages_manage_posts</code>, <code>pages_read_engagement</code>'},{n:4,t:'Page Access Token',d:'Graph API Explorer → selecione sua Página → gere o Page Access Token'},{n:5,t:'Page ID',d:'Página do Facebook → Sobre → role até o final para encontrar o ID numérico'}]},
+  whatsapp: {free:false,age:'18-60', steps:[{n:1,t:'Meta Business',d:'Acesse <a href="https://business.facebook.com" target="_blank">business.facebook.com</a> e crie uma conta'},{n:2,t:'Configurar WhatsApp',d:'Painel → WhatsApp → Começar. Precisará de número dedicado (não pode estar no WhatsApp pessoal)'},{n:3,t:'Phone Number ID',d:'WhatsApp Business → API Setup → copie o Phone Number ID'},{n:4,t:'Access Token',d:'Configurações do Sistema → Usuários do Sistema → Gerar token com permissão <code>whatsapp_business_messaging</code>'}]},
+  twitter:  {free:false,age:'18-49', steps:[{n:1,t:'Developer Account',d:'Acesse <a href="https://developer.twitter.com" target="_blank">developer.twitter.com</a> → Apply for access'},{n:2,t:'Plano Basic',d:'Para publicar tweets é necessário o plano <strong>Basic ($100/mês)</strong>'},{n:3,t:'Criar App',d:'Projects & Apps → New App → defina permissões como <strong>Read + Write</strong>'},{n:4,t:'API Keys',d:'Keys & Tokens → copie API Key e API Secret'},{n:5,t:'Access Tokens',d:'Generate Access Token → copie Access Token e Access Token Secret'}]},
+  linkedin: {free:false,age:'25-55', steps:[{n:1,t:'Criar App',d:'Acesse <a href="https://linkedin.com/developers" target="_blank">linkedin.com/developers</a> → Create App'},{n:2,t:'Solicitar produtos',d:'Aba Products → solicite <strong>Share on LinkedIn</strong>'},{n:3,t:'Aguardar aprovação',d:'LinkedIn pode levar 4-8 semanas para aprovar'},{n:4,t:'Access Token',d:'Use o flow OAuth para obter um token com permissão <code>w_member_social</code>'},{n:5,t:'Person URN',d:'GET <code>api.linkedin.com/v2/me</code> → retorna ID no formato <code>urn:li:person:XXXXXXXX</code>'}]},
+  tiktok:   {free:false,age:'13-30', steps:[{n:1,t:'Developer Account',d:'Acesse <a href="https://developers.tiktok.com" target="_blank">developers.tiktok.com</a> → Create App'},{n:2,t:'Aprovação',d:'Preencha formulário detalhado. Aprovação pode levar 4-12 semanas'},{n:3,t:'Scopes',d:'Configure: <code>video.publish</code> e <code>user.info.basic</code>'},{n:4,t:'Access Token',d:'Use o flow OAuth do TikTok para gerar Access Token de longa duração'}]},
+  youtube:  {free:false,age:'15-50', steps:[{n:1,t:'Google Cloud',d:'Acesse <a href="https://console.cloud.google.com" target="_blank">console.cloud.google.com</a> → New Project'},{n:2,t:'YouTube Data API',d:'APIs & Services → Enable APIs → YouTube Data API v3 → Enable'},{n:3,t:'Credenciais OAuth',d:'Credentials → Create → OAuth 2.0 Client ID → Web Application'},{n:4,t:'Redirect URI',d:'Adicione: <code>https://postallton-saas.onrender.com/api/auth/youtube/callback</code>'},{n:5,t:'Refresh Token',d:'Autorize via OAuth → troque o código pelo Refresh Token'}]},
+  pinterest:{free:false,age:'18-49', steps:[{n:1,t:'Conta Business',d:'Acesse <a href="https://pinterest.com/business" target="_blank">pinterest.com/business</a>'},{n:2,t:'Criar App',d:'<a href="https://developers.pinterest.com" target="_blank">developers.pinterest.com</a> → My Apps → Create App'},{n:3,t:'Acesso de escrita',d:'Por padrão é só leitura. Solicite acesso de escrita (1-2 semanas)'},{n:4,t:'Access Token',d:'Gere token com scopes: <code>boards:read</code> e <code>pins:write</code>'},{n:5,t:'Board ID',d:'Use a API para obter o ID numérico do seu board'}]},
+  reddit:   {free:true, age:'18-35', steps:[{n:1,t:'Criar conta',d:'Recomenda-se criar conta dedicada para o bot/app'},{n:2,t:'Criar App',d:'Acesse <a href="https://reddit.com/prefs/apps" target="_blank">reddit.com/prefs/apps</a> → Create → tipo <strong>"script"</strong>'},{n:3,t:'Credenciais',d:'Client ID: string curta abaixo do nome. Client Secret: campo "secret"'},{n:4,t:'Subreddit',d:'Informe o subreddit sem o r/ (ex: <code>meusubreddit</code>). Se vazio, publica no perfil'}]},
+  threads:  {free:false,age:'18-35', steps:[{n:1,t:'Pré-requisito',d:'Precisa ter o Instagram configurado primeiro — usa as mesmas credenciais Meta'},{n:2,t:'Threads API',d:'developers.facebook.com → seu app → adicione <strong>Threads API</strong>'},{n:3,t:'Permissões',d:'Adicione: <code>threads_basic</code> e <code>threads_content_publish</code>'},{n:4,t:'User ID',d:'GET <code>/me?fields=id&access_token=SEU_TOKEN</code> → retorna o Threads User ID'}]},
+  snapchat: {free:false,age:'13-29', steps:[{n:1,t:'Developer Account',d:'Acesse <a href="https://kit.snapchat.com" target="_blank">kit.snapchat.com</a> → Create App'},{n:2,t:'Creative Kit',d:'Adicione o produto Creative Kit para publicação de Stories'},{n:3,t:'Revisão',d:'Snap Kit passa por revisão (1-4 semanas)'},{n:4,t:'Access Token',d:'Após aprovação, use OAuth do Snapchat para gerar Access Token'}]},
+};
+
+// ══ TRADUÇÕES ══════════════════════════════════════════════════════
+const T = {
+pt:{slogan:'Um clique. Todas as redes.',enter:'Acessar o painel',plans:'Ver planos',monthly:'Mensal',lifetime:'Vitalício',mo:'/mês',once:'único',popular:'Mais popular',bestval:'Melhor valor',start:'Começar agora',buy:'Comprar acesso',payStripe:'Pagar com Cartão',payMP:'Pagar com PIX / Boleto',login:'Entrar',register:'Criar conta',email:'E-mail',password:'Senha',name:'Nome',loginSub:'Acesse seu painel PostAllTon',registerSub:'Crie sua conta gratuita',google:'Continuar com Google',noAccount:'Não tem conta? Registre-se',hasAccount:'Já tem conta? Entre',compose:'Nova Publicação',history:'Histórico',settings:'Configurações',logout:'Sair',platforms:'Plataformas',all:'Todas',none:'Nenhuma',selected:'Selecionadas',platform:'plataforma',platforms2:'plataformas',caption:'Legenda / Mensagem',captionPh:'Escreva sua legenda, hashtags, emojis…',media:'Mídia',mediaPh:'https://dominio.com/foto.jpg',schedule:'Agendar — opcional',scheduledFor:'Agendado para',publishNow:'Publicar agora em',scheduleIn:'Agendar em',preview:'Preview',previewEmpty:'Sua legenda aparecerá aqui.',noPostsYet:'Nenhum post ainda.',createFirst:'Criar primeira publicação',confirmTitle:'Confirmar',confirmSub:'Publicar em',confirmSub2:'plataforma(s) simultaneamente.',publishBtn:'Publicar agora',cancelBtn:'Cancelar',publishing:'Publicando…',publishingSub:'Enviando para',publishedTitle:'Publicado!',publishedSub:'Conteúdo distribuído.',seePost:'Ver post →',published:'publicado',sent:'enviado',closeBtn:'Fechar',errorTitle:'Erro',errorHint:'Verifique suas credenciais e tente novamente.',retryBtn:'Tentar novamente',back:'Voltar',chars:'caracteres',settingsTitle:'Configurações de Redes',connected:'Conectada',disconnected:'Desconectada',connect:'Conectar',disconnect:'Desconectar',save:'Salvar',cancel:'Cancelar',testOk:'Credenciais válidas! Conectado com sucesso.',audienceTitle:'Perfil de Público-Alvo',audienceSub:'Selecione para filtrar as redes automaticamente',ageRange:'Faixa etária',tone:'Tom de voz',stepByStep:'Passo a passo',credentials:'Credenciais',saveConnect:'Salvar e Conectar',verifying:'Verificando...',mediaDirect:'Link direto',mediaDrive:'Google Drive',mediaDropbox:'Dropbox',mediaUpload:'Upload',driveHint:'Abra o arquivo → Compartilhar → "Qualquer pessoa com o link" → copie o link. PostAllTon converte automaticamente!',dropboxHint:'Abra o arquivo → Compartilhar → Copiar link → cole abaixo. PostAllTon converte para link direto!',driveOk:'✓ Link do Drive detectado — será convertido!',dropboxOk:'✓ Link do Dropbox detectado — será convertido!',uploadHint:'Selecione uma imagem ou vídeo do computador.',uploadSelect:'Clique para selecionar imagem ou vídeo',uploadMax:'JPG, PNG, GIF, MP4 — máx 50MB',fileSelected:'✓ Arquivo selecionado',noCredsWarn:'⚠️ Nenhuma rede configurada. Acesse',noCredsLink:'⚙ Configurações',noCredsEnd:'para conectar suas redes.',greenDot:'● Verde = configurada e pronta para publicar',freeLabel:'✅ Grátis e imediato',paidLabel:'⏳ Requer aprovação',histDesc:'Posts publicados via PostAllTon.',edit:'Editar'},
+en:{slogan:'One click. Every network.',enter:'Open dashboard',plans:'See plans',monthly:'Monthly',lifetime:'Lifetime',mo:'/mo',once:'once',popular:'Most popular',bestval:'Best value',start:'Get started',buy:'Buy access',payStripe:'Pay with Card',payMP:'Pay with PIX / Boleto',login:'Sign in',register:'Create account',email:'Email',password:'Password',name:'Name',loginSub:'Access your PostAllTon dashboard',registerSub:'Create your free account',google:'Continue with Google',noAccount:'No account? Sign up',hasAccount:'Have one? Sign in',compose:'New Post',history:'History',settings:'Settings',logout:'Logout',platforms:'Platforms',all:'All',none:'None',selected:'Selected',platform:'platform',platforms2:'platforms',caption:'Caption',captionPh:'Write your caption, hashtags, emojis…',media:'Media',mediaPh:'https://domain.com/photo.jpg',schedule:'Schedule — optional',scheduledFor:'Scheduled for',publishNow:'Publish now to',scheduleIn:'Schedule to',preview:'Preview',previewEmpty:'Your caption will appear here.',noPostsYet:'No posts yet.',createFirst:'Create first post',confirmTitle:'Confirm',confirmSub:'Publish to',confirmSub2:'platform(s) simultaneously.',publishBtn:'Publish now',cancelBtn:'Cancel',publishing:'Publishing…',publishingSub:'Sending to',publishedTitle:'Published!',publishedSub:'Content distributed.',seePost:'See post →',published:'published',sent:'sent',closeBtn:'Close',errorTitle:'Error',errorHint:'Check your credentials and try again.',retryBtn:'Try again',back:'Back',chars:'characters',settingsTitle:'Network Settings',connected:'Connected',disconnected:'Disconnected',connect:'Connect',disconnect:'Disconnect',save:'Save',cancel:'Cancel',testOk:'Valid credentials! Connected successfully.',audienceTitle:'Target Audience Profile',audienceSub:'Select to automatically filter networks',ageRange:'Age range',tone:'Tone of voice',stepByStep:'Step-by-step',credentials:'Credentials',saveConnect:'Save & Connect',verifying:'Verifying...',mediaDirect:'Direct link',mediaDrive:'Google Drive',mediaDropbox:'Dropbox',mediaUpload:'Upload',driveHint:'Open file → Share → "Anyone with the link" → copy the link. PostAllTon converts it automatically!',dropboxHint:'Open file → Share → Copy link → paste below. PostAllTon converts to direct download link!',driveOk:'✓ Drive link detected — will be converted!',dropboxOk:'✓ Dropbox link detected — will be converted!',uploadHint:'Select an image or video from your computer.',uploadSelect:'Click to select image or video',uploadMax:'JPG, PNG, GIF, MP4 — max 50MB',fileSelected:'✓ File selected',noCredsWarn:'⚠️ No networks configured. Go to',noCredsLink:'⚙ Settings',noCredsEnd:'to connect your networks.',greenDot:'● Green = configured and ready to publish',freeLabel:'✅ Free & immediate',paidLabel:'⏳ Requires approval',histDesc:'Posts published via PostAllTon.',edit:'Edit'},
+es:{slogan:'Un clic. Todas las redes.',enter:'Abrir panel',plans:'Ver planes',monthly:'Mensual',lifetime:'Vitalicio',mo:'/mes',once:'único',popular:'Más popular',bestval:'Mejor valor',start:'Empezar ahora',buy:'Comprar acceso',payStripe:'Pagar con Tarjeta',payMP:'Pagar con PIX / Boleto',login:'Iniciar sesión',register:'Crear cuenta',email:'Correo',password:'Contraseña',name:'Nombre',loginSub:'Accede a tu panel PostAllTon',registerSub:'Crea tu cuenta gratuita',google:'Continuar con Google',noAccount:'¿Sin cuenta? Regístrate',hasAccount:'¿Ya tienes? Entra',compose:'Nueva Publicación',history:'Historial',settings:'Configuración',logout:'Salir',platforms:'Plataformas',all:'Todas',none:'Ninguna',selected:'Seleccionadas',platform:'plataforma',platforms2:'plataformas',caption:'Leyenda',captionPh:'Escribe tu leyenda, hashtags, emojis…',media:'Medios',mediaPh:'https://dominio.com/foto.jpg',schedule:'Programar — opcional',scheduledFor:'Programado para',publishNow:'Publicar en',scheduleIn:'Programar en',preview:'Vista previa',previewEmpty:'Tu leyenda aquí.',noPostsYet:'Sin posts aún.',createFirst:'Crear primer post',confirmTitle:'Confirmar',confirmSub:'Publicar en',confirmSub2:'plataforma(s).',publishBtn:'Publicar',cancelBtn:'Cancelar',publishing:'Publicando…',publishingSub:'Enviando a',publishedTitle:'¡Publicado!',publishedSub:'Contenido distribuido.',seePost:'Ver post →',published:'publicado',sent:'enviado',closeBtn:'Cerrar',errorTitle:'Error',errorHint:'Verifica tus credenciales e inténtalo de nuevo.',retryBtn:'Reintentar',back:'Volver',chars:'caracteres',settingsTitle:'Configuración de Redes',connected:'Conectada',disconnected:'Desconectada',connect:'Conectar',disconnect:'Desconectar',save:'Guardar',cancel:'Cancelar',testOk:'¡Credenciales válidas! Conectado con éxito.',audienceTitle:'Perfil de Público Objetivo',audienceSub:'Selecciona para filtrar redes automáticamente',ageRange:'Rango de edad',tone:'Tono de voz',stepByStep:'Paso a paso',credentials:'Credenciales',saveConnect:'Guardar y Conectar',verifying:'Verificando...',mediaDirect:'Enlace directo',mediaDrive:'Google Drive',mediaDropbox:'Dropbox',mediaUpload:'Subir',driveHint:'Abre el archivo → Compartir → "Cualquiera con el enlace" → copia el enlace. ¡PostAllTon lo convierte automáticamente!',dropboxHint:'Abre el archivo → Compartir → Copiar enlace → pega abajo. ¡PostAllTon convierte a enlace directo!',driveOk:'✓ ¡Enlace de Drive detectado — se convertirá!',dropboxOk:'✓ ¡Enlace de Dropbox detectado — se convertirá!',uploadHint:'Selecciona una imagen o video de tu computadora.',uploadSelect:'Haz clic para seleccionar imagen o video',uploadMax:'JPG, PNG, GIF, MP4 — máx 50MB',fileSelected:'✓ Archivo seleccionado',noCredsWarn:'⚠️ Ninguna red configurada. Ve a',noCredsLink:'⚙ Configuración',noCredsEnd:'para conectar tus redes.',greenDot:'● Verde = configurada y lista para publicar',freeLabel:'✅ Gratis e inmediato',paidLabel:'⏳ Requiere aprobación',histDesc:'Posts publicados via PostAllTon.',edit:'Editar'},
+fr:{slogan:'Un clic. Tous les réseaux.',enter:'Ouvrir tableau',plans:'Voir plans',monthly:'Mensuel',lifetime:'À vie',mo:'/mois',once:'unique',popular:'Le plus populaire',bestval:'Meilleur rapport',start:'Commencer',buy:"Acheter l'accès",payStripe:'Payer par Carte',payMP:'Payer par PIX / Boleto',login:'Connexion',register:'Créer compte',email:'E-mail',password:'Mot de passe',name:'Nom',loginSub:'Accédez à votre tableau de bord',registerSub:'Créez votre compte gratuit',google:'Continuer avec Google',noAccount:"S'inscrire",hasAccount:'Se connecter',compose:'Nouvelle Publication',history:'Historique',settings:'Paramètres',logout:'Déconnexion',platforms:'Plateformes',all:'Toutes',none:'Aucune',selected:'Sélectionnées',platform:'plateforme',platforms2:'plateformes',caption:'Légende',captionPh:'Écrivez votre légende, hashtags, emojis…',media:'Médias',mediaPh:'https://domaine.com/photo.jpg',schedule:'Planifier — optionnel',scheduledFor:'Planifié pour',publishNow:'Publier sur',scheduleIn:'Planifier sur',preview:'Aperçu',previewEmpty:'Votre légende ici.',noPostsYet:'Aucun post.',createFirst:'Créer premier post',confirmTitle:'Confirmer',confirmSub:'Publier sur',confirmSub2:'plateforme(s).',publishBtn:'Publier',cancelBtn:'Annuler',publishing:'Publication…',publishingSub:'Envoi vers',publishedTitle:'Publié!',publishedSub:'Contenu distribué.',seePost:'Voir →',published:'publié',sent:'envoyé',closeBtn:'Fermer',errorTitle:'Erreur',errorHint:'Vérifiez vos identifiants et réessayez.',retryBtn:'Réessayer',back:'Retour',chars:'caractères',settingsTitle:'Paramètres Réseaux',connected:'Connecté',disconnected:'Déconnecté',connect:'Connecter',disconnect:'Déconnecter',save:'Sauvegarder',cancel:'Annuler',testOk:'Identifiants valides ! Connecté avec succès.',audienceTitle:'Profil de Public Cible',audienceSub:'Sélectionnez pour filtrer les réseaux automatiquement',ageRange:"Tranche d'âge",tone:'Ton de voix',stepByStep:'Étape par étape',credentials:'Identifiants',saveConnect:'Sauvegarder et Connecter',verifying:'Vérification...',mediaDirect:'Lien direct',mediaDrive:'Google Drive',mediaDropbox:'Dropbox',mediaUpload:'Télécharger',driveHint:'Ouvrez le fichier → Partager → "Toute personne avec le lien" → copiez le lien. PostAllTon le convertit automatiquement !',dropboxHint:'Ouvrez le fichier → Partager → Copier le lien → collez ci-dessous. PostAllTon convertit en lien direct !',driveOk:'✓ Lien Drive détecté — sera converti !',dropboxOk:'✓ Lien Dropbox détecté — sera converti !',uploadHint:'Sélectionnez une image ou vidéo de votre ordinateur.',uploadSelect:'Cliquez pour sélectionner image ou vidéo',uploadMax:'JPG, PNG, GIF, MP4 — max 50 Mo',fileSelected:'✓ Fichier sélectionné',noCredsWarn:'⚠️ Aucun réseau configuré. Allez dans',noCredsLink:'⚙ Paramètres',noCredsEnd:'pour connecter vos réseaux.',greenDot:'● Vert = configuré et prêt à publier',freeLabel:'✅ Gratuit et immédiat',paidLabel:'⏳ Nécessite approbation',histDesc:'Posts publiés via PostAllTon.',edit:'Modifier'},
+};
+
+
+var termsLabel = {pt:'Termos de Uso',en:'Terms of Use',es:'Términos de Uso',fr:"Conditions d'utilisation"};
+var privacyLabel = {pt:'Política de Privacidade',en:'Privacy Policy',es:'Política de Privacidad',fr:'Politique de Confidentialité'};
+
+// ══ STATE ══════════════════════════════════════════════════════════
+var state = {
+  screen:'landing', lang:'pt', billing:'monthly', prevScreen:'landing',
+  token: localStorage.getItem('pat_token') || null,
+  user: (function(){ try{ return JSON.parse(localStorage.getItem('pat_user')); }catch(e){ return null; } })(),
+  authMode:'login', authEmail:'', authPassword:'', authName:'', authError:'',
+  tab:'compose',
+  selected: new Set(NETS.map(function(n){ return n.id; })),
+  caption:'', mediaUrls:'', schedDate:'', mediaMode:'url',
+  posts:[], connections:{}, audienceProfile:null,
+  editingNet:null, netForm:{}, netSaving:false, netError:'', netSuccess:'',
+  modal:null, modalResults:{}, modalError:'',
+};
+if(state.token && state.user) state.screen = 'app';
+
+function tr(k){ return (T[state.lang] || T.pt)[k] || k; }
+function setState(p){ Object.assign(state, p); render(); }
+function icon(id, color, size){
+  size = size || 22;
+  return '<span style="display:inline-flex;width:'+size+'px;height:'+size+'px;flex-shrink:0;color:'+color+'">'+(SVG[id]||'')+'</span>';
+}
+function convertUrl(url){
+  url = (url||'').trim();
+  var dm = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if(dm) return 'https://drive.google.com/uc?export=download&id='+dm[1];
+  var dm2 = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+  if(dm2) return 'https://drive.google.com/uc?export=download&id='+dm2[1];
+  if(url.indexOf('dropbox.com') > -1){
+    url = url.replace('dl=0','dl=1');
+    if(url.indexOf('dl=') < 0) url += (url.indexOf('?') > -1 ? '&' : '?') + 'dl=1';
+  }
+  return url;
+}
+
+// ══ AUTH ═══════════════════════════════════════════════════════════
+function doAuth(){
+  var email = state.authEmail, pass = state.authPassword, name = state.authName;
+  if(!email || !pass){ setState({authError:tr('email')+' e '+tr('password')+' são obrigatórios.'}); return; }
+  setState({authError:''});
+  var ep = state.authMode === 'login' ? '/api/auth/login' : '/api/auth/register';
+  var body = state.authMode === 'login' ? {email:email,password:pass} : {name:name||email.split('@')[0],email:email,password:pass};
+  fetch(API+ep, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+    .then(function(res){
+      if(!res.ok) throw new Error(res.d.error || 'Erro');
+      localStorage.setItem('pat_token', res.d.token);
+      localStorage.setItem('pat_user', JSON.stringify(res.d.user));
+      setState({token:res.d.token, user:res.d.user, screen:'app', tab:'compose', authError:''});
+      loadConnections();
+    })
+    .catch(function(e){ setState({authError:e.message}); });
+}
+function doLogout(){
+  localStorage.removeItem('pat_token'); localStorage.removeItem('pat_user');
+  setState({token:null, user:null, screen:'landing', authEmail:'', authPassword:'', authName:''});
+}
+function doGoogleLogin(){ window.location.href = API+'/api/auth/google'; }
+
+// ══ CONNECTIONS ════════════════════════════════════════════════════
+function loadConnections(){
+  if(!state.token) return;
+  fetch(API+'/api/creds', {headers:{'Authorization':'Bearer '+state.token}})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      var map = {};
+      (d.connections||[]).forEach(function(c){ map[c.platform] = c; });
+      state.connections = map;
+      render();
+    }).catch(function(e){ console.error(e); });
+}
+function saveCreds(platform){
+  setState({netSaving:true, netError:'', netSuccess:''});
+  fetch(API+'/api/creds/'+platform, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.token},
+    body:JSON.stringify(state.netForm)
+  }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+    .then(function(res){
+      if(!res.ok) throw new Error(res.d.error || 'Erro ao salvar');
+      loadConnections();
+      setState({netSaving:false, netSuccess:tr('testOk'), editingNet:null, netForm:{}});
+    }).catch(function(e){ setState({netSaving:false, netError:e.message}); });
+}
+function deleteCreds(platform){
+  if(!confirm(tr('disconnect')+' '+platform+'?')) return;
+  fetch(API+'/api/creds/'+platform, {method:'DELETE',headers:{'Authorization':'Bearer '+state.token}})
+    .then(function(){ loadConnections(); })
+    .catch(function(e){ console.error(e); });
+}
+// ══ PREFERÊNCIAS ═══════════════════════════════════════════════════
+// savePreferences definida acima
+
+function loadPreferences(){
+  if(!state.token) return;
+  fetch(API+'/api/user/preferences', {
+    headers:{'Authorization':'Bearer '+state.token}
+  }).then(function(r){ return r.json(); })
+    .then(function(d){
+      var prefs = d.preferences || {};
+      var changed = false;
+      if(prefs.audience_profile){
+        state.audienceProfile = prefs.audience_profile;
+        changed = true;
+      }
+      if(prefs.preferred_networks && prefs.preferred_networks.length > 0){
+        state.selected = new Set(prefs.preferred_networks);
+        changed = true;
+      }
+      if(prefs.language){
+        state.lang = prefs.language;
+        changed = true;
+      }
+      if(changed) render();
+      console.log('[PostAllTon] Preferências carregadas:', prefs);
+    }).catch(function(e){ console.warn('[PostAllTon] Preferências não carregadas:', e.message); });
+}
+
+function savePreferences(){
+  if(!state.token) return;
+  var nets = [...state.selected];
+  fetch(API+'/api/user/preferences', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.token},
+    body:JSON.stringify({
+      preferredNetworks: nets,
+      audienceProfile:   state.audienceProfile || null,
+      language:          state.lang,
+    })
+  }).then(function(r){ return r.json(); })
+    .then(function(d){ console.log('[PostAllTon] Preferências salvas!'); })
+    .catch(function(e){ console.warn('[PostAllTon] Erro ao salvar preferências:', e.message); });
+}
+
+function applyAudience(id){
+  var p = AUDIENCE.find(function(a){ return a.id === id; });
+  if(!p) return;
+  if(p.id === 'all'){
+    state.selected = new Set(NETS.map(function(n){ return n.id; }));
+  } else {
+    var connected = Object.keys(state.connections);
+    var suggested = p.nets.filter(function(n){ return connected.indexOf(n) > -1; });
+    state.selected = new Set(suggested.length > 0 ? suggested : p.nets);
+  }
+  state.audienceProfile = id;
+  render();
+  // Salvar preferência automaticamente
+  savePreferences();
+}
+
+// ══ PUBLISH ════════════════════════════════════════════════════════
+function publishPost(){
+  if(!state.token || !state.caption.trim() || !state.selected.size) return;
+  setState({modal:'publishing'});
+  var body = {caption:state.caption, platforms:[...state.selected]};
+  var ma = state.mediaUrls.split(',').map(function(s){ return convertUrl(s.trim()); }).filter(Boolean);
+  if(ma.length) body.mediaUrls = ma;
+  if(state.schedDate) body.scheduleDate = new Date(state.schedDate).toISOString();
+  fetch(API+'/api/post', {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.token},
+    body:JSON.stringify(body)
+  }).then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+    .then(function(res){
+      if(!res.ok) throw new Error(res.d.error || 'HTTP error');
+      var results = {};
+      (res.d.postIds||[]).forEach(function(p){ results[p.platform] = {ok:true,url:p.postUrl}; });
+      (res.d.errors||[]).forEach(function(e){ results[e.platform] = {ok:false,msg:e.message}; });
+      var np = {id:Date.now(),caption:state.caption,networks:[...state.selected],date:new Date().toLocaleString(),status:'publicado'};
+      setState({modal:'done', modalResults:results, posts:[np].concat(state.posts), caption:'', mediaUrls:'', schedDate:''});
+    }).catch(function(e){ setState({modal:'error', modalError:e.message}); });
+}
+function checkout(provider, plan, billing){
+  if(!state.token){ setState({screen:'auth',authMode:'register'}); return; }
+  var ep = provider === 'stripe' ? '/api/payment/stripe/checkout' : '/api/payment/mp/checkout';
+  fetch(API+ep, {
+    method:'POST',
+    headers:{'Content-Type':'application/json','Authorization':'Bearer '+state.token},
+    body:JSON.stringify({plan:plan, billingType:billing})
+  }).then(function(r){ return r.json(); })
+    .then(function(d){ if(d.checkoutUrl) window.location.href = d.checkoutUrl; else throw new Error(d.error||'Erro'); })
+    .catch(function(e){ alert('Erro: '+e.message); });
+}
+
+// ══ RENDER ═════════════════════════════════════════════════════════
+function render(){ document.getElementById('app').innerHTML = page(); }
+function page(){
+  if(state.screen === 'landing') return pageLanding();
+  if(state.screen === 'plans')   return pagePlans();
+  if(state.screen === 'terms')   return pageTerms();
+  if(state.screen === 'privacy') return pagePrivacy();
+  if(state.screen === 'auth' || !state.token) return pageAuth();
+  return pageApp();
+}
+
+function pageTerms(){
+  var l = state.lang;
+  var title = termsLabel[l];
+  var prev = state.prevScreen || 'landing';
+  return pageDoc(title, prev, termsContent(l));
+}
+function pagePrivacy(){
+  var l = state.lang;
+  var title = privacyLabel[l];
+  var prev = state.prevScreen || 'landing';
+  return pageDoc(title, prev, privacyContent(l));
+}
+function pageDoc(title, prev, body){
+  return '<div style="min-height:100vh;background:var(--bg);padding:40px 20px;max-width:800px;margin:0 auto">'+
+    '<button class="back-btn" style="position:relative;top:0;left:0;margin-bottom:24px" onclick="setState({screen:''+prev+''})">← '+
+    (state.lang==='pt'?'Voltar':state.lang==='es'?'Volver':state.lang==='fr'?'Retour':'Back')+'</button>'+
+    '<h1 style="font-family:var(--fd);font-size:32px;color:var(--gold);margin-bottom:8px">'+title+'</h1>'+
+    '<p style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:32px">PostAllTon © 2026</p>'+
+    '<div style="font-size:14px;line-height:1.8;color:var(--muted2)">'+body+'</div>'+
+    '<div style="margin-top:40px;padding:16px;border:1px solid var(--border);font-size:12px;color:var(--muted)">'+
+    '<a href="mailto:suporte@postallton.com" style="color:var(--gold)">suporte@postallton.com</a></div>'+
+    '</div>';
+}
+
+function termsContent(l){
+  if(l==='en') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Acceptance of Terms</h2><p>By using PostAllTon, you agree to these Terms of Use. If you disagree with any part, do not use the service.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Service Description</h2><p>PostAllTon is a social media management platform that allows simultaneous publication on multiple networks.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Network Integrations</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Important:</strong> For the app to work fully (100%) on all networks, it will depend on the social networks of each user and the policy of each one regarding the approval deadline for integration. Some networks require formal approval processes that may take weeks.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. User Responsibilities</h2><p>You are responsible for the content published and for complying with the terms of service of each social network.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">5. Subscriptions and Payments</h2><p>Monthly plans are renewed automatically. Lifetime plans are a one-time payment. Cancellation can be done at any time through the customer portal.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">6. Support</h2><p>Support is provided via email at suporte@postallton.com within 48 business hours.</p>';
+  if(l==='es') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Aceptación</h2><p>Al usar PostAllTon, aceptas estos Términos de Uso.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Integraciones de Redes</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Importante:</strong> Para que la aplicación funcione plenamente al 100% en todas las redes, dependerá de las redes sociales de cada usuario y de la política de cada una en relación al plazo de aprobación para la integración.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Pagos</h2><p>Los planes mensuales se renuevan automáticamente. Los planes vitalicios son un pago único.</p>';
+  if(l==='fr') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Acceptation</h2><p>En utilisant PostAllTon, vous acceptez ces Conditions d'utilisation.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Intégrations Réseaux</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Important :</strong> Pour que l'application fonctionne pleinement à 100% sur tous les réseaux, cela dépendra des réseaux sociaux de chaque utilisateur et de la politique de chacun concernant le délai d'approbation pour l'intégration.</p>';
+  // PT (default)
+  return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Aceitação dos Termos</h2><p>Ao utilizar o PostAllTon, você concorda com estes Termos de Uso. Caso discorde de qualquer parte, não utilize o serviço.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Descrição do Serviço</h2><p>O PostAllTon é uma plataforma de gerenciamento de redes sociais que permite a publicação simultânea em múltiplas redes com um único clique.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Integrações com Redes Sociais</h2><p style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0">⚠️ <strong>Importante:</strong> Para que o app funcione plenamente 100% em todas as redes, dependerá das redes sociais de cada usuário e da política de cada uma em relação ao prazo de liberação para integração. Algumas redes exigem processos formais de aprovação que podem levar semanas.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. Responsabilidades do Usuário</h2><p>O usuário é responsável pelo conteúdo publicado e pelo cumprimento dos termos de serviço de cada rede social.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">5. Assinaturas e Pagamentos</h2><p>Os planos mensais são renovados automaticamente. Os planos vitalícios são pagamento único. O cancelamento pode ser feito a qualquer momento pelo portal do cliente.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">6. Suporte</h2><p>O suporte é fornecido via e-mail em suporte@postallton.com com prazo de até 48 horas úteis.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">7. Modificações</h2><p>O PostAllTon reserva-se o direito de modificar estes termos a qualquer momento, com aviso prévio por e-mail.</p>';
+}
+
+function privacyContent(l){
+  if(l==='en') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Data Collected</h2><p>We collect: name, email, social network credentials (stored encrypted), posts and usage history.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Use of Data</h2><p>Data is used exclusively to provide the service. We do not sell or share your data with third parties.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Credentials Security</h2><p>Social network credentials are stored encrypted in our database and are never shared.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. Your Rights</h2><p>You can request deletion of all your data at any time by emailing suporte@postallton.com.</p>';
+  if(l==='es') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Datos Recopilados</h2><p>Recopilamos: nombre, correo, credenciales de redes sociales (almacenadas cifradas), historial de posts.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Uso de Datos</h2><p>Los datos se usan exclusivamente para proporcionar el servicio. No vendemos ni compartimos tus datos.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Tus Derechos</h2><p>Puedes solicitar la eliminación de todos tus datos en cualquier momento escribiendo a suporte@postallton.com.</p>';
+  if(l==='fr') return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Données Collectées</h2><p>Nous collectons : nom, e-mail, identifiants de réseaux sociaux (stockés chiffrés), historique des posts.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Vos Droits</h2><p>Vous pouvez demander la suppression de toutes vos données à tout moment en écrivant à suporte@postallton.com.</p>';
+  // PT
+  return '<h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">1. Dados Coletados</h2><p>Coletamos: nome, e-mail, credenciais de redes sociais (armazenadas de forma criptografada), histórico de posts e dados de uso da plataforma.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">2. Uso dos Dados</h2><p>Os dados são utilizados exclusivamente para fornecer o serviço. Não vendemos nem compartilhamos seus dados com terceiros.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">3. Segurança das Credenciais</h2><p>As credenciais das redes sociais são armazenadas de forma criptografada em nosso banco de dados e nunca são compartilhadas.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">4. Seus Direitos</h2><p>Você pode solicitar a exclusão de todos os seus dados a qualquer momento através do e-mail suporte@postallton.com.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">5. Cookies</h2><p>Utilizamos apenas cookies essenciais para manter sua sessão ativa. Não utilizamos cookies de rastreamento ou publicidade.</p><h2 style="color:var(--text);font-family:var(--fd);font-size:22px;margin:24px 0 10px">6. Retenção de Dados</h2><p>Os dados são mantidos enquanto sua conta estiver ativa. Após a exclusão da conta, os dados são removidos em até 30 dias.</p>';
+}
+
+// ══ LANDING ════════════════════════════════════════════════════════
+function pageLanding(){
+  var s = tr('slogan').split('.');
+  return '<div class="landing"><div class="grid-bg"></div><div class="glow"></div><div class="inner">'+
+    '<div class="lang-bar">'+[{c:'pt',f:'🇧🇷'},{c:'en',f:'🇺🇸'},{c:'es',f:'🇪🇸'},{c:'fr',f:'🇫🇷'}].map(function(l){ return '<button class="lang-btn'+(state.lang===l.c?' active':'')+'" onclick="setState({lang:\''+l.c+'\'})">'+l.f+' '+l.c.toUpperCase()+'</button>'; }).join('')+'</div>'+
+    '<div style="width:96px;height:96px;margin-bottom:28px;position:relative">'+
+    '<div style="width:96px;height:96px;border-radius:50%;overflow:hidden;border:2px solid rgba(201,168,76,.3);box-shadow:0 0 30px rgba(201,168,76,.15)">'+
+    '<img src="/logo_escudo_aliance.jpg" alt="PostAllTon" style="width:100%;height:100%;object-fit:cover"/>'+
+    '</div>'+
+    '<div style="position:absolute;inset:-2px;border-radius:50%;border:1px solid transparent;border-top-color:var(--gold);animation:spin 3s linear infinite;pointer-events:none"></div>'+
+    '</div>'+
+    '<h1 class="wordmark">PostAll<span>Ton</span></h1>'+
+    '<p class="slogan"><strong>'+s[0]+'.</strong>'+s.slice(1).join('.')+'</p>'+
+    '<div class="orn"><div class="orn-l"></div><div class="orn-d"></div><div class="orn-r"></div></div>'+
+    '<div class="nets">'+NETS.map(function(n,i){ return '<span class="net-pill" style="animation-delay:'+i*.04+'s;border-color:'+n.color+'30;color:'+n.color+'99">'+icon(n.id,n.color,13)+'<span>'+n.name+'</span></span>'; }).join('')+'</div>'+
+    '<div class="ctas">'+
+    '<button class="btn-cta" onclick="setState({screen:\'auth\',authMode:\'login\'})">◈ '+tr('enter')+'</button>'+
+    '<button class="btn-outline" onclick="setState({screen:\'plans\'})">'+tr('plans')+'</button>'+
+    '<p style="font-size:10px;color:var(--muted);letter-spacing:1px;opacity:.5;margin-top:4px">PostAllTon © 2026</p>'+
+    '</div></div>'+
+    '<div class="lfoot">'+
+    '<span style="cursor:pointer" onclick="setState({screen:'terms'})">'+termsLabel[state.lang]+'</span>'+
+    '<span style="cursor:pointer" onclick="setState({screen:'privacy'})">'+privacyLabel[state.lang]+'</span>'+
+    '<span><a href="mailto:suporte@postallton.com" style="color:inherit;text-decoration:none">suporte@postallton.com</a></span>'+
+    '</div></div>';
+}
+
+// ══ PLANS ══════════════════════════════════════════════════════════
+function pagePlans(){
+  var b = state.billing;
+  var planTitle = {pt:'Escolha seu <em>Plano</em>',en:'Choose your <em>Plan</em>',es:'Elige tu <em>Plan</em>',fr:'Choisissez votre <em>Plan</em>'};
+  return '<div class="plans-page"><div class="grid-bg" style="opacity:.4"></div>'+
+    '<button class="back-btn" onclick="setState({screen:\'landing\'})">← '+tr('back')+'</button>'+
+    '<h2 class="plans-title" style="margin-top:20px">'+(planTitle[state.lang]||planTitle.pt)+'</h2>'+
+    '<p class="plans-sub">PostAllTon</p>'+
+    '<div class="billing">'+
+    '<button class="bill-btn'+(b==='monthly'?' active':'')+'" onclick="setBilling(\'monthly\')">'+tr('monthly')+'</button>'+
+    '<button class="bill-btn'+(b==='lifetime'?' active':'')+'" onclick="setBilling(\'lifetime\')">'+tr('lifetime')+'</button>'+
+    '</div><div class="plans-grid">'+
+    PLANS.map(function(p){
+      var lang = state.lang;
+      var desc = typeof p.desc === 'object' ? (p.desc[lang]||p.desc.pt) : p.desc;
+      var price_m = typeof p.m === 'object' ? (p.m[lang]||p.m.pt) : p.m;
+      var price_l = typeof p.l === 'object' ? (p.l[lang]||p.l.pt) : p.l;
+      var feats = typeof p.feats === 'object' && !Array.isArray(p.feats) ? (p.feats[lang]||p.feats.pt) : p.feats;
+      return '<div class="plan-card'+(p.hi?' hi':'')+'">'+
+        (p.hi ? '<div class="plan-badge">'+(b==='monthly'?tr('popular'):tr('bestval'))+'</div>' : '')+
+        '<div class="plan-name">'+p.name+'</div><div class="plan-desc">'+desc+'</div>'+
+        '<div class="plan-price">'+(b==='monthly'?price_m:price_l)+'</div>'+
+        '<div class="plan-price-sub">'+(b==='monthly'?tr('mo'):tr('once'))+'</div>'+
+        '<div class="plan-div"></div>'+
+        '<ul class="plan-feats">'+feats.map(function(f){ return '<li class="plan-feat"><div class="feat-chk">✦</div>'+f+'</li>'; }).join('')+'</ul>'+
+        '<div class="pay-btns">'+
+        '<button class="plan-cta cta-stripe" onclick="checkout(\'stripe\',\''+p.id+'\',\''+b+'\')">💳 '+tr('payStripe')+'</button>'+
+        '<button class="plan-cta cta-mp" onclick="checkout(\'mp\',\''+p.id+'\',\''+b+'\')">🟢 '+tr('payMP')+'</button>'+
+        '</div></div>';
+    }).join('')+'</div></div>';
+}
+
+// ══ AUTH ═══════════════════════════════════════════════════════════
+function pageAuth(){
+  var isLogin = state.authMode === 'login';
+  return '<div class="auth-page"><div class="auth-box">'+
+    '<div class="auth-logo"><div class="auth-wordmark">PostAll<span>Ton</span></div><div class="auth-sub">'+(isLogin?tr('loginSub'):tr('registerSub'))+'</div></div>'+
+    '<div class="auth-card"><h2 class="auth-title">'+(isLogin?tr('login'):tr('register'))+'</h2>'+
+    (state.authError ? '<div class="auth-error">'+state.authError+'</div>' : '')+
+    (!isLogin ? '<div style="margin-bottom:14px"><label class="field-lbl">'+tr('name')+'</label><input class="input-f" type="text" placeholder="'+tr('name')+'" oninput="state.authName=this.value"/></div>' : '')+
+    '<div style="margin-bottom:14px"><label class="field-lbl">'+tr('email')+'</label><input class="input-f" type="email" placeholder="voce@email.com" oninput="state.authEmail=this.value"/></div>'+
+    '<div style="margin-bottom:22px"><label class="field-lbl">'+tr('password')+'</label><input class="input-f" type="password" placeholder="••••••••" oninput="state.authPassword=this.value"/></div>'+
+    '<button class="btn-primary" onclick="doAuth()" style="margin-bottom:10px">'+(isLogin?tr('login'):tr('register'))+'</button>'+
+    '<div class="auth-divider">ou</div>'+
+    '<button onclick="doGoogleLogin()" style="width:100%;padding:12px;background:transparent;border:1px solid var(--border2);color:var(--muted2);font-size:11px;letter-spacing:1px;cursor:pointer;font-family:var(--fu);transition:all .2s;margin-bottom:4px" onmouseover="this.style.borderColor=\'var(--gold-dim)\';this.style.color=\'var(--gold)\'" onmouseout="this.style.borderColor=\'var(--border2)\';this.style.color=\'var(--muted2)\'">G &nbsp; '+tr('google')+'</button>'+
+    '<div class="auth-toggle" onclick="setState({authMode:\''+(isLogin?'register':'login')+'\',authError:\'\'})">'+(isLogin?tr('noAccount'):tr('hasAccount'))+'</div>'+
+    '</div><div class="auth-back" onclick="setState({screen:\'landing\'})">← '+tr('back')+'</div></div></div>';
+}
+
+// ══ APP ════════════════════════════════════════════════════════════
+function pageApp(){
+  var tab = state.tab, lang = state.lang, user = state.user;
+  var navLabels = {
+    compose:{pt:'Nova Publicação',en:'New Post',es:'Nueva Publicación',fr:'Nouvelle Publication'},
+    history:{pt:'Histórico',en:'History',es:'Historial',fr:'Historique'},
+    settings:{pt:'Configurações',en:'Settings',es:'Configuración',fr:'Paramètres'},
+  };
+  var navs = [
+    {id:'compose',icon:'✦',label:(navLabels.compose[lang]||navLabels.compose.pt)},
+    {id:'history',icon:'◇',label:(navLabels.history[lang]||navLabels.history.pt)},
+    {id:'settings',icon:'⚙',label:(navLabels.settings[lang]||navLabels.settings.pt)},
+  ];
+  var today = new Date().toLocaleDateString(lang==='pt'?'pt-BR':lang==='es'?'es-ES':lang==='fr'?'fr-FR':'en-US',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  var pageTitles = {
+    compose:{pt:'Nova <em>Publicação</em>',en:'New <em>Post</em>',es:'Nueva <em>Publicación</em>',fr:'Nouvelle <em>Publication</em>'},
+    history:{pt:'<em>Histórico</em>',en:'<em>History</em>',es:'<em>Historial</em>',fr:'<em>Historique</em>'},
+    settings:{pt:'<em>Configurações</em>',en:'<em>Settings</em>',es:'<em>Configuración</em>',fr:'<em>Paramètres</em>'},
+  };
+  var pageTitle = (pageTitles[tab]&&pageTitles[tab][lang]) || '';
+  return '<div class="shell">'+
+    '<aside class="sidebar">'+
+    '<div class="sb-logo"><div class="sb-mark"><div class="sb-dot"></div>PostAll<em style="font-style:italic;color:var(--gold)">Ton</em></div><div class="sb-sub">PostAllTon</div></div>'+
+    '<ul class="nav-list">'+navs.map(function(n){
+      return '<li class="nav-item">'+
+        '<button class="nav-btn'+(tab===n.id?' active':'')+'" onclick="setTab(\''+n.id+'\')">'+n.icon+' '+n.label+'</button>'+
+        (tab===n.id ? '<div class="nav-bar"></div>' : '')+
+        '</li>';
+    }).join('')+'</ul>'+
+    '<div class="sb-foot">'+
+    (user ? '<div style="font-size:10px;color:var(--muted2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.3px;margin-bottom:6px">'+(user.name||user.email)+'</div>' : '')+
+    '<div class="lang-foot">'+[{c:'pt',f:'🇧🇷'},{c:'en',f:'🇺🇸'},{c:'es',f:'🇪🇸'},{c:'fr',f:'🇫🇷'}].map(function(l){ return '<button class="lf-btn'+(lang===l.c?' active':'')+'" onclick="setLang(\''+l.c+'\')" title="'+l.c.toUpperCase()+'">'+l.f+'</button>'; }).join('')+'</div>'+
+    '<button onclick="doLogout()" style="margin-top:8px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:6px;cursor:pointer;width:100%;font-family:var(--fu);transition:all .2s" onmouseover="this.style.borderColor=\'var(--red)\';this.style.color=\'var(--red)\'" onmouseout="this.style.borderColor=\'var(--border)\';this.style.color=\'var(--muted)\'">'+tr('logout')+'</button>'+
+    '</div></aside>'+
+    '<main class="main">'+
+    '<div class="topbar"><h1 class="page-title">'+pageTitle+'</h1><div class="page-date">'+today+'<button class="home-btn" onclick="setState({screen:\'landing\'})">← Home</button></div></div>'+
+    '<div class="content">'+(tab==='compose'?tabCompose():tab==='history'?tabHistory():tabSettings())+'</div>'+
+    '</main></div>'+
+    (state.modal ? modalView() : '')+
+    // BOTTOM NAV MOBILE
+    // Footer com termos no app (desktop)
+    '<div style="display:none" class="app-footer-desktop">'+
+    '<a onclick="setState({prevScreen:'app',screen:'terms'})" style="cursor:pointer;color:var(--muted);font-size:10px;text-decoration:none;letter-spacing:.5px">'+termsLabel[lang]+'</a>'+
+    '<span style="color:var(--border2);margin:0 8px">·</span>'+
+    '<a onclick="setState({prevScreen:'app',screen:'privacy'})" style="cursor:pointer;color:var(--muted);font-size:10px;text-decoration:none;letter-spacing:.5px">'+privacyLabel[lang]+'</a>'+
+    '<span style="color:var(--border2);margin:0 8px">·</span>'+
+    '<a href="mailto:suporte@postallton.com" style="color:var(--muted);font-size:10px;text-decoration:none;letter-spacing:.5px">suporte@postallton.com</a>'+
+    '</div>'+
+    '<nav class="bottom-nav">'+
+    '<button class="bottom-nav-btn'+(tab==='compose'?' active':'')+'" onclick="setTab(\'compose\')">'+
+    '<span>✦</span><span>'+(navLabels.compose[lang]||'Publicar')+'</span></button>'+
+    '<button class="bottom-nav-btn'+(tab==='history'?' active':'')+'" onclick="setTab(\'history\')">'+
+    '<span>◇</span><span>'+(navLabels.history[lang]||'Histórico')+'</span></button>'+
+    '<button class="bottom-nav-btn'+(tab==='settings'?' active':'')+'" onclick="setTab(\'settings\')">'+
+    '<span>⚙</span><span>'+(navLabels.settings[lang]||'Config')+'</span></button>'+
+    '<button class="bottom-nav-btn" onclick="doLogout()">'+
+    '<span>↩</span><span>'+tr('logout')+'</span></button>'+
+    '</nav>';
+}
+
+// ══ SETTINGS ═══════════════════════════════════════════════════════
+function tabSettings(){
+  var connected = Object.keys(state.connections);
+  return (state.netSuccess ? '<div class="notice notice-ok"><p>'+state.netSuccess+'</p></div>' : '')+
+    '<div class="sec-lbl" style="margin-bottom:14px">'+tr('settingsTitle')+' — '+connected.length+'/'+NETS.length+' '+tr('connected')+'</div>'+
+    '<div class="nets-settings-grid">'+
+    NETS.map(function(n){
+      var conn = state.connections[n.id];
+      var isEditing = state.editingNet === n.id;
+      return '<div class="net-setting-card'+(conn?' connected':'')+'">'+
+        '<div class="net-setting-header">'+icon(n.id,conn?n.color:'var(--muted)',20)+
+        '<div><div class="net-setting-name">'+n.name+'</div>'+
+        '<div class="net-setting-status '+(conn?'status-connected':'status-disconnected')+'">'+
+        (conn ? '✓ '+tr('connected')+' — '+(conn.account_name||'') : tr('disconnected'))+'</div></div></div>'+
+        '<div class="net-setting-actions">'+
+        (conn ?
+          '<button class="btn-danger" onclick="deleteCreds(\''+n.id+'\')">'+tr('disconnect')+'</button>'+
+          '<button class="btn-sm active" onclick="toggleEdit(\''+n.id+'\')">'+(isEditing?tr('cancel'):tr('edit'))+'</button>' :
+          '<button class="btn-sm active" onclick="toggleEdit(\''+n.id+'\')">'+(isEditing?tr('cancel'):tr('connect'))+'</button>'
+        )+'</div></div>';
+    }).join('')+'</div>'+
+    (state.editingNet ? credForm(state.editingNet) : '');
+}
+
+function credForm(platform){
+  var fields = NET_FIELDS[platform] || [];
+  var guide = NET_GUIDE[platform] || {};
+  var n = NETS.find(function(x){ return x.id === platform; });
+  var isFree = guide.free;
+  return '<div class="cred-form">'+
+    '<div class="cred-form-title">'+icon(platform,n?n.color:'var(--gold)',22)+' '+n.name+'</div>'+
+    '<div style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;font-size:10px;font-weight:700;letter-spacing:1px;margin-bottom:14px;'+(isFree?'background:rgba(74,222,128,.08);border:1px solid #4ade8033;color:#4ade80':'background:rgba(245,158,11,.08);border:1px solid #f59e0b33;color:#f59e0b')+'">'+
+    (isFree?tr('freeLabel'):tr('paidLabel'))+' · '+tr('ageRange')+': '+(guide.age||'Geral')+'</div>'+
+    (guide.steps && guide.steps.length > 0 ?
+      '<div style="margin-bottom:18px"><div class="sec-lbl" style="margin-bottom:10px">'+tr('stepByStep')+'</div>'+
+      '<div style="display:flex;flex-direction:column;gap:0">'+
+      guide.steps.map(function(s){
+        return '<div style="display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)">'+
+          '<div style="width:22px;height:22px;background:var(--gold);color:#07070a;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">'+s.n+'</div>'+
+          '<div><div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:2px">'+s.t+'</div>'+
+          '<div style="font-size:11px;color:var(--muted2);line-height:1.6">'+s.d+'</div></div></div>';
+      }).join('')+'</div></div>' : '')+
+    '<div class="sec-lbl" style="margin-bottom:10px">'+tr('credentials')+'</div>'+
+    '<div class="cred-fields">'+
+    fields.map(function(f){
+      return '<div><label class="field-lbl">'+f.l+'</label>'+
+        '<input class="input-f" type="'+(f.t||'text')+'" placeholder="'+(f.ph||'')+'" oninput="state.netForm[\''+f.k+'\']=this.value" value="'+(state.netForm[f.k]||'')+'"/></div>';
+    }).join('')+'</div>'+
+    (state.netError ? '<p style="color:var(--red);font-size:12px;margin-bottom:12px">❌ '+state.netError+'</p>' : '')+
+    '<div style="display:flex;gap:10px;margin-top:14px">'+
+    '<button class="btn-ghost" onclick="setState({editingNet:null,netForm:{},netError:\'\'})">'+tr('cancel')+'</button>'+
+    '<button class="btn-primary" onclick="saveCreds(\''+platform+'\')" '+(state.netSaving?'disabled':'')+'>'+
+    (state.netSaving ? '<span style="display:inline-block;animation:spin .8s linear infinite">◌</span> '+tr('verifying') : '◈ '+tr('saveConnect'))+
+    '</button></div></div>';
+}
+
+// ══ COMPOSE ════════════════════════════════════════════════════════
+function tabCompose(){
+  var sel = [...state.selected];
+  var selNets = NETS.filter(function(n){ return state.selected.has(n.id); });
+  var ma = state.mediaUrls.split(',').map(function(s){ return s.trim(); }).filter(Boolean);
+  var can = !!state.token && state.caption.trim() && sel.length > 0;
+  var connected = Object.keys(state.connections);
+  window._canPublish = can;
+
+  return '<div class="cg"><div>'+
+    (connected.length === 0 ?
+      '<div class="notice notice-warn"><p>'+tr('noCredsWarn')+' <span style="color:var(--gold);cursor:pointer;text-decoration:underline" onclick="setTab(\'settings\')">'+tr('noCredsLink')+'</span> '+tr('noCredsEnd')+'</p></div>' : '')+
+
+    // PERFIL DE PÚBLICO
+    '<div class="panel" style="margin-bottom:14px">'+
+    '<div class="sec-lbl" style="margin-bottom:10px">'+tr('audienceTitle')+
+    '<span style="font-size:10px;color:var(--muted);margin-left:8px;font-weight:400;text-transform:none;letter-spacing:0">'+tr('audienceSub')+'</span>'+
+    (state.audienceProfile ? '<span style="font-size:10px;color:var(--green);margin-left:auto;font-weight:600;text-transform:none;letter-spacing:0">✓ Salvo</span>' : '')+
+    '</div>'+
+    '<div style="display:flex;flex-wrap:wrap;gap:5px">'+
+    AUDIENCE.map(function(a){
+      return '<button class="audience-btn'+(state.audienceProfile===a.id?' active':'')+'" onclick="applyAudience(\''+a.id+'\')" title="'+(a.desc[state.lang]||a.desc.pt)+'">'+a.icon+' '+(a.label[state.lang]||a.label.pt)+'</button>';
+    }).join('')+'</div>'+
+    (state.audienceProfile && state.audienceProfile !== 'all' ?
+      (function(){
+        var ap = AUDIENCE.find(function(a){ return a.id === state.audienceProfile; });
+        return ap ? '<div style="margin-top:10px;padding:7px 12px;background:rgba(201,168,76,.05);border-left:2px solid var(--gold-dim);font-size:11px;color:var(--muted2)">'+ap.icon+' <strong style="color:var(--gold)">'+(ap.label[state.lang]||ap.label.pt)+'</strong> — '+(ap.desc[state.lang]||ap.desc.pt)+'</div>' : '';
+      })() : '')+
+    '</div>'+
+
+    // REDES
+    '<div class="panel">'+
+    '<div class="sec-lbl" style="margin-bottom:12px">'+tr('platforms')+
+    '<div style="display:flex;gap:5px;margin-left:auto">'+
+    '<button class="btn-sm'+(sel.length===NETS.length?' active':'')+'" onclick="selectAll()">'+tr('all')+'</button>'+
+    '<button class="btn-sm" onclick="selectNone()">'+tr('none')+'</button>'+
+    '</div></div>'+
+    '<div class="net-grid">'+
+    NETS.map(function(n){
+      var conn = state.connections[n.id];
+      var isSel = state.selected.has(n.id);
+      return '<div class="net-card'+(isSel?' sel':'')+'" data-id="'+n.id+'" onclick="toggleNet(\''+n.id+'\')" title="'+(conn?'✓ '+tr('connected'):'⚠ '+tr('disconnected'))+'">'+
+        '<span class="net-chk">✦</span>'+
+        '<span style="display:inline-flex;width:22px;height:22px;color:'+(isSel?n.color:conn?n.color+'88':'var(--muted)')+'">'+SVG[n.id]+'</span>'+
+        '<span class="net-name-s" style="color:'+(conn?'var(--muted2)':'var(--muted)')+'">'+n.name+'</span>'+
+        (conn ? '<span style="position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--green)"></span>' : '')+
+        '</div>';
+    }).join('')+'</div>'+
+    '<p style="font-size:9px;color:var(--muted);margin-top:7px">'+tr('greenDot')+'</p>'+
+    '</div>'+
+
+    // LEGENDA
+    '<div class="panel">'+
+    '<label class="field-lbl">'+tr('caption')+'</label>'+
+    '<textarea class="textarea-f" id="captInput" placeholder="'+tr('captionPh')+'" oninput="onCaption(this.value)">'+state.caption+'</textarea>'+
+    '<div class="char-c" id="charCount">'+state.caption.length+' / 2200 '+tr('chars')+'</div>'+
+    '</div>'+
+
+    // MÍDIA
+    '<div class="panel">'+
+    '<label class="field-lbl">'+tr('media')+'</label>'+
+    '<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px">'+
+    [{id:'url',label:tr('mediaDirect'),icon:'🔗'},{id:'drive',label:tr('mediaDrive'),icon:'📁'},{id:'dropbox',label:tr('mediaDropbox'),icon:'📦'},{id:'upload',label:tr('mediaUpload'),icon:'⬆️'}].map(function(m){
+      return '<button class="media-tab'+(state.mediaMode===m.id?' active':'')+'" onclick="setState({mediaMode:\''+m.id+'\'})">'+m.icon+' '+m.label+'</button>';
+    }).join('')+'</div>'+
+    (state.mediaMode==='url' ?
+      '<input class="input-f" value="'+state.mediaUrls+'" placeholder="'+tr('mediaPh')+'" oninput="state.mediaUrls=this.value"/>' :
+    state.mediaMode==='drive' ?
+      '<div class="notice" style="margin-bottom:8px"><p>📁 '+tr('driveHint')+'</p></div>'+
+      '<input class="input-f" value="'+state.mediaUrls+'" placeholder="https://drive.google.com/file/d/XXXX/view" oninput="onMediaConvert(this.value)"/>'+
+      (state.mediaUrls && state.mediaUrls.indexOf('drive.google.com') > -1 ? '<p style="font-size:10px;color:var(--green);margin-top:5px">'+tr('driveOk')+'</p>' : '') :
+    state.mediaMode==='dropbox' ?
+      '<div class="notice" style="margin-bottom:8px"><p>📦 '+tr('dropboxHint')+'</p></div>'+
+      '<input class="input-f" value="'+state.mediaUrls+'" placeholder="https://www.dropbox.com/s/XXXX/file.jpg?dl=0" oninput="onMediaConvert(this.value)"/>'+
+      (state.mediaUrls && state.mediaUrls.indexOf('dropbox.com') > -1 ? '<p style="font-size:10px;color:var(--green);margin-top:5px">'+tr('dropboxOk')+'</p>' : '') :
+      '<div class="notice notice-warn" style="margin-bottom:8px"><p>'+tr('uploadHint')+'</p></div>'+
+      '<input type="file" id="fileInput" accept="image/*,video/*" onchange="onFileUpload(this)" style="display:none"/>'+
+      '<div class="drop-zone" onclick="document.getElementById(\'fileInput\').click()">'+
+      '<div style="font-size:22px;margin-bottom:6px">📎</div>'+
+      '<div style="font-size:12px">'+tr('uploadSelect')+'</div>'+
+      '<div style="font-size:10px;color:var(--muted);margin-top:3px">'+tr('uploadMax')+'</div>'+
+      '</div>'+
+      (state.mediaUrls ? '<p style="font-size:11px;color:var(--green);margin-top:6px">'+tr('fileSelected')+'</p>' : '')
+    )+'</div>'+
+
+    // AGENDAR
+    '<div class="panel">'+
+    '<label class="field-lbl">'+tr('schedule')+'</label>'+
+    '<input class="input-f" type="datetime-local" value="'+state.schedDate+'" oninput="onSched(this.value)" style="color-scheme:dark"/>'+
+    '<div id="schedLbl">'+(state.schedDate ? '<p style="font-size:11px;color:var(--amber);margin-top:6px">'+tr('scheduledFor')+': '+new Date(state.schedDate).toLocaleString()+'</p>' : '')+'</div>'+
+    '</div>'+
+
+    '<button id="publishBtn" class="btn-primary" '+(can?'':'disabled')+' onclick="if(window._canPublish)openModal()">◈ '+(state.schedDate?tr('scheduleIn'):tr('publishNow'))+' '+sel.length+' '+(sel.length===1?tr('platform'):tr('platforms2'))+'</button>'+
+    '</div>'+
+
+    // SIDEBAR
+    '<div class="cg-side">'+
+    '<div class="panel" style="margin-bottom:12px">'+
+    '<div class="sec-lbl">'+tr('selected')+'</div>'+
+    '<div class="sel-count" id="selCount">'+sel.length+'</div>'+
+    '<div class="sel-lbl">'+(sel.length===1?tr('platform'):tr('platforms2'))+'</div>'+
+    '<div style="height:1px;background:var(--border);margin:11px 0"></div>'+
+    '<div class="sel-list" id="selList">'+
+    (selNets.length === 0 ?
+      '<p style="font-size:11px;color:var(--muted)">'+tr('none')+'</p>' :
+      selNets.map(function(n){
+        return '<div class="sel-item">'+icon(n.id,n.color,14)+'<span>'+n.name+'</span>'+
+          (state.connections[n.id] ? '<span style="color:var(--green);font-size:8px;margin-left:auto">●</span>' : '<span style="color:var(--muted);font-size:8px;margin-left:auto">○</span>')+
+          '</div>';
+      }).join(''))+
+    '</div></div>'+
+    '<div class="panel">'+
+    '<div class="sec-lbl">'+tr('preview')+'</div>'+
+    '<div id="prevText">'+(state.caption ?
+      '<p style="font-size:13px;color:var(--text);line-height:1.6;word-break:break-word">'+state.caption.slice(0,160)+(state.caption.length>160?'…':'')+'</p>' :
+      '<p style="font-size:12px;color:var(--muted);font-style:italic">'+tr('previewEmpty')+'</p>')+
+    '</div>'+
+    (ma.length > 0 ? '<div style="margin-top:8px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:7px">📎 '+ma.length+' arquivo(s)</div>' : '')+
+    '</div></div></div>';
+}
+
+// ══ HISTORY ════════════════════════════════════════════════════════
+function tabHistory(){
+  return '<p style="font-size:12px;color:var(--muted);margin-bottom:16px">'+tr('histDesc')+'</p>'+
+    (state.posts.length === 0 ?
+      '<div class="panel" style="text-align:center;padding:48px 20px">'+
+      '<div style="font-size:34px;color:var(--border2);margin-bottom:10px;font-family:var(--fd)">◇</div>'+
+      '<p style="font-size:13px;color:var(--muted);margin-bottom:14px">'+tr('noPostsYet')+'</p>'+
+      '<button class="btn-ghost" onclick="setTab(\'compose\')">'+tr('createFirst')+'</button></div>' :
+      '<div class="panel">'+state.posts.map(function(p){
+        return '<div class="hist-item">'+
+          '<div><p class="hist-cap">'+(p.caption.length>130?p.caption.slice(0,130)+'…':p.caption)+'</p>'+
+          '<div class="hist-tags">'+(p.networks||[]).slice(0,8).map(function(nid){
+            var n = NETS.find(function(x){ return x.id===nid; });
+            return '<span class="hist-tag" style="border-color:'+(n?n.color+'33':'var(--border2)')+'">'+icon(nid,n?n.color:'var(--muted2)',11)+'<span style="color:'+(n?n.color:'var(--muted2)')+'">'+( n?n.name:nid)+'</span></span>';
+          }).join('')+((p.networks||[]).length>8?'<span class="hist-tag">+'+(p.networks.length-8)+'</span>':'')+'</div></div>'+
+          '<div class="hist-meta"><span class="badge badge-pub">'+p.status+'</span><div class="hist-date">'+p.date+'</div></div></div>';
+      }).join('')+'</div>');
+}
 
 // ══ MODAL ══════════════════════════════════════════════════════════
 function modalView(){
@@ -45,16 +925,19 @@ function modalView(){
     '<div class="modal">'+
     (m==='confirm' ?
       '<div class="modal-title">'+tr('confirmTitle')+'</div>'+
+      // Preview da legenda
       (state.caption ? '<div style="background:var(--bg);border:1px solid var(--border);padding:12px;margin-bottom:12px;font-size:13px;color:var(--text);line-height:1.6;max-height:80px;overflow:hidden">'+state.caption.slice(0,120)+(state.caption.length>120?'…':'')+'</div>' : '')+
+      // Preview de mídia
       (state.mediaUrls ? (function(){
         var urls = state.mediaUrls.split(',').map(function(u){return u.trim();}).filter(Boolean);
         var firstUrl = urls[0]||'';
         var isImg = /\.(jpg|jpeg|png|gif|webp)/i.test(firstUrl) || firstUrl.indexOf('picsum')>-1 || firstUrl.indexOf('drive.google')>-1;
         return isImg ?
-          '<div style="margin-bottom:12px;border:1px solid var(--border);overflow:hidden;max-height:140px"><img src="'+firstUrl+'" style="width:100%;object-fit:cover;max-height:140px" onerror="this.style.display=\'none\'"/></div>' :
+          '<div style="margin-bottom:12px;border:1px solid var(--border);overflow:hidden;max-height:140px"><img src="'+firstUrl+'" style="width:100%;object-fit:cover;max-height:140px" onerror="this.style.display='none'"/></div>' :
           '<div style="background:var(--bg);border:1px solid var(--border);padding:8px 12px;margin-bottom:12px;font-size:11px;color:var(--muted2)">📎 '+urls.length+' arquivo(s) de mídia</div>';
       })() : '')+
-      (state.schedDate ? '<div style="background:rgba(245,158,11,.08);border:1px solid #f59e0b33;padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--amber);display:flex;align-items:center;gap:8px"><span style="font-size:16px">📅</span><div><div style="font-weight:600">'+tr('scheduledFor')+'</div><div>'+new Date(state.schedDate).toLocaleString()+'</div></div></div>' : '')+
+      // Data de agendamento
+      (state.schedDate ? '<div style="background:rgba(245,158,11,.08);border:1px solid #f59e0b33;padding:10px 14px;margin-bottom:12px;font-size:12px;color:var(--amber);display:flex;align-items:center;gap:8px"><span style="font-size:16px">📅</span><div><div style="font-weight:600">'+tr('scheduledFor')+'</div><div>'+new Date(state.schedDate).toLocaleString(state.lang==='pt'?'pt-BR':state.lang==='es'?'es-ES':state.lang==='fr'?'fr-FR':'en-US',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'})+'</div></div></div>' : '')+
       '<div class="modal-sub" style="margin-bottom:10px">'+tr('confirmSub')+' <strong style="color:var(--gold)">'+selNets.length+'</strong> '+tr('confirmSub2')+'</div>'+
       '<div class="modal-plats">'+selNets.map(function(n){ return '<span class="plat-pill" style="border-color:'+n.color+'44;color:'+n.color+'">'+icon(n.id,n.color,12)+'<span>'+n.name+'</span></span>'; }).join('')+'</div>'+
       '<div class="modal-actions"><button class="btn-ghost" onclick="setState({modal:null})">'+tr('cancelBtn')+'</button><button class="btn-primary" onclick="publishPost()">'+(state.schedDate?tr('scheduleIn'):tr('publishBtn'))+'</button></div>' :
@@ -78,9 +961,97 @@ function modalView(){
     )+'</div></div>';
 }
 
-// O resto do código original permanece igual...
-// (setTab, toggleNet, onCaption, etc.)
+// ══ HANDLERS ═══════════════════════════════════════════════════════
+function setTab(t){ state.tab = t; if(t==='settings') loadConnections(); render(); }
+function setLang(l){ state.lang = l; render(); savePreferences(); }
+function selectAll(){ state.selected = new Set(NETS.map(function(n){ return n.id; })); render(); }
+function selectNone(){ state.selected = new Set(); render(); }
+function toggleNet(id){
+  var s = new Set(state.selected);
+  s.has(id) ? s.delete(id) : s.add(id);
+  state.selected = s;
+  var el = document.querySelector('.net-card[data-id="'+id+'"]');
+  if(el){
+    var isSel = s.has(id);
+    el.classList.toggle('sel', isSel);
+    var sp = el.querySelectorAll('span')[1];
+    if(sp){ var n = NETS.find(function(x){ return x.id===id; }); if(n) sp.style.color = isSel?n.color:(state.connections[id]?n.color+'88':'var(--muted)'); }
+  }
+  window._canPublish = !!state.token && state.caption.trim() && s.size > 0;
+  var cnt = document.getElementById('selCount'); if(cnt) cnt.textContent = s.size;
+  var btn = document.getElementById('publishBtn');
+  if(btn){ btn.disabled = !window._canPublish; btn.textContent = '◈ '+(state.schedDate?tr('scheduleIn'):tr('publishNow'))+' '+s.size+' '+(s.size===1?tr('platform'):tr('platforms2')); }
+  var sl = document.getElementById('selList');
+  if(sl){
+    var selNets = NETS.filter(function(n){ return s.has(n.id); });
+    sl.innerHTML = selNets.length===0 ? '<p style="font-size:11px;color:var(--muted)">'+tr('none')+'</p>' :
+      selNets.map(function(n){ return '<div class="sel-item">'+icon(n.id,n.color,14)+'<span>'+n.name+'</span>'+(state.connections[n.id]?'<span style="color:var(--green);font-size:8px;margin-left:auto">●</span>':'<span style="color:var(--muted);font-size:8px;margin-left:auto">○</span>')+'</div>'; }).join('');
+  }
+  // Salvar preferências automaticamente após mudança
+  clearTimeout(window._savePrefTimeout);
+  window._savePrefTimeout = setTimeout(function(){ savePreferences(); }, 800);
+}
+function onCaption(v){
+  state.caption = v;
+  window._canPublish = !!state.token && v.trim() && state.selected.size > 0;
+  var cc = document.getElementById('charCount'); if(cc) cc.textContent = v.length+' / 2200 '+tr('chars');
+  var pt = document.getElementById('prevText');
+  if(pt) pt.innerHTML = v ? '<p style="font-size:13px;color:var(--text);line-height:1.6;word-break:break-word">'+v.slice(0,160)+(v.length>160?'…':'')+'</p>' : '<p style="font-size:12px;color:var(--muted);font-style:italic">'+tr('previewEmpty')+'</p>';
+  var btn = document.getElementById('publishBtn');
+  if(btn){ btn.disabled = !window._canPublish; btn.textContent = '◈ '+(state.schedDate?tr('scheduleIn'):tr('publishNow'))+' '+state.selected.size+' '+(state.selected.size===1?tr('platform'):tr('platforms2')); }
+}
+function onSched(v){
+  state.schedDate = v;
+  var sl = document.getElementById('schedLbl');
+  if(sl) sl.innerHTML = v ? '<p style="font-size:11px;color:var(--amber);margin-top:6px">'+tr('scheduledFor')+': '+new Date(v).toLocaleString()+'</p>' : '';
+}
+function onMediaConvert(v){
+  var urls = v.split(',').map(function(u){ return convertUrl(u.trim()); }).filter(Boolean);
+  state.mediaUrls = urls.join(', ');
+  render();
+}
+function onFileUpload(input){
+  var file = input.files[0];
+  if(!file) return;
+  state.mediaUrls = file.name;
+  alert(tr('uploadHint'));
+  render();
+}
+function toggleEdit(id){
+  if(state.editingNet === id){ setState({editingNet:null,netForm:{},netError:'',netSuccess:''}); }
+  else { setState({editingNet:id,netForm:{},netError:'',netSuccess:''}); }
+}
+function openModal(){ setState({modal:'confirm'}); }
 
+// ══ GOOGLE CALLBACK ════════════════════════════════════════════════
+(function(){
+  var p = new URLSearchParams(window.location.search);
+  var tk = p.get('token'), us = p.get('user');
+  if(tk){
+    localStorage.setItem('pat_token',tk);
+    if(us){ try{ localStorage.setItem('pat_user',decodeURIComponent(us)); }catch(e){} }
+    state.token = tk;
+    try{ state.user = JSON.parse(decodeURIComponent(us||'null')); }catch(e){}
+    state.screen = 'app';
+    window.history.replaceState({},'','/');
+  }
+  var err = p.get('error');
+  if(err){ state.screen = 'auth'; state.authError = decodeURIComponent(err); }
+  var payment = p.get('payment');
+  if(payment === 'success'){
+    alert('✅ Pagamento confirmado! Plano '+(p.get('plan')||'')+' ativado.');
+    window.history.replaceState({},'','/');
+  }
+})();
+
+// ══ BILLING TOGGLE ════════════════════════════════════════════════
+window.setBilling = function(b){
+  state.billing = b;
+  render();
+};
+
+// ══ INIT ═══════════════════════════════════════════════════════════
+window._canPublish = false;
 render();
 if(state.token){
   loadConnections();
